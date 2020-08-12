@@ -18,7 +18,7 @@ It analyze vulnerabilities, miscellaneous alerts and warnings and other findings
 
 ### Install
 ```
-python3 -m pip install wpscan_out_parse
+python3 -m pip install wpscan-out-parse
 ```
 No dependencies
 
@@ -30,9 +30,9 @@ Run `wpscan [options] --output yourfile`
 wpscan --url https://mysite.com --output file.json --format json --api-token YOUR_API_TOKEN
 ```
 
-Run `wpscan_out_parse [options] yourfile`  
+Run `python3 -m wpscan_out_parse [options] yourfile`  
 ```bash
-python3 -m wpscan_out_parse --alerts file.json
+python3 -m wpscan_out_parse file.json
 ```
 And process output and/or exit code
 
@@ -46,7 +46,7 @@ And process output and/or exit code
 ### As a Python library
 ```python
 import wpscan_out_parse
-results=wpscan_out_parse.parse_results_from_file('wpscan_output_file.json')
+results=wpscan_out_parse.parse_results_from_file('./test/output_files/wordpress_many_vuln.json')
 print(results)
 ```
 

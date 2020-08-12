@@ -101,5 +101,8 @@ It analyze vulnerabilities, miscellaneous alerts and warnings and other findings
     def print_version(self):
         print('wpscan_out_parse version {}'.format(VERSION))
 
-if __name__ == '__main__':
+def main():
     WPScanOutParse()
+
+if __name__ == '__main__':
+    main()
