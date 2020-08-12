@@ -3,6 +3,10 @@
 **`wpscan_out_parse` is a Python parser for WPScan output files** (JSON and CLI).  
 It analyze vulnerabilities, miscellaneous alerts and warnings and other findings.
 
+<a href="https://github.com/tristanlatr/wpscan_out_parse/actions" target="_blank"><img src="https://github.com/tristanlatr/wpscan_out_parse/workflows/test/badge.svg"></a>
+<a href="https://codecov.io/gh/tristanlatr/wpscan_out_parse" target="_blank"><img src="https://codecov.io/gh/tristanlatr/wpscan_out_parse/branch/master/graph/badge.svg"></a>
+<a href="https://pypi.org/project/wpscan_out_parse/" target="_blank"><img src="https://badge.fury.io/py/wpscan_out_parse.svg"></a>
+
 ### Features
 - Support WPScan JSON and CLI output files
 - Return results in CLI, JSON and HTML output format
