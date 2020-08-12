@@ -1,0 +1,14 @@
+{
+  "banner": {
+    "description": "WordPress Security Scanner by the WPScan Team",
+    "version": "3.8.2",
+    "authors": [
+      "@_WPScan_",
+      "@ethicalhack3r",
+      "@erwan_lr",
+      "@firefart"
+    ],
+    "sponsor": "Sponsored by Automattic - https://automattic.com/"
+  },
+  "scan_aborted": "The URL supplied redirects to https://www.google.com/. Use the --ignore-main-redirect option to ignore the redirection and scan the target, or change the --url option value to the redirected URL."
+}
