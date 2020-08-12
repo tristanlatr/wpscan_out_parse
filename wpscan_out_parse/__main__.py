@@ -30,12 +30,6 @@ class WPScanOutParse():
             print(format_results(results, format=self.format))
             exit(1)
 
-        if self.alerts and self.summary:
-            results=WPScanResults()
-            results['error']="Incompatible options --summary and --alerts"
-            print(format_results(results, format=self.format))
-            exit(1)
-
         if self.inline and self.format != 'cli':
             results=WPScanResults()
             results['error']="Incompatible options --inline and --format {}. You must use 'cli' format".format(self.format)
@@ -62,28 +56,27 @@ class WPScanOutParse():
 
         if self.no_infos:
             results['infos']=None
-        if self.no_warn:
-            results['warnings']=None
-        if self.alerts:
+        if self.no_warnings:
             results['infos']=None
             results['warnings']=None
-        if self.summary:
-            results['alerts']=None
-            results['warnings']=None
-            results['infos']=None
-        if self.no_summary:
-            results['summary']=None
         
-        if self.alerts and not results['alerts'] and not results['error']:
+        if self.no_warnings and not results['alerts'] and not results['error']:
             pass
-        elif self.no_warn and ( not results['alerts'] and not results['error'] ):
-            pass
-        elif self.no_infos and ( not results['alerts'] and not results['warnings'] and not results['error'] ):
+        elif self.no_infos and not results['alerts'] and not results['warnings'] and not results['error']:
             pass
         else:
             if not self.inline:
+
+                if self.summary:
+                    results['alerts']=None
+                    results['warnings']=None
+                    results['infos']=None
+                if self.no_summary:
+                    results['summary']=None
+
                 print(format_results(results, format=self.format))
             else:
+                
                 print(results['summary']['line'])
         
         exit(exit_code)
@@ -95,10 +88,9 @@ It analyze vulnerabilities, miscellaneous alerts and warnings and other findings
 
         parser.add_argument('wpscan_output_file', help='WPScan output file to parse. ', metavar='<File path>', type=str, nargs='?')
         parser.add_argument('--format', metavar='<Format>', help='output format, choices are: "cli", "html", "json"', choices=['cli', 'html', 'json'], default='cli')
-        parser.add_argument('--alerts', action='store_true', help='display only alerts and summary. Implies --no_warnings. ')
         parser.add_argument('--summary', action='store_true', help='display ony the summary of issues per component. ')
-        parser.add_argument('--inline', action='store_true', help='display only one line like: "WPScan result summary: alerts={}, warnings={}, ok={}". ')
-        parser.add_argument('--no_warn', action='store_true', help='do not display warnings, only summary and alerts. Implies --no_infos. ')
+        parser.add_argument('--inline', action='store_true', help='display only one line like: "WPScan result summary: alerts={}, warnings={}, infos={}, error={}". ')
+        parser.add_argument('--no_warnings', action='store_true', help='do not display warnings, only summary and alerts. Implies --no_infos. ')
         parser.add_argument('--no_infos', action='store_true', help='do not display informations and findinds. ')
         parser.add_argument('--no_summary', action='store_true', help='do not display the summary of issues. ')
         parser.add_argument('--show_all', action='store_true', help='show all findings details (found by, confidence, confirmed by). ')

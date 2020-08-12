@@ -49,7 +49,7 @@ print(results)
 ### Exemples
 
 ```bash
-% python3 -m wpscan_out_parse ./test/output_files/wordpress_many_vuln.json --alerts
+% python3 -m wpscan_out_parse ./test/output_files/wordpress_many_vuln.json --no_warn
 
 Vulnerabilities have been detected by WPScan.
 
@@ -77,13 +77,13 @@ References:
 
 #### Display results in HTML
 ```html
-% python3 -m wpscan_out_parse ./test/output_files/wordpress_many_vuln.json --alerts --format html
+% python3 -m wpscan_out_parse ./test/output_files/wordpress_many_vuln.json --no_warn --format html
 <div><br/>Vulnerabilities have been detected by WPScan.<br/><br/>&nbsp;&nbsp;&nbsp;&nbsp;Summary<br/>&nbsp;&nbsp;&nbsp;&nbsp;-------<br/><br/><table><tr><th>Component</th><th>Version</th><th>Version State</th><th>Vulnerabilities</th><th>Status</th></tr></table><br/>WPScan result summary: alerts=1, warnings=5, infos=9, error=0<br/><br/>&nbsp;&nbsp;&nbsp;&nbsp;Alerts<br/>&nbsp;&nbsp;&nbsp;&nbsp;------<br/><br/>Vulnerability: YouTube Embed <= 13.8.1 - Cross-Site Request Forgery (CSRF)<br/>Fixed in: 11.8.2<br/>References: <br/>- Url: https://security.dxw.com/advisories/csrf-in-youtube-plugin/<br/>- Url: http://seclists.org/fulldisclosure/2017/Jul/64<br/>- WPVulnDB: https://wpvulndb.com/vulnerabilities/8873<br/></div>
 ```
 
 #### Display results in JSON
 ```bash
-% python3 -m wpscan_out_parse ./test/output_files/wordpress_many_vuln.json --alerts --format json 
+% python3 -m wpscan_out_parse ./test/output_files/wordpress_many_vuln.json --no_warn --format json 
 {
     "infos": null,
     "warnings": null,
@@ -134,10 +134,9 @@ positional arguments:
 optional arguments:
   -h, --help            show this help message and exit
   --format <Format>     output format, choices are: "cli", "html", "json"
-  --alerts              display only alerts and summary. Implies --no_warnings.
   --summary             display ony the summary of issues per component.
   --inline              display only one line like: "WPScan result summary: alerts={}, warnings={}, infos={}, error={}".
-  --no_warn             do not display warnings, only summary and alerts. Implies --no_infos.
+  --no_warnings         do not display warnings, only summary and alerts. Implies --no_infos.
   --no_infos            do not display informations and findinds.
   --no_summary          do not display the summary of issues.
   --show_all            show all findings details (found by, confidence, confirmed by).
