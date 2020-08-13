@@ -10,7 +10,8 @@ class WPScanOutParse():
 
     def __init__(self):
         """Load all config values as object properties"""
-
+        
+        exit_code=0
         self.__dict__.update(vars(self.parse_args()))
 
         if self.version:
@@ -36,7 +37,7 @@ class WPScanOutParse():
             print(format_results(results, format=self.format))
             exit(1)
 
-        exit_code=0
+        # Call parse_results_from_file()
         try:
             results=parse_results_from_file(self.wpscan_output_file, self.false_positive, self.show_all)
         except Exception:
@@ -45,40 +46,41 @@ class WPScanOutParse():
             print(format_results(results, format=self.format))
             exit(1)
 
+        # Exit code determination based on the number of alerts, warnings and error
         if len(results['alerts'])>0:
                 exit_code = 5  
         elif len(results['warnings'])>0:
             exit_code = 6
-        if results['error'] and 'WPScan failed' in results['error']:
-            exit_code=4
-        elif results['error']:
-            exit_code=1
+        if results['error']:
+            if 'WPScan failed' in results['error']:
+                exit_code=4
+            else:
+                exit_code=1
 
+        # Delete infos and warnings if asked
         if self.no_infos:
             results['infos']=None
         if self.no_warnings:
             results['infos']=None
             results['warnings']=None
         
-        if self.no_warnings and not results['alerts'] and not results['error']:
-            pass
-        elif self.no_infos and not results['alerts'] and not results['warnings'] and not results['error']:
-            pass
+        if not self.inline:
+
+            if self.summary:
+                results['alerts']=None
+                results['warnings']=None
+                results['infos']=None
+            if self.no_summary:
+                results['summary']=None
+            
+            # Print infos if any
+            output=format_results(results, format=self.format)
+            if output:
+                print(output)
         else:
-            if not self.inline:
+            # Print only line
+            print(results['summary']['line'])
 
-                if self.summary:
-                    results['alerts']=None
-                    results['warnings']=None
-                    results['infos']=None
-                if self.no_summary:
-                    results['summary']=None
-
-                print(format_results(results, format=self.format))
-            else:
-                
-                print(results['summary']['line'])
-        
         exit(exit_code)
 
     @staticmethod

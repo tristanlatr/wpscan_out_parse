@@ -11,9 +11,9 @@ def format_results(results, format):
 def build_message(results, warnings=True, infos=True, format='cli'):
     '''Build mail message text base on report and warnngs and info switch'''
     message=""
-    if results['error'] : message += "\nAn error occurred.\n"
-    elif results['alerts'] : message += "\nVulnerabilities have been detected by WPScan.\n"
-    elif results['warnings']: message += "\nIssues have been detected by WPScan.\n"
+    if results['error'] : message += "An error occurred.\n".replace('\n', '<br/>\n' if format=='html' else '\n')
+    elif results['alerts'] : message += "Vulnerabilities have been detected by WPScan.\n".replace('\n', '<br/>\n' if format=='html' else '\n')
+    elif results['warnings']: message += "Issues have been detected by WPScan.\n".replace('\n', '<br/>\n' if format=='html' else '\n')
 
     if results['summary'] and results['summary']['line']:
         summary=[]
@@ -31,34 +31,38 @@ def build_message(results, warnings=True, infos=True, format='cli'):
         else: 
             raise ValueError("format can only be 'cli' or 'html'")
         
-        message += format_issues_cli('Summary', summary)
+        message += format_issues('Summary', summary, format=format, apply_br_tab_replace_on_issues=False)
 
     if results['error']: 
-        message += "\n"
-        message += format_issues_cli('Error',[results['error']])
+        message += "\n".replace('\n', '<br/>\n' if format=='html' else '\n')
+        message+=format_issues('Error',[results['error']], format=format)
         
     if results['alerts']: 
-        message += "\n"
-        message += format_issues_cli('Alerts',results['alerts'])
+        message += "\n".replace('\n', '<br/>\n' if format=='html' else '\n')
+        message+=format_issues('Alerts',results['alerts'], format=format)
         
     if results['warnings'] and warnings: 
-        message += "\n"
-        message += format_issues_cli('Warnings',results['warnings'])
-        
+        message += "\n".replace('\n', '<br/>\n' if format=='html' else '\n')
+        message+=format_issues('Warnings',results['warnings'], format=format)
+
     if results['infos'] and infos: 
-        message += "\n"
-        message += format_issues_cli('Informations',results['infos'])
-        
-    message += "\n"
+        message += "\n".replace('\n', '<br/>\n' if format=='html' else '\n')
+        message += format_issues('Informations',results['infos'], format=format)
+    
     if format=='html':
-        message='<div>'+replace(message, {'\n':'<br/>', '\t':'&nbsp;&nbsp;&nbsp;&nbsp;'})+'</div>'
+        message='<div>'+message+'</div>'
+
     return message
 
-def format_issues_cli(title, issues):
+def format_issues(title, issues, format='cli', apply_br_tab_replace_on_issues=True):
     '''Format one block of issues to text with the title'''
     message=""
     if issues:
-        message += "\n\t%s\n\t%s\n\n"%(title, '-'*len(title))+"\n\n".join(issues)
+        if format=='html':
+            message += "<br/>\n&nbsp;&nbsp;&nbsp;&nbsp;%s<br/>\n&nbsp;&nbsp;&nbsp;&nbsp;%s<br/>\n<br/>\n"%(title, '-'*len(title))
+            message+="<br/>\n<br/>\n".join([replace(issue, {'\n':'<br/>\n', '\t':'&nbsp;&nbsp;&nbsp;&nbsp;'}) if format=='html' and apply_br_tab_replace_on_issues else issue for issue in issues])
+        else:
+            message += "\n\t%s\n\t%s\n\n"%(title, '-'*len(title))+"\n\n".join(issues)
     return message
 
 def format_summary_ascii_table(table, line):
@@ -76,16 +80,35 @@ def format_summary_ascii_table(table, line):
     return string+'\n\n'+line
 
 def format_summary_html(table, line):
-    row_fmt  = '''<tr><td>{}</td><td>{}</td><td>{}</td><td>{}</td><td>{}</td></tr>'''
+    row_fmt  = '''      <tr>
+        <td>{}</td>
+        <td>{}</td>
+        <td>{}</td>
+        <td>{}</td>
+        <td>{}</td>
+    </tr>
+    '''
     table_rows=""
     for row in table:
-        row_fmt.format(
+        table_rows+=row_fmt.format(
             row['Component'],
             row['Version'],
             row['Version State'],
             row['Vulnerabilities'],
+            # Determine status color
             '<b style="color:{color}">{status}</b>'.format(status=row['Status'], color='#8B0000' if row['Status']=='Alert' else '#FFD700' if row['Status'] == 'Warning' else '#228B22'))
-    return ('''<table><tr><th>Component</th><th>Version</th><th>Version State</th><th>Vulnerabilities</th><th>Status</th></tr>{}</table><br/>{}'''.format(table_rows, line))
+    
+    return ('''<table>
+        <tr>
+            <th>Component</th>
+            <th>Version</th>
+            <th>Version State</th>
+            <th>Vulnerabilities</th>
+            <th>Status</th>
+        </tr>
+    {}
+    </table>
+    <br/>{}'''.format(table_rows, line))
 
 def replace(text, conditions):
     '''Multiple replacements helper method.  Stolen on the web'''

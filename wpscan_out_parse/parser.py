@@ -3,7 +3,7 @@
 # WPScan output parser
 # 
 # Authors: Florian Roth, Tristan Landès
-# Some ideas from Lukas Pustina (lukaspustina)
+# Summary design from Lukas Pustina (lukaspustina)
 #
 # DISCLAIMER - USE AT YOUR OWN RISK.
 
@@ -73,7 +73,15 @@ TEMPLATE_SCAN_RESULTS={
 'warnings':None,
 'alerts':None,
 'summary':{'table':None, 'line':None},
-'error':None}    
+'error':None}   
+
+TEMPLATE_SCAN_RESULTS_SUMMARY_ROW={
+    'Component': None,
+    'Version': None,
+    'Version State': None,
+    'Vulnerabilities': None,
+    'Status': None
+}
 
 class WPScanResults(collections.UserDict):
 
@@ -83,6 +91,15 @@ class WPScanResults(collections.UserDict):
         for key in TEMPLATE_SCAN_RESULTS.keys():
             if key not in self.data:
                 self.data[key]=TEMPLATE_SCAN_RESULTS[key]
+
+class WPScanResultsSummaryRow(collections.UserDict):
+    
+    def __init__(self, data=None):
+        super().__init__(data)
+        # Init dict with default values if not already passed with data
+        for key in TEMPLATE_SCAN_RESULTS_SUMMARY_ROW.keys():
+            if key not in self.data:
+                self.data[key]=TEMPLATE_SCAN_RESULTS_SUMMARY_ROW[key]
 
 ########### BASE CLASS FOR CLI AND JSON PARSERS ##########
 
@@ -445,14 +462,14 @@ class WPScanJsonParser(Parser):
         """Return a nice list of dict with all plugins, vuls, and statuses. Only plugin or component with issues by default"""
         summary_table=[]
         for component in self.get_core_components():
-            row={
+            row=WPScanResultsSummaryRow({
                 'Component': component.get_name(),
                 'Version': component.get_version(),
                 'Version State': component.get_version_status(),
                 'Vulnerabilities': component.get_vulnerabilities_string(),
                 'Status': component.get_status()
-            }
-            summary_table.append(row)
+            })
+            summary_table.append(dict(row))
         return summary_table
 
     def get_error(self):
