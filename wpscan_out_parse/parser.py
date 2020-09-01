@@ -566,7 +566,7 @@ class Finding(Component):
             for ref in self.references:
                 if ref == 'cve':
                     for cve in self.references[ref]: 
-                        alert+="\n- CVE: http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-{}".format(cve)
+                        alert+="\n- CVE: https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-{}".format(cve)
                 elif ref == 'wpvulndb': 
                     for wpvulndb in self.references[ref]:
                         alert+="\n- WPVulnDB: https://wpvulndb.com/vulnerabilities/{}".format(wpvulndb)
