@@ -12,6 +12,9 @@
 # NOTE: You need an API token for the WPVulnDB vulnerability data.
 
 """
+
+Issue shoudl be fixed need to commit and merge this
+
 All the WPScan fields for the JSON output in the views/json folders at:
 
 https://github.com/wpscanteam/CMSScanner/tree/master/app/views/json
@@ -829,11 +832,12 @@ class WPItem(Finding, CoreFinding):
         for all know vulnerabilities if plugin version could not be recognized.
         Adds a special text saying the version is unrecognized if that's the case"""
         warnings=[]
+        # Prepare warning string
+        warning=self.slug if self.slug else str()
         # Get oudated theme warning
-        warning=self.slug
         if self._get_warnings():
             warning+=self._get_warnings()[0]
-        warning+="\n"
+        if warning: warning += "\n"
         # Get generic infos
         warning+=self._get_infos()[0]
         # If vulns are found and the version is unrecognized
