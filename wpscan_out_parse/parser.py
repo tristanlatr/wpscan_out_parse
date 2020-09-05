@@ -12,9 +12,6 @@
 # NOTE: You need an API token for the WPVulnDB vulnerability data.
 
 """
-
-Issue shoudl be fixed need to commit and merge this
-
 All the WPScan fields for the JSON output in the views/json folders at:
 
 https://github.com/wpscanteam/CMSScanner/tree/master/app/views/json
