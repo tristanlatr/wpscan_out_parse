@@ -53,6 +53,8 @@ results=wpscan_out_parse.parse_results_from_file('./test/output_files/wordpress_
 print(results)
 ```
 
+See [DOCUMENTATION]() for more technicals details on Python objects and library usage.  
+
 ### Exemples
 
 ```bash
