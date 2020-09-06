@@ -11,60 +11,34 @@
 # Parse vulnerability data and make more human readable.
 # NOTE: You need an API token for the WPVulnDB vulnerability data.
 
-"""
-All the WPScan fields for the JSON output in the views/json folders at:
+# """
+# All the WPScan fields for the JSON output in the views/json folders at:
 
-https://github.com/wpscanteam/CMSScanner/tree/master/app/views/json
-https://github.com/wpscanteam/wpscan/tree/master/app/views/json
+# https://github.com/wpscanteam/CMSScanner/tree/master/app/views/json
+# https://github.com/wpscanteam/wpscan/tree/master/app/views/json
 
-Here are some other inspirational ressources found about parsing wpscan json
+# Here are some other inspirational ressources found about parsing wpscan json
 
-Generates a nice table output (Rust code) 
-    https://github.com/lukaspustina/wpscan-analyze
-    Parser code: 
-        https://github.com/lukaspustina/wpscan-analyze/blob/master/src/analyze.rs
-Python parser (do not parse for vulnerable theme or outdated warnings) 
-    https://github.com/aaronweaver/AppSecPipeline/blob/master/tools/wpscan/parser.py
-Vulcan wpscan (Go) 
-    https://github.com/adevinta/vulcan-checks/blob/master/cmd/vulcan-wpscan/wpscan.go
-    Great job listing all the fields, is the list complete ?
-Dradis ruby json Parser 
-    https://github.com/dradis/dradis-wpscan/blob/master/lib/dradis/plugins/wpscan/importer.rb : 
-    No warnings neither but probably the clearest code
+# Generates a nice table output (Rust code) 
+#     https://github.com/lukaspustina/wpscan-analyze
 
-Ressource Parsing CLI output:
-    List of all icons: https://github.com/wpscanteam/CMSScanner/blob/master/app/formatters/cli.rb
-"""
+# Python parser (do not parse for vulnerable theme or outdated warnings) 
+#     https://github.com/aaronweaver/AppSecPipeline/blob/master/tools/wpscan/parser.py
+  
+# Vulcan wpscan (Go) 
+#     https://github.com/adevinta/vulcan-checks/blob/master/cmd/vulcan-wpscan/wpscan.go
+#     Great job listing all the fields
+  
+# Dradis ruby json Parser 
+#     https://github.com/dradis/dradis-wpscan/blob/master/lib/dradis/plugins/wpscan/importer.rb   
+#     No warnings neither but probably the clearest code
+
+# Ressource Parsing CLI output:
+#     List of all icons: https://github.com/wpscanteam/CMSScanner/blob/master/app/formatters/cli.rb  
+# """
 
 import collections
-import json
-import re
 from abc import ABC, abstractmethod
-
-####################### INTERFACE METHODS ####################
-
-def parse_results_from_string(wpscan_output_string, false_positives_strings=None, show_all=False):
-    """ Helper function to parse any WPScan output. Return the full dict object"""
-    is_json=False
-    try:
-        data=json.loads(wpscan_output_string)
-        is_json=True
-    except ValueError: pass
-
-    if is_json: 
-        parser=WPScanJsonParser(data, false_positives_strings, show_all)
-    else:  
-        parser=WPScanCliParser(wpscan_output_string, false_positives_strings)
-
-    return (parser.get_results())
-
-def parse_results_from_file(wpscan_output_file, false_positives_strings=None, show_all=False):
-    with open(wpscan_output_file, 'r') as wpscan_out:
-        wpscan_out_string = wpscan_out.read()
-        results = parse_results_from_string(wpscan_out_string, false_positives_strings=false_positives_strings, show_all=show_all)
-    
-    return results
-
 
 ############ RESULTS CLASS ###########################
 
@@ -83,7 +57,7 @@ TEMPLATE_SCAN_RESULTS_SUMMARY_ROW={
     'Status': None
 }
 
-class WPScanResults(collections.UserDict):
+class _WPScanResults(collections.UserDict):
 
     def __init__(self, data=None):
         super().__init__(data)
@@ -92,7 +66,7 @@ class WPScanResults(collections.UserDict):
             if key not in self.data:
                 self.data[key]=TEMPLATE_SCAN_RESULTS[key]
 
-class WPScanResultsSummaryRow(collections.UserDict):
+class _WPScanResultsSummaryRow(collections.UserDict):
     
     def __init__(self, data=None):
         super().__init__(data)
@@ -103,10 +77,10 @@ class WPScanResultsSummaryRow(collections.UserDict):
 
 ########### BASE CLASS FOR CLI AND JSON PARSERS ##########
 
-class Component(ABC):
-    
+class _Component(ABC):
+    """Base abstract class for all WPScan JSON and CLI components"""
     def __init__(self, data, false_positives_strings, show_all_details): 
-        """Base abstract class for all WPScan JSON and CLI components"""
+        
         if not data: data={}
         self.data=data
         self.false_positives_strings=false_positives_strings if false_positives_strings else []
@@ -125,23 +99,50 @@ class Component(ABC):
 
     @abstractmethod
     def get_infos(self):
+        """Return the component informations as a list of strings.  """
         pass
 
     @abstractmethod
     def get_warnings(self):
+        """Return the component warnings as a list of strings.  """
         pass
 
     @abstractmethod
     def get_alerts(self):
+        """Return the component alerts as a list of strings.  """
         pass
 
-class Parser(Component):
+class _Parser(_Component):
+    """Common class for CLI and JSON parsers.  """
     def __init__(self, data, *args, **kwargs): 
         if not data: data={}
         super().__init__(data, *args, **kwargs)
     
     @abstractmethod
     def get_results(self):
+        """Returns a dictionnary structure like: 
+        ```
+        {
+        'infos':[],
+        'warnings':[],
+        'alerts':[],
+        'summary':{
+            'table':[
+                {
+                    'Component': None,
+                    'Version': None,
+                    'Version State': None,
+                    'Vulnerabilities': None,
+                    'Status': None
+                },
+                ...
+            ], 
+            'line':'WPScan result summary: alerts={}, warnings={}, infos={}, error={}'
+            },
+        'error':None
+        }   
+        ```
+        """
         pass
 
     def get_summary_line(self):
@@ -155,357 +156,42 @@ class Parser(Component):
     
     @abstractmethod
     def get_error(self):
+        """ Return any error or None if no errors"""
         pass
-
-########################  CLI PARSER ######################
-
-class WPScanCliParser(Parser):
-    
-    def __init__(self, wpscan_output, false_positives_strings=None):
-        """Main interface to parse WPScan JSON data"""
-        if not wpscan_output: wpscan_output=''
-        # Parser config: false positives string and verbosity (not available with cli parser)
-        parser_config=dict(false_positives_strings=false_positives_strings, show_all_details=False)
-        super().__init__(wpscan_output, **parser_config)
-        self.infos, self.warnings, self.alerts = self.parse_cli(wpscan_output)
-
-    def get_infos(self):
-        return self.infos
-
-    def get_warnings(self):
-        return self.warnings
-
-    def get_alerts(self):
-        return self.alerts
-
-    def parse_cli_toogle(self, line, warning_on, alert_on):
-        # Color parsing
-        if "33m[!]" in line: warning_on=True
-        elif "31m[!]" in line: alert_on = True
-        # No color parsing Warnings string are hard coded here
-        elif "[!]" in line and any([m in line for m in [   
-            "The version is out of date",
-            "No WPVulnDB API Token given",
-            "You can get a free API token"]]) :
-            warning_on = True
-        elif "[!]" in line :
-            alert_on = True
-        # Both method with color and no color apply supplementary proccessing 
-        # Warning for insecure Wordpress and based on interesting findings strings
-        if any(string in line for string in ['Insecure']+InterestingFinding.INTERESTING_FINDING_WARNING_STRINGS ): 
-            warning_on = True
-        # Trigger alert based on interesting finding alert strings
-        if any(string in line for string in InterestingFinding.INTERESTING_FINDING_ALERT_STRINGS ):
-            alert_on=True
-        # Lower voice of Vulnerabilities found but not plugin version
-        if 'The version could not be determined' in line and alert_on:
-            alert_on = False  
-            warning_on = True 
-        return ((warning_on, alert_on))
-
-    def ignore_false_positives(self, infos, warnings, alerts):
-        """Process false positives"""
-        for alert in warnings+alerts:
-            if self.is_false_positive(alert):
-                try: alerts.remove(alert)
-                except ValueError:
-                    warnings.remove(alert)
-                infos.append("[False positive]\n{}".format(alert))
-
-        return infos, warnings, alerts
-    
-    def parse_cli(self, wpscan_output):
-        # Init scan messages
-        ( messages, warnings, alerts ) = ([],[],[])
-        # Init messages toogles
-        warning_on, alert_on = False, False
-        message_lines=[] 
-        current_message=""
-
-        # Every blank ("") line will be considered as a message separator
-        for line in wpscan_output.splitlines()+[""]:
-
-            # Parse all output lines and build infos, warnings and alerts
-            line=line.strip()
-            
-            # Parse line
-            warning_on, alert_on = self.parse_cli_toogle(line, warning_on, alert_on)
-
-            # Remove colorization anyway after parsing
-            line = re.sub(r'(\x1b|\[[0-9][0-9]?m)','',line)
-            # Append line to message. Handle the begin of the message case
-            message_lines.append(line)
-
-            # Build message
-            current_message='\n'.join([m for m in message_lines if m not in ["","|"]]).strip()
-
-            # Message separator just a white line.
-            # Only if the message if not empty. 
-            if ( line.strip() not in [""] or current_message.strip() == "" ) : 
-                continue
-
-            # End of the message
-
-            # Post process message to separate ALERTS into different messages of same status and add rest of the infos to warnings
-            if (alert_on or warning_on) and any(s in current_message for s in ['vulnerabilities identified','vulnerability identified']) : 
-                messages_separated=[]
-                msg=[]
-                for l in message_lines+["|"]:
-                    if l.strip() == "|":
-                        messages_separated.append('\n'.join([ m for m in msg if m not in ["","|"]] ))
-                        msg=[]
-                    msg.append(l)
-
-                # Append Vulnerabilities messages to ALERTS and other infos in one message
-                vulnerabilities = [ m for m in messages_separated if '| [!] Title' in m.splitlines()[0] ]
-
-                # Add the plugin infos to warnings or false positive if every vulnerabilities are ignore
-                plugin_infos='\n'.join([ m for m in messages_separated if '| [!] Title' not in m.splitlines()[0] ])
-                
-                if ( len([v for v in vulnerabilities if not self.is_false_positive(v)])>0 and 
-                    "The version could not be determined" in plugin_infos) :
-                    warnings.append(plugin_infos+"\nAll known vulnerabilities are listed")
-                else:
-                    messages.append(plugin_infos)
-
-                if alert_on: alerts.extend(vulnerabilities)
-                elif warning_on: warnings.extend(vulnerabilities)
-
-            elif warning_on: warnings.append(current_message)
-            else: messages.append(current_message)
-            message_lines=[]
-            current_message=""
-            # Reset Toogle Warning/Alert
-            warning_on, alert_on = False, False
-
-        return (self.ignore_false_positives( messages, warnings, alerts ))
-
-    def get_error(self):
-        if 'Scan Aborted' in self.data:
-            return 'WPScan failed: {}'.format('\n'.join(line for line in self.data.splitlines() if 'Scan Aborted' in line))
-        else:
-            return None
-        
-    def get_results(self):
-        results = WPScanResults()
-        results['infos']=self.get_infos()
-        results['warnings']=self.get_warnings()
-        results['alerts']=self.get_alerts()
-        results['summary']['line']=self.get_summary_line()
-        results['error']=self.get_error()
-        return dict(results)
-
-#################### JSON PARSER ######################
-
-class WPScanJsonParser(Parser):
-    
-    def __init__(self, data, false_positives_strings=None, show_all_details=False):
-        """Main interface to parse WPScan JSON data"""
-        if not data: data={}
-        # Parser config: false positives string and verbosity (not available with cli parser)
-        parser_config=dict(false_positives_strings=false_positives_strings, show_all_details=show_all_details)
-        super().__init__(data, **parser_config)
-        self.components=[]
-        # Add WordPressVersion
-        if 'version' in data:
-            self.version=WordPressVersion(data.get('version'), **parser_config)
-        else:
-            self.version=None
-        # Add MainTheme
-        if 'main_theme' in data:
-            self.main_theme=MainTheme(data.get('main_theme'), **parser_config)
-        else:
-            self.main_theme=None
-        # Add Plugins
-        if 'plugins' in data:
-            self.plugins=[Plugin(data.get('plugins').get(slug), **parser_config) for slug in data.get('plugins')]
-        else:
-            self.plugins=[]
-        # Add Themes ; Make sure the main theme is not displayed twice
-        if 'themes' in data:
-            self.themes=[Theme(data.get('themes').get(slug), **parser_config) for slug in data.get('themes') if not self.main_theme or slug!=self.main_theme.slug]
-        else:
-            self.themes=[]
-        # Add Interesting findings
-        if 'interesting_findings' in data:
-            self.interesting_findings=[InterestingFinding(finding, **parser_config) for finding in data.get('interesting_findings')]
-        else:
-            self.interesting_findings=[]
-        # Add Timthumbs
-        if 'timthumbs' in data:
-            self.timthumbs=[Timthumb(url, data.get('timthumbs').get(url), **parser_config) for url in data.get('timthumbs')]
-        else:
-            self.timthumbs=[]
-        # Add DBExport
-        if 'db_exports' in data:
-            self.db_exports=[DBExport(url, data.get('db_exports').get(url), **parser_config) for url in data.get('db_exports')]
-        else:
-            self.db_exports=[]
-        # Add Users
-        if 'users' in data:
-            self.users=[User(url, data.get('users').get(url), **parser_config) for url in data.get('users')]
-        else:
-            self.users=[]
-        # Add Medias
-        if 'medias' in data:
-            self.medias=[Media(url, data.get('medias').get(url), **parser_config) for url in data.get('medias')]
-        else:
-            self.medias=[]
-        # Add Config backups
-        if 'config_backups' in data:
-            self.config_backups=[ConfigBackup(url, data.get('config_backups').get(url), **parser_config) for url in data.get('config_backups')]
-        else:
-            self.config_backups=[]
-        # Add VulnAPI 
-        if 'vuln_api' in data:
-            self.vuln_api=VulnAPI(data.get('vuln_api'), **parser_config)
-        else:
-            self.vuln_api=None
-        # Add Password attack
-        if data.get('password_attack', None):
-            self.password_attack=PasswordAttack(data.get('password_attack'), **parser_config)
-        else: 
-            self.password_attack=None
-        # Add Not fully configured
-        if data.get('not_fully_configured', None):
-            self.not_fully_configured=NotFullyConfigured(data.get('not_fully_configured'), **parser_config)
-        else:
-            self.not_fully_configured=None
-        # Add 
-        if data.get('banner', None):
-            self.banner=Banner(data.get('banner'), **parser_config)
-        else:
-            self.banner=None
-        # Add ScanStarted
-        if 'target_url' in data:
-            self.scan_started=ScanStarted(data, **parser_config)
-        else:
-            self.scan_started=None
-        # Add ScanFinished''
-        if 'enlapsed' in data:
-            self.scan_finished=ScanFinished(data, **parser_config)
-        else:
-            self.scan_finished=None
-        if data.get('scan_aborted', None):
-            self.error = 'Scan Aborted: {}'.format(data['scan_aborted'])
-        else:
-            self.error=None
-        # All all components to list
-        self.components = [ c for c in [self.version, self.main_theme] + \
-                            self.plugins + self.themes + \
-                            self.interesting_findings + [self.password_attack, self.not_fully_configured] + \
-                            self.timthumbs + self.db_exports + \
-                            self.users + self.medias + \
-                            self.config_backups + [self.vuln_api, self.banner, self.scan_started, self.scan_finished] if c ]
-
-    def get_infos(self):
-        """Add false positives as infos with "[False positive]" prefix"""
-        infos=[]
-        for component in self.components:
-            infos.extend(component.get_infos())
-
-            # If all vulns are ignored, add component message to infos
-            component_warnings=[ warning for warning in component.get_warnings() if not self.is_false_positive(warning) ]
-            # Automatically add wp item infos if all vuln are ignored and component does not present another issue
-            if ( len(component_warnings)==1 and 'The version could not be determined' in component_warnings[0] 
-                and not "Directory listing is enabled" in component_warnings[0] 
-                and not "An error log file has been found" in component_warnings[0] ) :
-                infos.extend(component_warnings)
-
-            for alert in component.get_alerts()+component.get_warnings():
-                if self.is_false_positive(alert):
-                    infos.append("[False positive]\n"+alert)
-
-        return infos
-
-    def get_warnings(self):
-        """Igore false positives and automatically remove special warning if all vuln are ignored"""
-        warnings=[]
-        for component in self.components:
-            # Ignore false positives warnings
-            component_warnings=[ warning for warning in component.get_warnings() if not self.is_false_positive(warning) ]
-            # Automatically remove wp item warning if all vuln are ignored and component does not present another issue
-            if ( len(component_warnings)==1 and 'The version could not be determined' in component_warnings[0] 
-                and not "Directory listing is enabled" in component_warnings[0] 
-                and not "An error log file has been found" in component_warnings[0] ) :
-                component_warnings=[]
-
-            warnings.extend(component_warnings)
-            
-        return warnings
-
-    def get_alerts(self):
-        """Igore false positives"""
-        alerts=[]
-        for component in self.components:
-            alerts.extend([ alert for alert in component.get_alerts() if not self.is_false_positive(alert) ])
-        return alerts
-
-    def get_results(self):
-        results = WPScanResults()
-        results['infos']=self.get_infos()
-        results['warnings']=self.get_warnings()
-        results['alerts']=self.get_alerts()
-        results['summary']['table']=self.get_summary_list()
-        results['summary']['line']=self.get_summary_line()
-        results['error']=self.get_error()
-        return dict(results)
-
-    def get_core_components(self):
-        core=[]
-        for component in self.components:
-            if isinstance(component, CoreFinding):
-                core.append(component)
-        return core
-
-    def get_summary_list(self):
-        """Return a nice list of dict with all plugins, vuls, and statuses. Only plugin or component with issues by default"""
-        summary_table=[]
-        for component in self.get_core_components():
-            row=WPScanResultsSummaryRow({
-                'Component': component.get_name(),
-                'Version': component.get_version(),
-                'Version State': component.get_version_status(),
-                'Vulnerabilities': component.get_vulnerabilities_string(),
-                'Status': component.get_status()
-            })
-            summary_table.append(dict(row))
-        return summary_table
-
-    def get_error(self):
-        if self.error:
-            return 'WPScan failed: {}'.format(self.error)
-        else:
-            return None
 
 ############ WPSCAN JSON COMPONENTS DATA STRUCTURE ##########
 
-class CoreFinding(ABC):
+class _CoreFinding(ABC):
 
     @abstractmethod
     def get_version(self):
+        """Return the version number (as string)"""
         pass
+
     @abstractmethod
     def get_version_status(self):
+        """Return a string in : "Outdated", "Latest", "NA", "Unknown" """
         pass
     @abstractmethod
     def get_vulnerabilities_string(self):
+        """Return the number of vulnerabilities,   (as string)"""
         pass
-
     @abstractmethod
     def get_name(self):
-        pass
-    @abstractmethod
-    def should_display_in_summary(self):
+        """Return the name of the finding.  """
         pass
 
     def get_status(self):
+        """Return a string in : "Alert", "Warning", "Ok", "?" """
         try:
-            return 'Alert' if self.get_alerts() else 'Warning' if self.get_warnings() else 'Ok'
+            return ( 'Alert' if self.get_alerts() 
+                else 'Warning' if self.get_warnings() 
+                else 'Ok' if self.get_version_status() == '' 
+                else '?' )
         except AttributeError:
             return None
 
-class CoreFindingNoVersion(CoreFinding):
+class _CoreFindingNoVersion(_CoreFinding):
     def get_version(self):
         return "N/A"
     def get_version_status(self):
@@ -513,7 +199,9 @@ class CoreFindingNoVersion(CoreFinding):
     def get_vulnerabilities_string(self):
         return ''
 
-class Finding(Component):
+class _Finding(_Component):
+    """ Generic WPScan finding"""
+
     def __init__(self, data, *args, **kwargs): 
         """From https://github.com/wpscanteam/wpscan/blob/master/app/views/json/finding.erb"""
         if not data: data={}
@@ -585,7 +273,7 @@ class Finding(Component):
                         alert+="\n- {}: {}".format(ref.title(), link)
         return alert
 
-class Vulnerability(Finding):
+class Vulnerability(_Finding):
     def __init__(self, data, *args, **kwargs): 
         """From https://github.com/wpscanteam/wpscan/blob/master/app/views/json/finding.erb"""
         if not data: data={}
@@ -617,7 +305,7 @@ class Vulnerability(Finding):
         """Return empty list"""
         return []
 
-class InterestingFinding(Finding):
+class InterestingFinding(_Finding):
 
     INTERESTING_FINDING_WARNING_STRINGS=[ 
         "Upload directory has listing enabled",
@@ -672,7 +360,7 @@ class InterestingFinding(Finding):
         """Return list of alerts if finding match ALERT string"""
         return [ info for info in self._get_infos() if any([string in info for string in self.INTERESTING_FINDING_ALERT_STRINGS]) ]
 
-class WordPressVersion(Finding, CoreFinding):
+class WordPressVersion(_Finding, _CoreFinding):
     
     def __init__(self, data, *args, **kwargs): 
         """From https://github.com/wpscanteam/wpscan/blob/master/app/views/json/wp_version/version.erb"""
@@ -737,15 +425,12 @@ class WordPressVersion(Finding, CoreFinding):
             return 'N/A'
 
     def get_vulnerabilities_string(self):
-        return '{}'.format(len(self.vulnerabilities) if self.get_version()!='Unknown' else 'N/A')
+        return '{}'.format(len(self.vulnerabilities) if self.get_version()!='Unknown' else '?')
 
     def get_name(self):
         return 'WordPress {} {}'.format(self.get_version(), '({})'.format(self.release_date) if self.release_date and self.number else '' )
 
-    def should_display_in_summary(self):
-        return True
-
-class WPItemVersion(Finding):
+class WPItemVersion(_Finding):
     
     def __init__(self, data, *args, **kwargs): 
         """ Themes, plugins and timthumbs Version. From:
@@ -782,7 +467,7 @@ class WPItemVersion(Finding):
         else:
             return "Unknown"
 
-class WPItem(Finding, CoreFinding):
+class WPItem(_Finding, _CoreFinding):
     def __init__(self, data, *args, **kwargs): 
         """From https://github.com/wpscanteam/wpscan/blob/master/app/views/json/wp_item.erb"""
         if not data: data={}
@@ -902,9 +587,6 @@ class WPItem(Finding, CoreFinding):
     def get_vulnerabilities_string(self):
         return '{}{}'.format(len(self.vulnerabilities),' (potential)' if not self.version.get_infos() and super().get_alerts() else '')
 
-    def should_display_in_summary(self):
-        return True
-
 class Plugin(WPItem):
     def __init__(self, data, *args, **kwargs):
         """From https://github.com/wpscanteam/wpscan/blob/master/app/views/json/enumeration/plugins.erb"""
@@ -1008,7 +690,7 @@ class MainTheme(Theme):
     def get_name(self):
         return 'Main Theme: {}'.format(self.slug)
 
-class Timthumb(Finding, CoreFinding):
+class Timthumb(_Finding, _CoreFinding):
     
     def __init__(self, url, data, *args, **kwargs): 
         """From https://github.com/wpscanteam/wpscan/blob/master/app/views/json/enumeration/timthumbs.erb"""
@@ -1052,10 +734,7 @@ class Timthumb(Finding, CoreFinding):
     def get_name(self):
         return 'Timthumb'
 
-    def should_display_in_summary(self):
-        return True
-
-class DBExport(Finding, CoreFindingNoVersion):
+class DBExport(_Finding, _CoreFindingNoVersion):
     
     def __init__(self, url, data, *args, **kwargs): 
         """From https://github.com/wpscanteam/wpscan/blob/master/app/views/json/enumeration/db_exports.erb"""
@@ -1082,10 +761,7 @@ class DBExport(Finding, CoreFindingNoVersion):
     def get_name(self):
         return 'Database Export'
 
-    def should_display_in_summary(self):
-        return True
-
-class User(Finding):
+class User(_Finding):
     
     def __init__(self, username, data, *args, **kwargs): 
         """From https://github.com/wpscanteam/wpscan/blob/master/app/views/json/enumeration/users.erb
@@ -1121,7 +797,7 @@ class User(Finding):
         else:
             return []
 
-class PasswordAttack(Component, CoreFindingNoVersion):
+class PasswordAttack(_Component, _CoreFindingNoVersion):
     
     def __init__(self, data, *args, **kwargs): 
         """From https://github.com/wpscanteam/wpscan/blob/master/app/views/json/password_attack/users.erb"""
@@ -1152,10 +828,7 @@ class PasswordAttack(Component, CoreFindingNoVersion):
     def get_name(self):
         return 'Password Attack: {} found'.format(len(self.get_alerts()))
 
-    def should_display_in_summary(self):
-        return True if self.get_alerts() else False if not self.show_all_details else True
-
-class NotFullyConfigured(Component, CoreFindingNoVersion):
+class NotFullyConfigured(_Component, _CoreFindingNoVersion):
 
     def __init__(self, data, *args, **kwargs): 
         """From https://github.com/wpscanteam/wpscan/blob/master/app/views/json/core/not_fully_configured.erb"""
@@ -1178,10 +851,7 @@ class NotFullyConfigured(Component, CoreFindingNoVersion):
     def get_name(self):
         return 'Noy fully configured'
 
-    def should_display_in_summary(self):
-        return True
-
-class Media(Finding):
+class Media(_Finding):
 
     def __init__(self, url, data, *args, **kwargs): 
         """From https://github.com/wpscanteam/wpscan/blob/master/app/views/json/enumeration/medias.erb"""
@@ -1205,7 +875,7 @@ class Media(Finding):
         """Return empty list"""
         return []
 
-class ConfigBackup(Finding, CoreFindingNoVersion):
+class ConfigBackup(_Finding, _CoreFindingNoVersion):
 
     def __init__(self, url, data, *args, **kwargs): 
         """From https://github.com/wpscanteam/wpscan/blob/master/app/views/json/enumeration/config_backups.erb"""
@@ -1232,10 +902,7 @@ class ConfigBackup(Finding, CoreFindingNoVersion):
     def get_name(self):
         return 'Config backup'
 
-    def should_display_in_summary(self):
-        return True
-
-class VulnAPI(Component):
+class VulnAPI(_Component):
     
     def __init__(self, data, *args, **kwargs): 
         """From https://github.com/wpscanteam/wpscan/blob/master/app/views/json/vuln_api/status.erb"""
@@ -1272,7 +939,7 @@ class VulnAPI(Component):
         """Return empty list"""
         return []
 
-class Banner(Component):
+class Banner(_Component):
 
     def __init__(self, data, *args, **kwargs): 
         """From https://github.com/wpscanteam/wpscan/blob/master/app/views/json/core/banner.erb"""
@@ -1302,7 +969,7 @@ class Banner(Component):
         """Return empty list"""
         return []
 
-class ScanStarted(Component):
+class ScanStarted(_Component):
 
     def __init__(self, data, *args, **kwargs): 
         """From https://github.com/wpscanteam/CMSScanner/blob/master/app/views/json/core/started.erb"""
@@ -1335,7 +1002,7 @@ class ScanStarted(Component):
         """Return empty list"""
         return []
 
-class ScanFinished(Component):
+class ScanFinished(_Component):
 
     def __init__(self, data, *args, **kwargs): 
         """From https://github.com/wpscanteam/CMSScanner/blob/master/app/views/json/core/finished.erb"""

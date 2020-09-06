@@ -1,12 +1,5 @@
 import json
 import re
-from .parser import WPScanJsonParser
-
-def format_results(results, format):
-    if format == 'json':
-        return json.dumps(dict(results), indent=4)
-    else:
-        return build_message(dict(results), format=format)
 
 def build_message(results, warnings=True, infos=True, format='cli'):
     '''Build mail message text base on report and warnngs and info switch'''
@@ -96,7 +89,11 @@ def format_summary_html(table, line):
             row['Version State'],
             row['Vulnerabilities'],
             # Determine status color
-            '<b style="color:{color}">{status}</b>'.format(status=row['Status'], color='#8B0000' if row['Status']=='Alert' else '#FFD700' if row['Status'] == 'Warning' else '#228B22'))
+            '<b style="color:{color}">{status}</b>'.format(status=row['Status'], color='#8B0000' if row['Status']=='Alert' 
+                else '#FFD700' if row['Status'] == 'Warning' 
+                else '#228B22' if row['Status'] == 'Ok' 
+                else '#996633' if row['Status'] == '?' 
+                else '#000000') )
     
     return ('''<table>
         <tr>

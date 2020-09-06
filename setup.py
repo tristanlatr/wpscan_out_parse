@@ -31,3 +31,5 @@ setup(
     long_description    =   README,
     long_description_content_type   =   "text/markdown"
 )
+
+# Generating docs with python3 -m pdoc wpscan_out_parse --html --force -o docs
