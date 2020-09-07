@@ -1,7 +1,7 @@
 Module `wpscan_out_parse`
 =========================
 
-WPScan Output Parser technical documentation.
+WPScan Output Parser Python library documentation.
 
 Sub-modules
 -----------
