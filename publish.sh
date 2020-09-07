@@ -6,10 +6,10 @@ rm -fr ./wpscan_out_parse.egg-info
 python3 -m pdoc wpscan_out_parse --pdf --force > pdf.md
 pandoc --metadata=title:"WPScan Out Parse Documentation" \
            --toc --toc-depth=4 --from=markdown+abbreviations \
-           --pdf-engine=xelatex --variable=mainfont:"DejaVu Sans" \
            --output=docs.md --to=gfm pdf.md
-git add DOCS.md
-git commit -m "Generate docs"
+sleep 2
+git add docs.md
+git commit -m "Generate docs.md"
 rm -f pdf.md
 git push
 

@@ -53,7 +53,7 @@ results=wpscan_out_parse.parse_results_from_file('./test/output_files/wordpress_
 print(results)
 ```
 
-See [DOCS.md](https://github.com/tristanlatr/wpscan_out_parse/blob/master/DOCS.md) for more technicals details on Python objects and library usage.  
+See [docs.md](https://github.com/tristanlatr/wpscan_out_parse/blob/master/DOCS.md) for more technicals details on Python objects and library usage.  
 
 ### Exemples
 
