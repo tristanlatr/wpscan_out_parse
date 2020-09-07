@@ -3,7 +3,7 @@ rm -rf ./dist
 rm -fr ./build
 rm -fr ./wpscan_out_parse.egg-info
 
-python3 -m pdoc wpscan_out_parse --pdf --force > pdf.md
+python3 -m pdoc wpscan_out_parse.__init__ --pdf --force > pdf.md
 pandoc --metadata=title:"WPScan Out Parse Documentation" \
            --toc --toc-depth=4 --from=markdown+abbreviations \
            --output=docs.md --to=gfm pdf.md
