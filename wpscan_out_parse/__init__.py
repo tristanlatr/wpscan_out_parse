@@ -1,9 +1,8 @@
 """
-WPScan Output Parser technical documentation.  
-
-
-
+WPScan Output Parser Python library documentation.  
 """
+
+__all__=["parse_results_from_string", "parse_results_from_file", "format_results", "WPScanCliParser", "WPScanJsonParser"]
 
 VERSION='1.3'
 
