@@ -241,10 +241,6 @@ class _Finding(_Component):
             Vulnerability(vuln, *args, **kwargs)
             for vuln in data.get("vulnerabilities", [])
         ]
-        self.vulnerabilities = [
-            Vulnerability(vuln, *args, **kwargs)
-            for vuln in data.get("vulnerabilities", [])
-        ]
         self.references = data.get("references", None)
 
     def get_alerts(self):
