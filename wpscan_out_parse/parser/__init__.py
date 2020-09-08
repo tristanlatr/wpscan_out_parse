@@ -44,4 +44,3 @@ def parse_results_from_file(
         )
 
     return results
-

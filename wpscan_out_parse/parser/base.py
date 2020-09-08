@@ -2,11 +2,12 @@ from abc import ABC, abstractmethod
 
 ########### BASE CLASS FOR CLI AND JSON PARSERS ##########
 
+
 class _Component(ABC):
     """Base abstract class for all WPScan JSON and CLI components"""
 
     def __init__(self, data, false_positives_strings, show_all_details):
-    
+
         if not data:
             data = {}
         self.data = data
@@ -46,7 +47,7 @@ class _Parser(_Component):
     """Common class for CLI and JSON parsers.  """
 
     def __init__(self, data, *args, **kwargs):
-        
+
         super().__init__(data, *args, **kwargs)
 
     @abstractmethod

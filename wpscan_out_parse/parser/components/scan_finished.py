@@ -1,9 +1,10 @@
-from  ..base import _Component
+from ..base import _Component
+
 
 class ScanFinished(_Component):
     def __init__(self, data, *args, **kwargs):
         """From https://github.com/wpscanteam/CMSScanner/blob/master/app/views/json/core/finished.erb"""
-        
+
         super().__init__(data, *args, **kwargs)
 
         self.stop_time = self.data.get("stop_time", None)

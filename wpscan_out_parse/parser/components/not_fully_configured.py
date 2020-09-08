@@ -1,10 +1,11 @@
-from  ..base import _Component
+from ..base import _Component
 from .finding import _CoreFindingNoVersion
+
 
 class NotFullyConfigured(_Component, _CoreFindingNoVersion):
     def __init__(self, data, *args, **kwargs):
         """From https://github.com/wpscanteam/wpscan/blob/master/app/views/json/core/not_fully_configured.erb"""
-        
+
         super().__init__(data, *args, **kwargs)
         self.not_fully_configured = data
 

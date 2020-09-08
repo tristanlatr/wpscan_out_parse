@@ -1,9 +1,10 @@
 from .finding import _Finding
 
+
 class Media(_Finding):
     def __init__(self, url, data, *args, **kwargs):
         """From https://github.com/wpscanteam/wpscan/blob/master/app/views/json/enumeration/medias.erb"""
-        
+
         super().__init__(data, *args, **kwargs)
         self.url = url
 
@@ -22,4 +23,3 @@ class Media(_Finding):
     def get_alerts(self):
         """Return empty list"""
         return []
-

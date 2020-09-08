@@ -1,9 +1,10 @@
 from .theme import Theme
 
+
 class MainTheme(Theme):
     def __init__(self, data, *args, **kwargs):
         """From https://github.com/wpscanteam/wpscan/blob/master/app/views/json/main_theme/theme.erb"""
-        
+
         super().__init__(data, *args, **kwargs)
 
     def get_infos(self):

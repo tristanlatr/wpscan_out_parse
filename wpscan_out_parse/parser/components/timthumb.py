@@ -1,10 +1,11 @@
 from .finding import _Finding, _CoreFinding
 from .wp_item_version import WPItemVersion
 
+
 class Timthumb(_Finding, _CoreFinding):
     def __init__(self, url, data, *args, **kwargs):
         """From https://github.com/wpscanteam/wpscan/blob/master/app/views/json/enumeration/timthumbs.erb"""
-        
+
         super().__init__(data, *args, **kwargs)
         self.url = url
         self.version = WPItemVersion(self.data.get("version", None), *args, **kwargs)

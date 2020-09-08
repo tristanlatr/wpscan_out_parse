@@ -1,15 +1,18 @@
-from  ..base import _Component
+from ..base import _Component
+
 
 class Banner(_Component):
     def __init__(self, data, *args, **kwargs):
         """From https://github.com/wpscanteam/wpscan/blob/master/app/views/json/core/banner.erb"""
-        
+
         super().__init__(data, *args, **kwargs)
 
         self.description = self.data.get("description", None)
         self.version = self.data.get("version", None)
         self.authors = self.data.get("authors", None)
-        self.sponsor = self.data.get("sponsor", None) or self.data.get("sponsored_by", None)
+        self.sponsor = self.data.get("sponsor", None) or self.data.get(
+            "sponsored_by", None
+        )
 
     def get_infos(self):
         info = "Scanned with {}".format(self.description)

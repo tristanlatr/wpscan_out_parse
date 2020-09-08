@@ -1,11 +1,12 @@
 from .finding import _Finding
 
+
 class User(_Finding):
     def __init__(self, username, data, *args, **kwargs):
         """From https://github.com/wpscanteam/wpscan/blob/master/app/views/json/enumeration/users.erb
         And https://github.com/wpscanteam/wpscan/blob/master/app/views/json/password_attack/users.erb
         """
-        
+
         super().__init__(data, *args, **kwargs)
 
         self.username = username

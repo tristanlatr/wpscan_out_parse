@@ -1,9 +1,10 @@
 from .wp_item import WPItem
 
+
 class Theme(WPItem):
     def __init__(self, data, *args, **kwargs):
         """From https://github.com/wpscanteam/wpscan/blob/master/app/views/json/theme.erb"""
-        
+
         super().__init__(data, *args, **kwargs)
 
         self.style_url = self.data.get("style_url", None)
@@ -73,4 +74,3 @@ class Theme(WPItem):
 
     def get_name(self):
         return "Theme: {}".format(self.slug)
-

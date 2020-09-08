@@ -1,10 +1,11 @@
 from .finding import _Finding, _CoreFinding
 from .wp_item_version import WPItemVersion
 
+
 class WPItem(_Finding, _CoreFinding):
     def __init__(self, data, *args, **kwargs):
         """From https://github.com/wpscanteam/wpscan/blob/master/app/views/json/wp_item.erb"""
-        
+
         super().__init__(data, *args, **kwargs)
 
         self.slug = self.data.get("slug", None)
@@ -136,4 +137,3 @@ class WPItem(_Finding, _CoreFinding):
             if not self.version.get_infos() and super().get_alerts()
             else "",
         )
-

@@ -1,9 +1,10 @@
 from .finding import _Finding, _CoreFinding
 
+
 class WordPressVersion(_Finding, _CoreFinding):
     def __init__(self, data, *args, **kwargs):
         """From https://github.com/wpscanteam/wpscan/blob/master/app/views/json/wp_version/version.erb"""
-        
+
         super().__init__(data, *args, **kwargs)
         self.number = self.data.get("number", None)
         self.release_date = self.data.get("release_date", None)
@@ -64,9 +65,7 @@ class WordPressVersion(_Finding, _CoreFinding):
             return "N/A"
 
     def get_vulnerabilities_string(self):
-        return "{}".format(
-            len(self.vulnerabilities)
-        )
+        return "{}".format(len(self.vulnerabilities))
 
     def get_name(self):
         return "WordPress {} {}".format(

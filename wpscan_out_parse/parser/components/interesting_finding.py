@@ -1,5 +1,6 @@
 from .finding import _Finding
 
+
 class InterestingFinding(_Finding):
 
     INTERESTING_FINDING_WARNING_STRINGS = [
@@ -29,7 +30,7 @@ class InterestingFinding(_Finding):
         """From https://github.com/wpscanteam/CMSScanner/blob/master/app/views/json/interesting_findings/findings.erb
         Warnings and Alerts strings are from https://github.com/wpscanteam/wpscan/blob/master/app/models/interesting_finding.rb
         """
-        
+
         super().__init__(data, *args, **kwargs)
         self.url = self.data.get("url", None)
         self.to_s = self.data.get("to_s", None)

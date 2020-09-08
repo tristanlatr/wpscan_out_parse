@@ -1,13 +1,14 @@
 from abc import ABC, abstractmethod
 
-from  ..base import _Component
+from ..base import _Component
+
 
 class _Finding(_Component):
     """ Generic WPScan finding"""
 
     def __init__(self, data, *args, **kwargs):
         """From https://github.com/wpscanteam/wpscan/blob/master/app/views/json/finding.erb"""
-        
+
         super().__init__(data, *args, **kwargs)
 
         self.found_by = self.data.get("found_by", None)
@@ -93,6 +94,7 @@ class _Finding(_Component):
                         alert += "\n- {}: {}".format(ref.title(), link)
         return alert
 
+
 class _CoreFinding(ABC):
     @abstractmethod
     def get_version(self):
@@ -143,11 +145,12 @@ class _CoreFindingNoVersion(_CoreFinding):
         """ Returns empty string"""
         return ""
 
+
 # Class Vulnerability moved with Finding to avoid circular imorts errors
 class Vulnerability(_Finding):
     def __init__(self, data, *args, **kwargs):
         """From https://github.com/wpscanteam/wpscan/blob/master/app/views/json/finding.erb"""
-        
+
         super().__init__(data, *args, **kwargs)
 
         self.title = self.data.get("title", None)

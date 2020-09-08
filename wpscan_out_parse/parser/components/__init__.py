@@ -11,6 +11,6 @@ from .scan_finished import ScanFinished
 from .scan_started import ScanStarted
 from .theme import Theme
 from .timthumb import Timthumb
-from .user import User 
+from .user import User
 from .vuln_api import VulnAPI
 from .wordpress_version import WordPressVersion

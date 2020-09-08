@@ -1,4 +1,3 @@
-
 import collections
 
 ############ RESULTS CLASS ###########################
@@ -36,5 +35,3 @@ class _WPScanResultsSummaryRow(collections.UserDict):
         for key in TEMPLATE_SCAN_RESULTS_SUMMARY_ROW.keys():
             if key not in self.data:
                 self.data[key] = TEMPLATE_SCAN_RESULTS_SUMMARY_ROW[key]
-
-

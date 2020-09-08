@@ -1,9 +1,10 @@
 from .wp_item import WPItem
 
+
 class Plugin(WPItem):
     def __init__(self, data, *args, **kwargs):
         """From https://github.com/wpscanteam/wpscan/blob/master/app/views/json/enumeration/plugins.erb"""
-        
+
         super().__init__(data, *args, **kwargs)
 
     def get_infos(self):

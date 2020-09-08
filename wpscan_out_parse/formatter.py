@@ -1,6 +1,7 @@
 import json
 import re
 
+
 def format_results(results, format):
     """
     Format the results dict into a "html", "cli" or "json" string.

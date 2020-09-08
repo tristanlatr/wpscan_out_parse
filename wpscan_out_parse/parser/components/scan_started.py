@@ -1,9 +1,10 @@
-from  ..base import _Component
+from ..base import _Component
+
 
 class ScanStarted(_Component):
     def __init__(self, data, *args, **kwargs):
         """From https://github.com/wpscanteam/CMSScanner/blob/master/app/views/json/core/started.erb"""
-        
+
         super().__init__(data, *args, **kwargs)
 
         self.start_time = self.data.get("start_time", None)
@@ -31,4 +32,3 @@ class ScanStarted(_Component):
     def get_alerts(self):
         """Return empty list"""
         return []
-

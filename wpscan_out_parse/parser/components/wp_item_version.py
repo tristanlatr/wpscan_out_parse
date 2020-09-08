@@ -1,5 +1,6 @@
 from .finding import _Finding
 
+
 class WPItemVersion(_Finding):
     def __init__(self, data, *args, **kwargs):
         """Themes, plugins and timthumbs Version. From:
@@ -7,7 +8,7 @@ class WPItemVersion(_Finding):
         https://github.com/wpscanteam/wpscan/blob/master/app/views/json/enumeration/plugins.erb
         https://github.com/wpscanteam/wpscan/blob/master/app/views/json/enumeration/timthumbs.erb
         """
-        
+
         super().__init__(data, *args, **kwargs)
         self.number = self.data.get("number", None)
 

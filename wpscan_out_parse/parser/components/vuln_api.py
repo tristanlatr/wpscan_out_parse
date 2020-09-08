@@ -1,16 +1,19 @@
-from  ..base import _Component
+from ..base import _Component
+
 
 class VulnAPI(_Component):
     def __init__(self, data, *args, **kwargs):
         """From https://github.com/wpscanteam/wpscan/blob/master/app/views/json/vuln_api/status.erb"""
-        
+
         super().__init__(data, *args, **kwargs)
 
         self.http_error = self.data.get("http_error", None)
         self.error = self.data.get("error", None)
 
         self.plan = self.data.get("plan", None)
-        self.requests_done_during_scan = self.data.get("requests_done_during_scan", None)
+        self.requests_done_during_scan = self.data.get(
+            "requests_done_during_scan", None
+        )
         self.requests_remaining = self.data.get("requests_remaining", None)
 
     def get_infos(self):

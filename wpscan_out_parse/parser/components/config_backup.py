@@ -1,9 +1,10 @@
 from .finding import _Finding, _CoreFindingNoVersion
 
+
 class ConfigBackup(_Finding, _CoreFindingNoVersion):
     def __init__(self, url, data, *args, **kwargs):
         """From https://github.com/wpscanteam/wpscan/blob/master/app/views/json/enumeration/config_backups.erb"""
-        
+
         super().__init__(data, *args, **kwargs)
         self.url = url
 

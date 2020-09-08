@@ -217,4 +217,3 @@ class WPScanCliParser(_Parser):
         results["summary"]["line"] = self.get_summary_line()
         results["error"] = self.get_error()
         return dict(results)
-
