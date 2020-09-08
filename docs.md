@@ -15,7 +15,7 @@ Functions
 
 Format the results dict into a “html”, “cli” or “json” string.
 
--   results: resutlts dict objject  
+-   results: resutlts dict objject
 -   format: in “html”, “cli” or “json”
 
 ### Function `parse_results_from_file`
@@ -26,10 +26,10 @@ Format the results dict into a “html”, “cli” or “json” string.
 >         show_all_details=False
 >     )
 
-Prse any WPScan output file.
+Parse any WPScan output file.
 
 -   wpscan\_output\_file: Path to WPScan output file
--   false\_positives\_strings: List of false positive strings.  
+-   false\_positives\_strings: List of false positive strings.
 -   show\_all\_details: Boolean, enable to show all wpscan infos (found
     by, confidence, etc). Only with JSON output.
 
@@ -46,7 +46,7 @@ Return the results as dict object
 Parse any WPScan output string.
 
 -   wpscan\_output\_string: WPScan output as string
--   false\_positives\_strings: List of false positive strings.  
+-   false\_positives\_strings: List of false positive strings.
 -   show\_all\_details: Boolean, enable to show all wpscan infos (found
     by, confidence, etc). Only with JSON output.
 
@@ -64,16 +64,13 @@ Classes
 
 Main interface to parse WPScan CLI output.
 
--   wpscan\_output: WPScan output as string.  
+-   wpscan\_output: WPScan output as string.
 -   false\_positives\_strings: List of false positive strings.
-
-Once instanciated, wpscan\_output is parsed and the following methods
-are accessible: get\_infos(), get\_warnings(), get\_alerts()
 
 #### Ancestors (in MRO)
 
--   [wpscan\_out\_parse.parser.\_Parser](#wpscan_out_parse.parser._Parser)
--   [wpscan\_out\_parse.parser.\_Component](#wpscan_out_parse.parser._Component)
+-   [wpscan\_out\_parse.parser.base.\_Parser](#wpscan_out_parse.parser.base._Parser)
+-   [wpscan\_out\_parse.parser.base.\_Component](#wpscan_out_parse.parser.base._Component)
 -   [abc.ABC](#abc.ABC)
 
 #### Methods
@@ -115,11 +112,11 @@ Returns a dictionnary structure like:
     'warnings':[],
     'alerts':[],
     'summary':{
-        'table':None, 
+        'table':None,
         'line':'WPScan result summary: alerts={}, warnings={}, infos={}, error={}'
         },
     'error':None
-    }   
+    }
 
 ##### Method `get_warnings`
 
@@ -136,8 +133,7 @@ Return all the parsed warnings
 >         wpscan_output
 >     )
 
-Parse the ( messages, warnings, alerts ) from WPScan CLI output
-string.  
+Parse the ( messages, warnings, alerts ) from WPScan CLI output string.
 Return results as tuple( messages, warnings, alerts ).
 
 ### Class `WPScanJsonParser`
@@ -150,24 +146,25 @@ Return results as tuple( messages, warnings, alerts ).
 
 Main interface to parse WPScan JSON data
 
--   data: The JSON structure of the WPScan output.  
--   false\_positives\_strings: List of false positive strings.  
+-   data: The JSON structure of the WPScan output.
+-   false\_positives\_strings: List of false positive strings.
 -   show\_all\_details: Boolean, enable to show all wpscan infos (found
     by, confidence, etc).
 
-Once instanciated, the following methods are accessible: get\_infos(),
-get\_warnings(), get\_alerts()
+Once instanciated, the following properties are accessible:
 
-And the following properties are accessible:  
-version, main\_theme, plugins, themes, interesting\_findings,
-password\_attack, not\_fully\_configured, timthumbs, db\_exports, users,
-medias, config\_backups, vuln\_api, banner, scan\_started,
-scan\_finished
+<code>version</code>, <code>main\_theme</code>, <code>plugins</code>,
+<code>themes</code>, <code>interesting\_findings</code>,
+<code>password\_attack</code>, <code>not\_fully\_configured</code>,
+<code>timthumbs</code>, <code>db\_exports</code>, <code>users</code>,
+<code>medias</code>, <code>config\_backups</code>,
+<code>vuln\_api</code>, <code>banner</code>, <code>scan\_started</code>,
+<code>scan\_finished</code>
 
 #### Ancestors (in MRO)
 
--   [wpscan\_out\_parse.parser.\_Parser](#wpscan_out_parse.parser._Parser)
--   [wpscan\_out\_parse.parser.\_Component](#wpscan_out_parse.parser._Component)
+-   [wpscan\_out\_parse.parser.base.\_Parser](#wpscan_out_parse.parser.base._Parser)
+-   [wpscan\_out\_parse.parser.base.\_Component](#wpscan_out_parse.parser.base._Component)
 -   [abc.ABC](#abc.ABC)
 
 #### Methods
@@ -227,11 +224,11 @@ Returns a dictionnary structure like:
                 'Status': None
             },
             ...
-        ], 
+        ],
         'line':'WPScan result summary: alerts={}, warnings={}, infos={}, error={}'
         },
     'error':None
-    }   
+    }
 
 ##### Method `get_summary_list`
 
