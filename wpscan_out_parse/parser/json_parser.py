@@ -30,12 +30,11 @@ class WPScanJsonParser(_Parser):
     - false_positives_strings: List of false positive strings.
     - show_all_details: Boolean, enable to show all wpscan infos (found by, confidence, etc).
 
-    Once instanciated, the following methods are accessible: get_infos(), get_warnings(), get_alerts()
+    Once instanciated, the following properties are accessible:   
 
-    And the following properties are accessible:
-            version, main_theme, plugins, themes, interesting_findings, password_attack,
-            not_fully_configured, timthumbs, db_exports, users, medias, config_backups,
-            vuln_api, banner, scan_started, scan_finished
+    `version`, `main_theme`, `plugins`, `themes`, `interesting_findings`, `password_attack`,
+    `not_fully_configured`, `timthumbs`, `db_exports`, `users`, `medias`, `config_backups`,
+    `vuln_api`, `banner`, `scan_started`, `scan_finished`
     """
 
     def __init__(self, data, false_positives_strings=None, show_all_details=False):

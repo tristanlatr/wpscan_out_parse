@@ -149,7 +149,7 @@ def format_summary_html(table, line):
                 else "#228B22"
                 if row["Status"] == "Ok"
                 else "#996633"
-                if row["Status"] == "?"
+                if row["Status"] == "Unknown"
                 else "#000000",
             ),
         )

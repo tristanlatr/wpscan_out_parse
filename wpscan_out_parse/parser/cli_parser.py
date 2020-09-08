@@ -13,8 +13,6 @@ class WPScanCliParser(_Parser):
     - wpscan_output: WPScan output as string.
     - false_positives_strings: List of false positive strings.
 
-    Once instanciated, wpscan_output is parsed and the following methods are accessible:  get_infos(), get_warnings(), get_alerts()
-
     """
 
     def __init__(self, wpscan_output, false_positives_strings=None):
