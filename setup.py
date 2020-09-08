@@ -1,5 +1,6 @@
 #! /usr/bin/env python3
-from setuptools import setup
+from xml.etree.ElementPath import find
+from setuptools import setup, find_packages
 import sys
 if sys.version_info[0] < 3: 
     raise EnvironmentError("Sorry, you must use Python 3")
@@ -24,7 +25,7 @@ setup(
     url                 =   'http://github.com/tristanlatr/wpscan_out_parse',
     maintainer          =   'tristanlatr',
     version             =   parse_setup('VERSION'),
-    packages            =   ['wpscan_out_parse',], 
+    packages            =   find_packages(exclude=('test')), 
     entry_points        =   {'console_scripts': ['wpscan_out_parse = wpscan_out_parse.__main__:main'],},
     classifiers         =   ["Programming Language :: Python :: 3"],
     license             =   'MIT',
