@@ -15,7 +15,7 @@ Functions
 
 Format the results dict into a “html”, “cli” or “json” string.
 
--   results: resutlts dict objject.  
+-   results: resutlts dict objject.
 -   format: in `"html"`, `"cli"` or `"json"`
 
 ### Function `parse_results_from_file`
