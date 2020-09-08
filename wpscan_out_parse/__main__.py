@@ -4,7 +4,8 @@ import copy
 import traceback
 from . import VERSION
 from .formatter import format_results
-from .parser import parse_results_from_file, WPScanResults
+from .parser import parse_results_from_file
+from .parser.results import _WPScanResults
 
 
 class WPScanOutParse:
@@ -20,19 +21,19 @@ class WPScanOutParse:
 
         # Throw config errors
         if not self.wpscan_output_file:
-            results = WPScanResults()
+            results = _WPScanResults()
             results["error"] = "Please provide WPScan output file to parse."
             print(format_results(results, format=self.format))
             exit(1)
 
         if self.summary and self.no_summary:
-            results = WPScanResults()
+            results = _WPScanResults()
             results["error"] = "Incompatible options --summary and --no_summary"
             print(format_results(results, format=self.format))
             exit(1)
 
         if self.inline and self.format != "cli":
-            results = WPScanResults()
+            results = _WPScanResults()
             results[
                 "error"
             ] = "Incompatible options --inline and --format {}. You must use 'cli' format".format(
@@ -47,7 +48,7 @@ class WPScanOutParse:
                 self.wpscan_output_file, self.false_positive, self.show_all
             )
         except Exception:
-            results = WPScanResults()
+            results = _WPScanResults()
             results["error"] = traceback.format_exc()
             print(format_results(results, format=self.format))
             exit(1)
