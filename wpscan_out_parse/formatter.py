@@ -1,6 +1,18 @@
 import json
 import re
 
+def format_results(results, format):
+    """
+    Format the results dict into a "html", "cli" or "json" string.
+
+    - results: resutlts dict objject
+    - format: in "html", "cli" or "json"
+    """
+    if format == "json":
+        return json.dumps(dict(results), indent=4)
+    else:
+        return build_message(dict(results), format=format)
+
 
 def build_message(results, warnings=True, infos=True, format="cli"):
     """Build mail message text base on report and warnngs and info switch"""
