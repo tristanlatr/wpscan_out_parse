@@ -10,7 +10,7 @@ __all__ = [
     "WPScanJsonParser",
 ]
 
-VERSION = "1.3"
+VERSION = "1.4"
 
 ###################### IMPORTS  ######################
 
