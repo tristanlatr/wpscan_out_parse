@@ -30,7 +30,7 @@ class WPScanJsonParser(_Parser):
     - false_positives_strings: List of false positive strings.
     - show_all_details: Boolean, enable to show all wpscan infos (found by, confidence, etc).
 
-    Once instanciated, the following properties are accessible:   
+    Once instanciated, the following properties are accessible:
 
     `version`, `main_theme`, `plugins`, `themes`, `interesting_findings`, `password_attack`,
     `not_fully_configured`, `timthumbs`, `db_exports`, `users`, `medias`, `config_backups`,
