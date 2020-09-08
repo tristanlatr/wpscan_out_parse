@@ -67,9 +67,6 @@ Main interface to parse WPScan CLI output.
 -   wpscan\_output: WPScan output as string.
 -   false\_positives\_strings: List of false positive strings.
 
-Once instanciated, wpscan\_output is parsed and the following methods
-are accessible: get\_infos(), get\_warnings(), get\_alerts()
-
 #### Ancestors (in MRO)
 
 -   [wpscan\_out\_parse.parser.base.\_Parser](#wpscan_out_parse.parser.base._Parser)
@@ -154,13 +151,15 @@ Main interface to parse WPScan JSON data
 -   show\_all\_details: Boolean, enable to show all wpscan infos (found
     by, confidence, etc).
 
-Once instanciated, the following methods are accessible: get\_infos(),
-get\_warnings(), get\_alerts()
+Once instanciated, the following properties are accessible:
 
-And the following properties are accessible: version, main\_theme,
-plugins, themes, interesting\_findings, password\_attack,
-not\_fully\_configured, timthumbs, db\_exports, users, medias,
-config\_backups, vuln\_api, banner, scan\_started, scan\_finished
+<code>version</code>, <code>main\_theme</code>, <code>plugins</code>,
+<code>themes</code>, <code>interesting\_findings</code>,
+<code>password\_attack</code>, <code>not\_fully\_configured</code>,
+<code>timthumbs</code>, <code>db\_exports</code>, <code>users</code>,
+<code>medias</code>, <code>config\_backups</code>,
+<code>vuln\_api</code>, <code>banner</code>, <code>scan\_started</code>,
+<code>scan\_finished</code>
 
 #### Ancestors (in MRO)
 
