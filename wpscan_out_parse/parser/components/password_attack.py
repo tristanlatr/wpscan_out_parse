@@ -1,9 +1,8 @@
-from ..base import _Component
 from .finding import _CoreFindingNoVersion
 from .user import User
 
 
-class PasswordAttack(_Component, _CoreFindingNoVersion):
+class PasswordAttack(_CoreFindingNoVersion):
     def __init__(self, data, *args, **kwargs):
         """From https://github.com/wpscanteam/wpscan/blob/master/app/views/json/password_attack/users.erb"""
 

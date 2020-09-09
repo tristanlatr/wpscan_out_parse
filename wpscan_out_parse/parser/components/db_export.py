@@ -1,7 +1,7 @@
-from .finding import _Finding, _CoreFindingNoVersion
+from .finding import _CoreFindingNoVersion
 
 
-class DBExport(_Finding, _CoreFindingNoVersion):
+class DBExport(_CoreFindingNoVersion):
     def __init__(self, url, data, *args, **kwargs):
         """From https://github.com/wpscanteam/wpscan/blob/master/app/views/json/enumeration/db_exports.erb"""
 

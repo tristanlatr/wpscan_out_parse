@@ -1,0 +1,600 @@
+{
+  "banner": {
+    "description": "WordPress Security Scanner by the WPScan Team",
+    "version": "3.8.2",
+    "authors": [
+      "@_WPScan_",
+      "@ethicalhack3r",
+      "@erwan_lr",
+      "@firefart"
+    ],
+    "sponsor": "Sponsored by Automattic - https://automattic.com/"
+  },
+  "start_time": 1599658397,
+  "start_memory": 43081728,
+  "target_url": "http://exemple.com/",
+  "target_ip": "69.195.89.115",
+  "effective_url": "https://exemple.com/",
+  "interesting_findings": [
+    {
+      "url": "https://exemple.com/",
+      "to_s": "Headers",
+      "type": "headers",
+      "found_by": "Headers (Passive Detection)",
+      "confidence": 100,
+      "confirmed_by": {
+
+      },
+      "references": {
+
+      },
+      "interesting_entries": [
+        "server: Apache",
+        "host-header: c2hhcmVkLmJsdWVob3N0LmNvbQ=="
+      ]
+    },
+    {
+      "url": "https://exemple.com/xmlrpc.php",
+      "to_s": "XML-RPC seems to be enabled: https://exemple.com/xmlrpc.php",
+      "type": "xmlrpc",
+      "found_by": "Link Tag (Passive Detection)",
+      "confidence": 30,
+      "confirmed_by": {
+
+      },
+      "references": {
+        "url": [
+          "http://codex.wordpress.org/XML-RPC_Pingback_API"
+        ],
+        "metasploit": [
+          "auxiliary/scanner/http/wordpress_ghost_scanner",
+          "auxiliary/dos/http/wordpress_xmlrpc_dos",
+          "auxiliary/scanner/http/wordpress_xmlrpc_login",
+          "auxiliary/scanner/http/wordpress_pingback_access"
+        ]
+      },
+      "interesting_entries": [
+
+      ]
+    }
+  ],
+  "version": {
+    "number": "5.3.4",
+    "release_date": "2020-06-10",
+    "status": "latest",
+    "found_by": "Rss Generator (Passive Detection)",
+    "confidence": 100,
+    "interesting_entries": [
+      "https://exemple.com/feed/, <generator>https://wordpress.org/?v=5.3.4</generator>",
+      "https://exemple.com/comments/feed/, <generator>https://wordpress.org/?v=5.3.4</generator>"
+    ],
+    "confirmed_by": {
+
+    },
+    "vulnerabilities": [
+
+    ]
+  },
+  "main_theme": {
+    "slug": "nirvana-child",
+    "location": "http://exemple.com/wp-content/themes/nirvana-child/",
+    "latest_version": null,
+    "last_updated": null,
+    "outdated": false,
+    "readme_url": null,
+    "directory_listing": null,
+    "error_log_url": null,
+    "style_url": "https://exemple.com/wp-content/themes/nirvana-child/style.css?ver=1.5.2",
+    "style_name": "Jones Brothers Custom Worpress Theme",
+    "style_uri": null,
+    "description": "This is a child theme for the Nirvana theme created to produce a  theme for Jones Brothers Seaplanes.",
+    "author": "Elizabeth Heine",
+    "author_uri": null,
+    "template": "nirvana",
+    "license": null,
+    "license_uri": null,
+    "tags": null,
+    "text_domain": null,
+    "found_by": "Css Style In Homepage (Passive Detection)",
+    "confidence": 100,
+    "interesting_entries": [
+
+    ],
+    "confirmed_by": {
+      "Css Style In 404 Page (Passive Detection)": {
+        "confidence": 70,
+        "interesting_entries": [
+
+        ]
+      }
+    },
+    "vulnerabilities": [
+
+    ],
+    "version": {
+      "number": "1.2.1",
+      "confidence": 80,
+      "found_by": "Style (Aggressive Detection)",
+      "interesting_entries": [
+        "https://exemple.com/wp-content/themes/nirvana-child/style.css?ver=1.5.2, Match: 'Version: 1.2.1'"
+      ],
+      "confirmed_by": {
+
+      }
+    },
+    "parents": [
+      {
+        "slug": "nirvana",
+        "location": "http://exemple.com/wp-content/themes/nirvana/",
+        "latest_version": "1.5.2",
+        "last_updated": "2019-05-15T00:00:00.000Z",
+        "outdated": false,
+        "readme_url": null,
+        "directory_listing": null,
+        "error_log_url": null,
+        "style_url": "http://exemple.com/wp-content/themes/nirvana/style.css",
+        "style_name": "Nirvana",
+        "style_uri": "https://www.cryoutcreations.eu/wordpress-themes/nirvana",
+        "description": "Imagine a land of infinite beauty and overwhelming magnificence. Imagine seas of freedom and oceans of peace joining together with splashing waves of pure love. Imagine high mountains of hope, hills of reason and deep valleys of knowledge - all covered with dense forests of complete calm. In this mystic land, under a spotless sky of clarity and a bright, cleansing sun you will find Nirvana. The search is finally over; you can now rest, relax and take a deep breath. Nirvana will do the rest with a framework of over 200 settings in a user-friendly interface, a very effective responsive design, boxed or wide layouts with up to 3 columns, easy to use typography equipped with Google fonts, all post formats, 8 page templates (magazine and blog layouts included), 12 widget areas and a presentation page complete with an editable slider and columns. Nirvana also gives you over 40 socials to choose from, is translation ready and has full RTL support. All you have to do is imagine it and with Nirvana it will come true.",
+        "author": "Cryout Creations",
+        "author_uri": "https://www.cryoutcreations.eu",
+        "template": null,
+        "license": "GNU General Public License v3.0",
+        "license_uri": "http://www.gnu.org/licenses/gpl-3.0.html",
+        "tags": "one-column, two-columns, three-columns, right-sidebar, left-sidebar, footer-widgets, custom-background, custom-colors, custom-header, custom-menu, flexible-header,  featured-image-header, featured-images, front-page-post-form, full-width-template,  microformats, post-formats, rtl-language-support,  sticky-post, theme-options, threaded-comments, translation-ready, blog, news, portfolio",
+        "text_domain": "nirvana",
+        "found_by": "Parent Themes (Passive Detection)",
+        "confidence": 100,
+        "interesting_entries": [
+
+        ],
+        "confirmed_by": {
+
+        },
+        "vulnerabilities": [
+
+        ],
+        "version": {
+          "number": "1.5.2",
+          "confidence": 80,
+          "found_by": "Style (Aggressive Detection)",
+          "interesting_entries": [
+            "http://exemple.com/wp-content/themes/nirvana/style.css, Match: 'Version: 1.5.2'"
+          ],
+          "confirmed_by": {
+
+          }
+        },
+        "parents": [
+
+        ]
+      }
+    ]
+  },
+  "plugins": {
+    "brands-for-woocommerce": {
+      "slug": "brands-for-woocommerce",
+      "location": "http://exemple.com/wp-content/plugins/brands-for-woocommerce/",
+      "latest_version": "3.5.1.8",
+      "last_updated": "2020-08-17T09:57:00.000Z",
+      "outdated": false,
+      "readme_url": null,
+      "directory_listing": null,
+      "error_log_url": null,
+      "found_by": "Urls In Homepage (Passive Detection)",
+      "confidence": 100,
+      "interesting_entries": [
+
+      ],
+      "confirmed_by": {
+        "Urls In 404 Page (Passive Detection)": {
+          "confidence": 80,
+          "interesting_entries": [
+
+          ]
+        }
+      },
+      "vulnerabilities": [
+
+      ],
+      "version": null
+    },
+    "contact-form-7": {
+      "slug": "contact-form-7",
+      "location": "http://exemple.com/wp-content/plugins/contact-form-7/",
+      "latest_version": "5.2.2",
+      "last_updated": "2020-08-26T05:32:00.000Z",
+      "outdated": true,
+      "readme_url": null,
+      "directory_listing": null,
+      "error_log_url": null,
+      "found_by": "Urls In Homepage (Passive Detection)",
+      "confidence": 100,
+      "interesting_entries": [
+
+      ],
+      "confirmed_by": {
+        "Urls In 404 Page (Passive Detection)": {
+          "confidence": 80,
+          "interesting_entries": [
+
+          ]
+        }
+      },
+      "vulnerabilities": [
+
+      ],
+      "version": {
+        "number": "5.1.8",
+        "confidence": 20,
+        "found_by": "Query Parameter (Passive Detection)",
+        "interesting_entries": [
+          "https://exemple.com/wp-content/plugins/contact-form-7/includes/css/styles.css?ver=5.1.8",
+          "https://exemple.com/wp-content/plugins/contact-form-7/includes/js/scripts.js?ver=5.1.8"
+        ],
+        "confirmed_by": {
+
+        }
+      }
+    },
+    "contact-form-7-datepicker": {
+      "slug": "contact-form-7-datepicker",
+      "location": "http://exemple.com/wp-content/plugins/contact-form-7-datepicker/",
+      "latest_version": "2.6.0",
+      "last_updated": "2017-01-18T19:54:00.000Z",
+      "outdated": false,
+      "readme_url": null,
+      "directory_listing": null,
+      "error_log_url": null,
+      "found_by": "Urls In Homepage (Passive Detection)",
+      "confidence": 100,
+      "interesting_entries": [
+
+      ],
+      "confirmed_by": {
+        "Urls In 404 Page (Passive Detection)": {
+          "confidence": 80,
+          "interesting_entries": [
+
+          ]
+        }
+      },
+      "vulnerabilities": [
+        {
+          "title": "Contact Form 7 Datepicker <= 2.6.0 - Authenticated Stored Cross-Site Scripting (XSS)",
+          "fixed_in": null,
+          "references": {
+            "cve": [
+              "2020-11516"
+            ],
+            "url": [
+              "https://www.wordfence.com/blog/2020/04/high-severity-vulnerability-leads-to-closure-of-plugin-with-over-100000-installations/"
+            ],
+            "wpvulndb": [
+              "10164"
+            ]
+          }
+        }
+      ],
+      "version": null
+    },
+    "ec-authorizenet-arb": {
+      "slug": "ec-authorizenet-arb",
+      "location": "http://exemple.com/wp-content/plugins/ec-authorizenet-arb/",
+      "latest_version": null,
+      "last_updated": null,
+      "outdated": false,
+      "readme_url": null,
+      "directory_listing": null,
+      "error_log_url": null,
+      "found_by": "Urls In Homepage (Passive Detection)",
+      "confidence": 100,
+      "interesting_entries": [
+
+      ],
+      "confirmed_by": {
+        "Urls In 404 Page (Passive Detection)": {
+          "confidence": 80,
+          "interesting_entries": [
+
+          ]
+        }
+      },
+      "vulnerabilities": [
+
+      ],
+      "version": null
+    },
+    "google-analytics-dashboard-for-wp": {
+      "slug": "google-analytics-dashboard-for-wp",
+      "location": "http://exemple.com/wp-content/plugins/google-analytics-dashboard-for-wp/",
+      "latest_version": "6.2.2",
+      "last_updated": "2020-08-10T15:32:00.000Z",
+      "outdated": true,
+      "readme_url": null,
+      "directory_listing": null,
+      "error_log_url": null,
+      "found_by": "Urls In Homepage (Passive Detection)",
+      "confidence": 100,
+      "interesting_entries": [
+
+      ],
+      "confirmed_by": {
+        "Urls In 404 Page (Passive Detection)": {
+          "confidence": 80,
+          "interesting_entries": [
+
+          ]
+        },
+        "Comment (Passive Detection)": {
+          "confidence": 30,
+          "interesting_entries": [
+
+          ]
+        }
+      },
+      "vulnerabilities": [
+
+      ],
+      "version": {
+        "number": "6.0.2",
+        "confidence": 60,
+        "found_by": "Comment (Passive Detection)",
+        "interesting_entries": [
+          "https://exemple.com/, Match: 'Analytics by ExactMetrics plugin v6.0.2'"
+        ],
+        "confirmed_by": {
+
+        }
+      }
+    },
+    "jetpack": {
+      "slug": "jetpack",
+      "location": "http://exemple.com/wp-content/plugins/jetpack/",
+      "latest_version": "8.9",
+      "last_updated": "2020-09-01T12:50:00.000Z",
+      "outdated": true,
+      "readme_url": null,
+      "directory_listing": null,
+      "error_log_url": null,
+      "found_by": "Urls In Homepage (Passive Detection)",
+      "confidence": 100,
+      "interesting_entries": [
+
+      ],
+      "confirmed_by": {
+        "Urls In 404 Page (Passive Detection)": {
+          "confidence": 80,
+          "interesting_entries": [
+
+          ]
+        }
+      },
+      "vulnerabilities": [
+
+      ],
+      "version": {
+        "number": "8.5",
+        "confidence": 10,
+        "found_by": "Query Parameter (Passive Detection)",
+        "interesting_entries": [
+          "https://exemple.com/wp-content/plugins/jetpack/css/jetpack.css?ver=8.5"
+        ],
+        "confirmed_by": {
+
+        }
+      }
+    },
+    "responsive-lightbox": {
+      "slug": "responsive-lightbox",
+      "location": "http://exemple.com/wp-content/plugins/responsive-lightbox/",
+      "latest_version": "2.2.3.1",
+      "last_updated": "2020-05-29T07:18:00.000Z",
+      "outdated": true,
+      "readme_url": null,
+      "directory_listing": null,
+      "error_log_url": null,
+      "found_by": "Urls In Homepage (Passive Detection)",
+      "confidence": 100,
+      "interesting_entries": [
+
+      ],
+      "confirmed_by": {
+        "Urls In 404 Page (Passive Detection)": {
+          "confidence": 80,
+          "interesting_entries": [
+
+          ]
+        }
+      },
+      "vulnerabilities": [
+
+      ],
+      "version": {
+        "number": "2.2.2",
+        "confidence": 10,
+        "found_by": "Query Parameter (Passive Detection)",
+        "interesting_entries": [
+          "https://exemple.com/wp-content/plugins/responsive-lightbox/js/front.js?ver=2.2.2"
+        ],
+        "confirmed_by": {
+
+        }
+      }
+    },
+    "woocommerce": {
+      "slug": "woocommerce",
+      "location": "http://exemple.com/wp-content/plugins/woocommerce/",
+      "latest_version": "4.5.0",
+      "last_updated": "2020-09-09T00:07:00.000Z",
+      "outdated": true,
+      "readme_url": null,
+      "directory_listing": null,
+      "error_log_url": null,
+      "found_by": "Urls In Homepage (Passive Detection)",
+      "confidence": 100,
+      "interesting_entries": [
+
+      ],
+      "confirmed_by": {
+        "Urls In 404 Page (Passive Detection)": {
+          "confidence": 80,
+          "interesting_entries": [
+
+          ]
+        },
+        "Meta Generator (Passive Detection)": {
+          "confidence": 40,
+          "interesting_entries": [
+
+          ]
+        }
+      },
+      "vulnerabilities": [
+        {
+          "title": "WooCommerce < 4.1.0 - Unescaped Metadata when Duplicating Products",
+          "fixed_in": "4.1.0",
+          "references": {
+            "url": [
+              "https://plugins.trac.wordpress.org/browser/woocommerce/tags/4.1.0/readme.txt?rev=2298743"
+            ],
+            "wpvulndb": [
+              "10220"
+            ]
+          }
+        },
+        {
+          "title": "WooCommerce < 4.2.1 - Potential Cross-Site Scripting (XSS) via SelectWoo",
+          "fixed_in": "4.2.1",
+          "references": {
+            "url": [
+              "https://woocommerce.wordpress.com/2020/06/22/woocommerce-4-2-1-security-and-fix-release/",
+              "https://github.com/woocommerce/woocommerce/commit/40f7c2d474e242440b2fb9a886353f5a8772a210",
+              "https://github.com/woocommerce/woocommerce/commit/14a26aca2cde9c81ade02bdc6dd0a34e184a4202",
+              "https://github.com/woocommerce/selectWoo/releases/tag/1.0.7"
+            ],
+            "wpvulndb": [
+              "10282"
+            ]
+          }
+        }
+      ],
+      "version": {
+        "number": "3.9.2",
+        "confidence": 100,
+        "found_by": "Query Parameter (Passive Detection)",
+        "interesting_entries": [
+          "https://exemple.com/wp-content/plugins/woocommerce/assets/css/woocommerce-layout.css?ver=3.9.2",
+          "https://exemple.com/wp-content/plugins/woocommerce/assets/css/woocommerce-smallscreen.css?ver=3.9.2",
+          "https://exemple.com/wp-content/plugins/woocommerce/assets/css/woocommerce.css?ver=3.9.2",
+          "https://exemple.com/wp-content/plugins/woocommerce/assets/js/frontend/add-to-cart.min.js?ver=3.9.2",
+          "https://exemple.com/wp-content/plugins/woocommerce/assets/js/frontend/woocommerce.min.js?ver=3.9.2",
+          "https://exemple.com/wp-content/plugins/woocommerce/assets/js/frontend/cart-fragments.min.js?ver=3.9.2"
+        ],
+        "confirmed_by": {
+          "Meta Generator (Passive Detection)": {
+            "confidence": 60,
+            "interesting_entries": [
+              "https://exemple.com/, Match: 'WooCommerce 3.9.2'"
+            ]
+          }
+        }
+      }
+    },
+    "wordpress-seo": {
+      "slug": "wordpress-seo",
+      "location": "http://exemple.com/wp-content/plugins/wordpress-seo/",
+      "latest_version": "14.9",
+      "last_updated": "2020-09-01T07:23:00.000Z",
+      "outdated": true,
+      "readme_url": null,
+      "directory_listing": null,
+      "error_log_url": null,
+      "found_by": "Comment (Passive Detection)",
+      "confidence": 30,
+      "interesting_entries": [
+
+      ],
+      "confirmed_by": {
+
+      },
+      "vulnerabilities": [
+
+      ],
+      "version": {
+        "number": "14.1",
+        "confidence": 60,
+        "found_by": "Comment (Passive Detection)",
+        "interesting_entries": [
+          "https://exemple.com/, Match: 'optimized with the Yoast SEO plugin v14.1 -'"
+        ],
+        "confirmed_by": {
+
+        }
+      }
+    },
+    "youtube-embed-plus": {
+      "slug": "youtube-embed-plus",
+      "location": "http://exemple.com/wp-content/plugins/youtube-embed-plus/",
+      "latest_version": "13.4.1.1",
+      "last_updated": "2020-08-23T23:54:00.000Z",
+      "outdated": true,
+      "readme_url": null,
+      "directory_listing": null,
+      "error_log_url": null,
+      "found_by": "Urls In Homepage (Passive Detection)",
+      "confidence": 100,
+      "interesting_entries": [
+
+      ],
+      "confirmed_by": {
+        "Urls In 404 Page (Passive Detection)": {
+          "confidence": 80,
+          "interesting_entries": [
+
+          ]
+        },
+        "Javascript Var (Passive Detection)": {
+          "confidence": 60,
+          "interesting_entries": [
+
+          ]
+        }
+      },
+      "vulnerabilities": [
+
+      ],
+      "version": {
+        "number": "13.3.1",
+        "confidence": 30,
+        "found_by": "Query Parameter (Passive Detection)",
+        "interesting_entries": [
+          "https://exemple.com/wp-content/plugins/youtube-embed-plus/styles/ytprefs.min.css?ver=13.3.1",
+          "https://exemple.com/wp-content/plugins/youtube-embed-plus/scripts/ytprefs.min.js?ver=13.3.1",
+          "https://exemple.com/wp-content/plugins/youtube-embed-plus/scripts/fitvids.min.js?ver=13.3.1"
+        ],
+        "confirmed_by": {
+
+        }
+      }
+    }
+  },
+  "config_backups": {
+
+  },
+  "vuln_api": {
+    "plan": "free",
+    "requests_done_during_scan": 13,
+    "requests_remaining": 31
+  },
+  "stop_time": 1599658425,
+  "elapsed": 27,
+  "requests_done": 28,
+  "cached_requests": 0,
+  "data_sent": 7094,
+  "data_sent_humanised": "6.928 KB",
+  "data_received": 669412,
+  "data_received_humanised": "653.723 KB",
+  "used_memory": 239628288,
+  "used_memory_humanised": "228.527 MB"
+}

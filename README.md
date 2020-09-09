@@ -80,11 +80,16 @@ References:
 
 The python module exposes helper methods and Parser objects to parse WPScan results as your convevnience.  
 
-See [docs.md](https://github.com/tristanlatr/wpscan_out_parse/blob/master/docs.md) for more technicals details on Python objects and library usage.  
+Main interface to parse WPScan JSON data
+
+    - data: The JSON structure of the WPScan output.
+    - false_positives_strings: List of false positive strings.
+    - show_all_details: Boolean, enable to show all wpscan infos (found by, confidence, etc).
 
 #### Exemples
 
-Using helper method `parse_results_from_file()`.  
+Using helper method `parse_results_from_file()`.  Return all results as a simple dictionnary.  
+
 ```python
 import pprint
 from wpscan_out_parse import parse_results_from_file
@@ -94,6 +99,7 @@ pprint.pprint(results)
 ```
 
 Using `WPScanJsonParser` object.  
+
 ```python
 import json
 import pprint
@@ -103,6 +109,28 @@ with open('./test/output_files/wordpress_one_vuln.json', 'r') as wpscan_out:
     parser = WPScanJsonParser(json.load(wpscan_out))
     pprint.pprint(parser.get_warnings())
 ```
+Once `WPScanJsonParser` instanciated, the following properties are accessible:  
+
+  - `version`  
+  - `main_theme` 
+  - `plugins` (list)
+  - `themes` (list)
+  - `interesting_findings` (list)
+  - `timthumbs` (list)
+  - `db_exports` (list)
+  - `users` (list)
+  - `medias` (list)
+  - `config_backups` (list)
+  - `password_attack`
+  - `not_fully_configured`
+  - `vuln_api`
+  - `banner`
+  - `scan_started`
+  - `scan_finished`
+    
+All objects implements `get_alerts()`, `get_warnings()` and `get_infos()`
+
+See [docs.md](https://github.com/tristanlatr/wpscan_out_parse/blob/master/docs.md) for more technicals details on Python objects and library usage.  
 
 ### Additionnal alerts strings
 Some additionnal warnings and alerts are raised when detecting the following strings in your output file.  

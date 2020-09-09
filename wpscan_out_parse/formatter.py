@@ -3,7 +3,7 @@ import re
 from string import Template
 
 
-def format_results(results, format, nocolor=False):
+def format_results(results, format, warnings=True, infos=True, nocolor=False):
     """
     Format the results dict into a "html", "cli" or "json" string.
 
@@ -13,7 +13,13 @@ def format_results(results, format, nocolor=False):
     if format == "json":
         return json.dumps(dict(results), indent=4)
     else:
-        return build_message(dict(results), format=format, nocolor=nocolor)
+        return build_message(
+            dict(results),
+            format=format,
+            warnings=warnings,
+            infos=infos,
+            nocolor=nocolor,
+        )
 
 
 def build_message(results, warnings=True, infos=True, format="cli", nocolor=False):
@@ -116,55 +122,47 @@ def get_table_cell_color(col, val, ansi=False):
         if ansi:
             color = (
                 "yellow"
-                if val == "Outdated"
+                if "Outdated" in val
                 else "green"
-                if val == "Latest"
+                if "Latest" in val
                 else "default"
             )
         else:
             color = (
                 "#cccc00"
-                if val == "Outdated"
+                if "Outdated" in val
                 else "#228B22"
-                if val == "Latest"
+                if "Latest" in val
                 else "#000000"
             )
     elif col == "Vulnerabilities":
         if ansi:
-            color = (
-                "red"
-                if val.isnumeric() and int(val) > 0
-                else "default"
-            )
+            color = "red" if val.isnumeric() and int(val) > 0 else "default"
         else:
-            color = (
-                "#ba0000"
-                if val.isnumeric() and int(val) > 0
-                else "#000000"
-            )
+            color = "#ba0000" if val.isnumeric() and int(val) > 0 else "#000000"
     elif col == "Status":
         if ansi:
             color = (
                 "red"
-                if val == "Alert"
+                if "Alert" in val
                 else "yellow"
-                if val == "Warning"
+                if "Warning" in val
                 else "green"
-                if val == "Ok"
-                else "goldenrod"
-                if val == "Unknown"
+                if "Ok" in val
+                else "gray"
+                if "Unknown" in val
                 else "default"
             )
         else:
             color = (
-                "#ba0000"
-                if val == "Alert"
+                "#BA0000"
+                if "Alert" in val
                 else "#cccc00"
-                if val == "Warning"
-                else "#228B22"
-                if val == "Ok"
-                else "#DAA520"
-                if val == "Unknown"
+                if "Warning" in val
+                else "#008000"
+                if "Ok" in val
+                else "#808080"
+                if "Unknown" in val
                 else "#000000"
             )
     return color
@@ -192,7 +190,7 @@ def format_summary_ascii_table(table, line, nocolor=False):
                         str(item[col]),
                         fg=get_table_cell_color(col, item[col], ansi=True),
                     )
-                    if nocolor == False
+                    if nocolor == False and item[col] is not None
                     else ""
                 )
                 for col in colList

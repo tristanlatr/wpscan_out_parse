@@ -1,8 +1,8 @@
-from .finding import _Finding, _CoreFinding
+from .finding import _CoreFinding
 from .wp_item_version import WPItemVersion
 
 
-class WPItem(_Finding, _CoreFinding):
+class WPItem(_CoreFinding):
     def __init__(self, data, *args, **kwargs):
         """From https://github.com/wpscanteam/wpscan/blob/master/app/views/json/wp_item.erb"""
 
@@ -122,13 +122,22 @@ class WPItem(_Finding, _CoreFinding):
     def get_version_status(self):
         if self.version.get_infos():
             if self.outdated:
-                return "Outdated"
+                val = "Outdated"
             elif self.version.number == self.latest_version:
-                return "Latest"
+                val = "Latest"
             else:
-                return "Unknown"
+                val = "Unknown"
         else:
-            return "N/A"
+            val = "N/A"
+
+        if val != "Latest":
+            val += (
+                " (latest is {})".format(self.latest_version)
+                if self.latest_version
+                else ""
+            )
+
+        return val
 
     def get_vulnerabilities_string(self):
         return "{}{}".format(

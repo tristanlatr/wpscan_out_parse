@@ -4,7 +4,7 @@ from xml.etree.ElementPath import find
 from setuptools import setup, find_packages
 import sys
 if sys.version_info[0] < 3: 
-    raise EnvironmentError("Sorry, you must use Python 3")
+    raise RuntimeError("Sorry, you must use Python 3")
 # The directory containing this file
 import pathlib
 HERE = pathlib.Path(__file__).parent

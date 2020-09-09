@@ -14,3 +14,22 @@ from .timthumb import Timthumb
 from .user import User
 from .vuln_api import VulnAPI
 from .wordpress_version import WordPressVersion
+
+__all__ = [
+    "WordPressVersion",
+    "Plugin",
+    "Theme",
+    "InterestingFinding",
+    "Banner",
+    "ConfigBackup",
+    "DBExport",
+    "MainTheme",
+    "Media",
+    "NotFullyConfigured",
+    "PasswordAttack",
+    "ScanFinished",
+    "ScanStarted",
+    "Timthumb",
+    "User",
+    "VulnAPI",
+]

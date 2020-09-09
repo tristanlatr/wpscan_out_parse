@@ -18,4 +18,3 @@ from .parser.json_parser import WPScanJsonParser
 from .parser.cli_parser import WPScanCliParser
 from .parser import parse_results_from_string, parse_results_from_file
 from .formatter import format_results
-

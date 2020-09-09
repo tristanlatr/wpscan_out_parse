@@ -2,7 +2,7 @@
 
 title="WPScan Output Parser"
 module_folder="wpscan_out_parse"
-module_documented="wpscan_out_parse.__init__"
+module_documented="wpscan_out_parse.__init__ wpscan_out_parse.parser.results wpscan_out_parse.parser.base wpscan_out_parse.parser.components.__init__ wpscan_out_parse.formatter"
 github_url="https://github.com/mfesiem/msiempy"
 version="$(python3 setup.py -V)"
 
@@ -11,37 +11,37 @@ rm -fr ./build
 rm -fr ./wpscan_out_parse.egg-info
 
 # Ask to generate docs.md and push it
-echo "[QUESTION] Do you want to generate documentation file 'docs.md' and push it ?"
+echo "[QUESTION] Do you want to generate documentation file 'docs.md' ?"
 read REPLY < /dev/tty
 if [ "$REPLY" = "y" ] || [ "$REPLY" = "yes" ] || [ "$REPLY" = "Y" ] || [ "$REPLY" = "Yes" ]; then
-    python3 -m pdoc "${module_documented}" --pdf --force --config sort_identifiers=False --config show_type_annotations=True > pdf.md
+    python3 -m pdoc --pdf --force --config sort_identifiers=False --config show_type_annotations=True ${module_documented} > pdf.md
     pandoc --toc --toc-depth=4 --from=markdown+abbreviations --output=docs.md --to=gfm pdf.md
-    sleep 2
-    git add docs.md
-    git commit -m "Generate docs.md"
     rm -f pdf.md
-    git push
+    sleep 2
+    # git add docs.md
+    # git commit -m "Generate docs.md"
+    # git push
 fi
 
 # Ask to format code and push it
-echo "[QUESTION] Do you want to format code with black and push it ?"
+echo "[QUESTION] Do you want to format code with black ?"
 read REPLY < /dev/tty
 if [ "$REPLY" = "y" ] || [ "$REPLY" = "yes" ] || [ "$REPLY" = "Y" ] || [ "$REPLY" = "Yes" ]; then
     black "${module_folder}/"
-    git add "${module_folder}"
-    git commit -m "Format code"
-    git push
+    # git add "${module_folder}"
+    # git commit -m "Format code"
+    # git push
 fi
 
 # Ask to generate classes image
-echo "[QUESTION] Do you want to generate the classes images and push it ?"
+echo "[QUESTION] Do you want to generate the classes images it ?"
 read REPLY < /dev/tty
 if [ "$REPLY" = "y" ] || [ "$REPLY" = "yes" ] || [ "$REPLY" = "Y" ] || [ "$REPLY" = "Yes" ]; then
     pyreverse -s 1 -f PUB_ONLY -o png -m y "${module_folder}"
-    git add ./packages.png
-    git add ./classes.png
-    git commit -m "Generate classes image"
-    git push
+    # git add ./packages.png
+    # git add ./classes.png
+    # git commit -m "Generate classes image"
+    # git push
 fi
 
 # Ask to publish

@@ -95,7 +95,9 @@ class _Finding(_Component):
         return alert
 
 
-class _CoreFinding(ABC):
+class _CoreFinding(_Finding):
+     """ Core WPScan finding: Will show on the summary table.  """
+
     @abstractmethod
     def get_version(self):
         """Return the version number (as string) or "Unknown" or "" if not applicable. """
@@ -158,7 +160,8 @@ class Vulnerability(_Finding):
         self.fixed_in = self.data.get("fixed_in", None)
 
     def get_alerts(self):
-        """Return 1 alert. First line of alert string contain the vulnerability title. Process CVE, WPVulnDB, ExploitDB and Metasploit references to add links"""
+        """Return 1 alert. First line of alert string contain the vulnerability title.
+        Process CVE, WPVulnDB, ExploitDB and Metasploit references to add links"""
         alert = "Vulnerability: {}".format(self.title)
 
         if self.cvss:

@@ -32,9 +32,24 @@ class WPScanJsonParser(_Parser):
 
     Once instanciated, the following properties are accessible:
 
-    `version`, `main_theme`, `plugins`, `themes`, `interesting_findings`, `password_attack`,
-    `not_fully_configured`, `timthumbs`, `db_exports`, `users`, `medias`, `config_backups`,
-    `vuln_api`, `banner`, `scan_started`, `scan_finished`
+    - `version`
+    - `main_theme`
+    - `plugins` (list)
+    - `themes` (list)
+    - `interesting_findings` (list)
+    - `timthumbs` (list)
+    - `db_exports` (list)
+    - `users` (list)
+    - `medias` (list)
+    - `config_backups` (list)
+    - `password_attack`
+    - `not_fully_configured`
+    - `vuln_api`
+    - `banner`
+    - `scan_started`
+    - `scan_finished`
+
+    All objects implements `get_alerts()`, `get_warnings()` and `get_infos()`
     """
 
     def __init__(self, data, false_positives_strings=None, show_all_details=False):

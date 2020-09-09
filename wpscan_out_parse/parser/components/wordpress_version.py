@@ -1,7 +1,7 @@
-from .finding import _Finding, _CoreFinding
+from .finding import _CoreFinding
 
 
-class WordPressVersion(_Finding, _CoreFinding):
+class WordPressVersion(_CoreFinding):
     def __init__(self, data, *args, **kwargs):
         """From https://github.com/wpscanteam/wpscan/blob/master/app/views/json/wp_version/version.erb"""
 
