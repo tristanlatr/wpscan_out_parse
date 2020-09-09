@@ -96,7 +96,7 @@ class _Finding(_Component):
 
 
 class _CoreFinding(_Finding):
-     """ Core WPScan finding: Will show on the summary table.  """
+    """ Core WPScan finding: Shows on the summary table.  """
 
     @abstractmethod
     def get_version(self):
