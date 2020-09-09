@@ -14,7 +14,7 @@ rm -fr ./wpscan_out_parse.egg-info
 echo "[QUESTION] Do you want to generate documentation file 'docs.md' and push it ?"
 read REPLY < /dev/tty
 if [ "$REPLY" = "y" ] || [ "$REPLY" = "yes" ] || [ "$REPLY" = "Y" ] || [ "$REPLY" = "Yes" ]; then
-    python3 -m pdoc "${module_documented}" --pdf --force > pdf.md
+    python3 -m pdoc "${module_documented}" --pdf --force --config sort_identifiers=False --config show_type_annotations=True > pdf.md
     pandoc --toc --toc-depth=4 --from=markdown+abbreviations --output=docs.md --to=gfm pdf.md
     sleep 2
     git add docs.md
@@ -38,8 +38,7 @@ echo "[QUESTION] Do you want to generate the classes images and push it ?"
 read REPLY < /dev/tty
 if [ "$REPLY" = "y" ] || [ "$REPLY" = "yes" ] || [ "$REPLY" = "Y" ] || [ "$REPLY" = "Yes" ]; then
     pyreverse -s 1 -f PUB_ONLY -o png -m y "${module_folder}"
-    mv ./classes.png
-    rm -f ./packages.png
+    git add ./packages.png
     git add ./classes.png
     git commit -m "Generate classes image"
     git push

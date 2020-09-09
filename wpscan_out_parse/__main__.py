@@ -81,7 +81,7 @@ class WPScanOutParseCLI:
                 results["summary"] = None
 
             # Print infos if any
-            output = format_results(results, format=self.format, nocolor=self.nocolor)
+            output = format_results(results, format=self.format, nocolor=self.no_color)
             if output:
                 print(output)
         else:
@@ -152,7 +152,7 @@ It analyze vulnerabilities, miscellaneous alerts and warnings and other findings
             default=None,
         )
         parser.add_argument(
-            "--nocolor",
+            "--no_color",
             action="store_true",
             help="do not colorize output. ",
         )

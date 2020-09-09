@@ -116,7 +116,7 @@ def get_table_cell_color(col, val, ansi=False):
         if ansi:
             color = (
                 "yellow"
-                if val == "Oudated"
+                if val == "Outdated"
                 else "green"
                 if val == "Latest"
                 else "default"
@@ -124,7 +124,7 @@ def get_table_cell_color(col, val, ansi=False):
         else:
             color = (
                 "#cccc00"
-                if val == "Oudated"
+                if val == "Outdated"
                 else "#228B22"
                 if val == "Latest"
                 else "#000000"
@@ -134,16 +134,12 @@ def get_table_cell_color(col, val, ansi=False):
             color = (
                 "red"
                 if val.isnumeric() and int(val) > 0
-                else "green"
-                if val.isnumeric() and int(val) == 0
                 else "default"
             )
         else:
             color = (
                 "#ba0000"
                 if val.isnumeric() and int(val) > 0
-                else "#228B22"
-                if val.isnumeric() and int(val) == 0
                 else "#000000"
             )
     elif col == "Status":
@@ -155,7 +151,7 @@ def get_table_cell_color(col, val, ansi=False):
                 if val == "Warning"
                 else "green"
                 if val == "Ok"
-                else "yellow"
+                else "goldenrod"
                 if val == "Unknown"
                 else "default"
             )
@@ -167,7 +163,7 @@ def get_table_cell_color(col, val, ansi=False):
                 if val == "Warning"
                 else "#228B22"
                 if val == "Ok"
-                else "#cccc00"
+                else "#DAA520"
                 if val == "Unknown"
                 else "#000000"
             )
