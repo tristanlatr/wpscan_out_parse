@@ -10,7 +10,7 @@ __all__ = [
     "format_results",
 ]
 
-VERSION = "1.6"
+VERSION = "1.7"
 
 ###################### IMPORTS  ######################
 
