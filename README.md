@@ -49,7 +49,7 @@ And process output and/or exit code
 #### Exemple
 
 ```bash
-% python3 -m wpscan_out_parse ./test/output_files/wordpress_many_vuln.json --no_warn
+% python3 -m wpscan_out_parse ./test/output_files/wordpress_many_vuln.json --no_warn --no_color
 
 Vulnerabilities have been detected by WPScan.
 
