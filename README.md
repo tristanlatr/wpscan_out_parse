@@ -47,8 +47,9 @@ And process output and/or exit code
 - 1 -> ERROR: Parser error
 - 0 -> All OK
 
-#### Exemple
+#### Exemples
 
+Display results in CLI format
 ```bash
 % python3 -m wpscan_out_parse ./test/output_files/wordpress_many_vuln.json --no_warn --no_color
 
@@ -76,16 +77,16 @@ References:
 - WPVulnDB: https://wpvulndb.com/vulnerabilities/8873
 ```
 
+Display results in HTML format
+```bash
+% python3 -m wpscan_out_parse ./test/output_files/potential_vulns.json --format html > html_output.html
+```
+
+![WPWatcher Report](https://github.com/tristanlatr/wpscan_out_parse/raw/master/html_output.png "HTML Output")
 
 ### As a Python library
 
 The python module exposes helper methods and Parser objects to parse WPScan results as your convevnience.  
-
-Main interface to parse WPScan JSON data
-
-    - data: The JSON structure of the WPScan output.
-    - false_positives_strings: List of false positive strings.
-    - show_all_details: Boolean, enable to show all wpscan infos (found by, confidence, etc).
 
 #### Exemples
 
