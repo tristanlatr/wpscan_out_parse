@@ -34,7 +34,7 @@ if [ "$REPLY" = "y" ] || [ "$REPLY" = "yes" ] || [ "$REPLY" = "Y" ] || [ "$REPLY
 fi
 
 # Ask to generate classes image
-echo "[QUESTION] Do you want to generate the classes images it ?"
+echo "[QUESTION] Do you want to generate the classes images ?"
 read REPLY < /dev/tty
 if [ "$REPLY" = "y" ] || [ "$REPLY" = "yes" ] || [ "$REPLY" = "Y" ] || [ "$REPLY" = "Yes" ]; then
     pyreverse -s 1 -f PUB_ONLY -o png -m y "${module_folder}"
