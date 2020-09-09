@@ -8,7 +8,7 @@ from .parser import parse_results_from_file
 from .parser.results import _WPScanResults
 
 
-class WPScanOutParse:
+class WPScanOutParseCLI:
     def __init__(self):
         """Load all config values as object properties"""
 
@@ -81,7 +81,7 @@ class WPScanOutParse:
                 results["summary"] = None
 
             # Print infos if any
-            output = format_results(results, format=self.format)
+            output = format_results(results, format=self.format, nocolor=self.nocolor)
             if output:
                 print(output)
         else:
@@ -152,6 +152,11 @@ It analyze vulnerabilities, miscellaneous alerts and warnings and other findings
             default=None,
         )
         parser.add_argument(
+            "--nocolor",
+            action="store_true",
+            help="do not colorize output. ",
+        )
+        parser.add_argument(
             "--version",
             action="store_true",
             help="print wpscan_out_parse version and exit. ",
@@ -163,7 +168,7 @@ It analyze vulnerabilities, miscellaneous alerts and warnings and other findings
 
 
 def main():
-    WPScanOutParse()
+    WPScanOutParseCLI()
 
 
 if __name__ == "__main__":

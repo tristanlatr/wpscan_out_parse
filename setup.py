@@ -1,4 +1,5 @@
 #! /usr/bin/env python3
+from gettext import install
 from xml.etree.ElementPath import find
 from setuptools import setup, find_packages
 import sys
@@ -30,7 +31,8 @@ setup(
     classifiers         =   ["Programming Language :: Python :: 3"],
     license             =   'MIT',
     long_description    =   README,
-    long_description_content_type   =   "text/markdown"
+    long_description_content_type   =   "text/markdown",
+    install_requires    =   ['ansicolors']
 )
 
 # Generating docs with python3 -m pdoc wpscan_out_parse --html --force -o docs
