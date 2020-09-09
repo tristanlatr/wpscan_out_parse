@@ -41,9 +41,13 @@ class InterestingFinding(_Finding):
         info = ""
         if self.to_s != self.url:
             info += self.to_s
-        elif self.type:
-            info += self.type.title()
-        if self.url and self.url not in self.to_s:
+        else:
+            if self.type:
+                if self.url:
+                    info += "{}: {}".format(self.type.title(), self.url)
+                else:
+                    info += self.type
+        if self.url and self.url not in info:
             info += "\nURL: {}".format(self.url)
         # If finding infos are present, add them
         if super().get_infos()[0]:
