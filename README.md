@@ -16,6 +16,7 @@ It analyze vulnerabilities, miscellaneous alerts and warnings and other findings
 - Signal result via exit code
 - Ignore messages based on false positives strings 
 - Simple Python library usage 
+- Colorized output by default
 
 Design of summary table is largely inspired by [wpscan-analyze](https://github.com/lukaspustina/wpscan-analyze) (Rust code).  
 
