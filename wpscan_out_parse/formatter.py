@@ -2,6 +2,7 @@ import json
 import re
 from string import Template
 
+
 def format_results(results, format, nocolor=False):
     """
     Format the results dict into a "html", "cli" or "json" string.
@@ -38,7 +39,9 @@ def build_message(results, warnings=True, infos=True, format="cli", nocolor=Fals
             if results["summary"]["table"]:
                 summary.append(
                     format_summary_ascii_table(
-                        results["summary"]["table"], results["summary"]["line"], nocolor=nocolor
+                        results["summary"]["table"],
+                        results["summary"]["line"],
+                        nocolor=nocolor,
                     )
                 )
             else:
@@ -47,7 +50,9 @@ def build_message(results, warnings=True, infos=True, format="cli", nocolor=Fals
             if results["summary"]["table"]:
                 summary.append(
                     format_summary_html(
-                        results["summary"]["table"], results["summary"]["line"], nocolor=nocolor
+                        results["summary"]["table"],
+                        results["summary"]["line"],
+                        nocolor=nocolor,
                     )
                 )
             else:
@@ -104,43 +109,111 @@ def format_issues(title, issues, format="cli", apply_br_tab_replace_on_issues=Tr
             )
     return message
 
+
 def get_table_cell_color(col, val, ansi=False):
-    color=""
+    color = ""
     if col == "Version State":
         if ansi:
-            color="yellow" if val == "Oudated" else "green" if val == "Latest" else "default"
+            color = (
+                "yellow"
+                if val == "Oudated"
+                else "green"
+                if val == "Latest"
+                else "default"
+            )
         else:
-            color="#cccc00" if val == "Oudated" else "#228B22" if val == "Latest" else "#000000"
+            color = (
+                "#cccc00"
+                if val == "Oudated"
+                else "#228B22"
+                if val == "Latest"
+                else "#000000"
+            )
     elif col == "Vulnerabilities":
         if ansi:
-            color="red" if val.isnumeric() and int(val)>0 else "green" if val.isnumeric() and int(val)==0 else "default"
+            color = (
+                "red"
+                if val.isnumeric() and int(val) > 0
+                else "green"
+                if val.isnumeric() and int(val) == 0
+                else "default"
+            )
         else:
-            color="#ba0000" if val.isnumeric() and int(val)>0 else "#228B22" if val.isnumeric() and int(val)==0 else "#000000"
+            color = (
+                "#ba0000"
+                if val.isnumeric() and int(val) > 0
+                else "#228B22"
+                if val.isnumeric() and int(val) == 0
+                else "#000000"
+            )
     elif col == "Status":
         if ansi:
-            color="red" if val == "Alert" else "yellow" if val == "Warning" else "green" if val == "Ok" else "yellow"  if val == "Unknown" else "default"
+            color = (
+                "red"
+                if val == "Alert"
+                else "yellow"
+                if val == "Warning"
+                else "green"
+                if val == "Ok"
+                else "yellow"
+                if val == "Unknown"
+                else "default"
+            )
         else:
-            color="#ba0000" if val == "Alert" else "#cccc00" if val == "Warning" else "#228B22" if val == "Ok" else "#cccc00"  if val == "Unknown" else "#000000"
+            color = (
+                "#ba0000"
+                if val == "Alert"
+                else "#cccc00"
+                if val == "Warning"
+                else "#228B22"
+                if val == "Ok"
+                else "#cccc00"
+                if val == "Unknown"
+                else "#000000"
+            )
     return color
+
 
 def format_summary_ascii_table(table, line, nocolor=False):
     """Return a nice string table
     Author: Thierry Husson - Use it as you want but don't blame me.
     """
-    try: from colors import color, ansilen
-    except ImportError: nocolor=True
+    try:
+        from colors import color, ansilen
+    except ImportError:
+        nocolor = True
 
     myDict = table
     colList = ["Component", "Version", "Version State", "Vulnerabilities", "Status"]
     myList = [colList]  # 1st row = header
     for item in myDict:
         myList.append(
-            [str(item[col] if nocolor and item[col] is not None else color(str(item[col]), fg=get_table_cell_color(col, item[col], ansi=True)) if nocolor==False else "") for col in colList]
+            [
+                str(
+                    item[col]
+                    if nocolor and item[col] is not None
+                    else color(
+                        str(item[col]),
+                        fg=get_table_cell_color(col, item[col], ansi=True),
+                    )
+                    if nocolor == False
+                    else ""
+                )
+                for col in colList
+            ]
         )
     colSize = [max(map(len if nocolor else ansilen, col)) for col in zip(*myList)]
     formatStr = " | ".join(["{{:<{}s}}".format(i) for i in colSize])
     myList.insert(1, ["-" * i for i in colSize])  # Seperating line
-    string = "\n".join(formatStr.format(*[e.ljust(colSize[i] + (0 if nocolor else int(len(e)-ansilen(e))), ' ') for (i, e) in enumerate(item)]) for item in myList)
+    string = "\n".join(
+        formatStr.format(
+            *[
+                e.ljust(colSize[i] + (0 if nocolor else int(len(e) - ansilen(e))), " ")
+                for (i, e) in enumerate(item)
+            ]
+        )
+        for item in myList
+    )
     return string + "\n\n" + line
 
 
@@ -161,17 +234,23 @@ def format_summary_html(table, line, nocolor):
             # Determine version state
             '<span style="color:{color}">{vulns}</span>'.format(
                 vulns=row["Version State"],
-                color="#000000" if nocolor else get_table_cell_color("Version State", row["Version State"])
+                color="#000000"
+                if nocolor
+                else get_table_cell_color("Version State", row["Version State"]),
             ),
             # Determine vulns color
             '<span style="color:{color}">{vulns}</span>'.format(
                 vulns=row["Vulnerabilities"],
-                color="#000000" if nocolor else get_table_cell_color("Vulnerabilities", row["Vulnerabilities"])
+                color="#000000"
+                if nocolor
+                else get_table_cell_color("Vulnerabilities", row["Vulnerabilities"]),
             ),
             # Determine status color
             '<b style="color:{color}">{status}</b>'.format(
                 status=row["Status"],
-                color="#000000" if nocolor else get_table_cell_color("Status", row["Status"])
+                color="#000000"
+                if nocolor
+                else get_table_cell_color("Status", row["Status"]),
             ),
         )
 
