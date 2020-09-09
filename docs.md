@@ -6,17 +6,22 @@ WPScan Output Parser Python library documentation.
 Functions
 ---------
 
-### Function `format_results`
+### Function `parse_results_from_string`
 
->     def format_results(
->         results,
->         format
+>     def parse_results_from_string(
+>         wpscan_output_string,
+>         false_positives_strings=None,
+>         show_all_details=False
 >     )
 
-Format the results dict into a “html”, “cli” or “json” string.
+Parse any WPScan output string.
 
--   results: resutlts dict objject.
--   format: in `"html"`, `"cli"` or `"json"`
+-   wpscan\_output\_string: WPScan output as string
+-   false\_positives\_strings: List of false positive strings.
+-   show\_all\_details: Boolean, enable to show all wpscan infos (found
+    by, confidence, etc). Only with JSON output.
+
+Return the results as dict object
 
 ### Function `parse_results_from_file`
 
@@ -35,106 +40,21 @@ Parse any WPScan output file.
 
 Return the results as dict object
 
-### Function `parse_results_from_string`
+### Function `format_results`
 
->     def parse_results_from_string(
->         wpscan_output_string,
->         false_positives_strings=None,
->         show_all_details=False
+>     def format_results(
+>         results,
+>         format,
+>         nocolor=False
 >     )
 
-Parse any WPScan output string.
+Format the results dict into a “html”, “cli” or “json” string.
 
--   wpscan\_output\_string: WPScan output as string
--   false\_positives\_strings: List of false positive strings.
--   show\_all\_details: Boolean, enable to show all wpscan infos (found
-    by, confidence, etc). Only with JSON output.
-
-Return the results as dict object
+-   results: resutlts dict objject.
+-   format: in `"html"`, `"cli"` or `"json"`
 
 Classes
 -------
-
-### Class `WPScanCliParser`
-
->     class WPScanCliParser(
->         wpscan_output,
->         false_positives_strings=None
->     )
-
-Main interface to parse WPScan CLI output.
-
--   wpscan\_output: WPScan output as string.
--   false\_positives\_strings: List of false positive strings.
-
-#### Ancestors (in MRO)
-
--   [wpscan\_out\_parse.parser.base.\_Parser](#wpscan_out_parse.parser.base._Parser)
--   [wpscan\_out\_parse.parser.base.\_Component](#wpscan_out_parse.parser.base._Component)
--   [abc.ABC](#abc.ABC)
-
-#### Methods
-
-##### Method `get_alerts`
-
->     def get_alerts(
->         self
->     )
-
-Return all the parsed alerts
-
-##### Method `get_error`
-
->     def get_error(
->         self
->     )
-
-Return any error or None if no errors
-
-##### Method `get_infos`
-
->     def get_infos(
->         self
->     )
-
-Return all the parsed infos
-
-##### Method `get_results`
-
->     def get_results(
->         self
->     )
-
-Returns a dictionnary structure like:
-
-    {
-    'infos':[],
-    'warnings':[],
-    'alerts':[],
-    'summary':{
-        'table':None,
-        'line':'WPScan result summary: alerts={}, warnings={}, infos={}, error={}'
-        },
-    'error':None
-    }
-
-##### Method `get_warnings`
-
->     def get_warnings(
->         self
->     )
-
-Return all the parsed warnings
-
-##### Method `parse_cli`
-
->     def parse_cli(
->         self,
->         wpscan_output
->     )
-
-Parse the ( messages, warnings, alerts ) from WPScan CLI output string.
-Return results as tuple( messages, warnings, alerts ).
 
 ### Class `WPScanJsonParser`
 
@@ -169,30 +89,6 @@ Once instanciated, the following properties are accessible:
 
 #### Methods
 
-##### Method `get_alerts`
-
->     def get_alerts(
->         self
->     )
-
-Get all alerts from all components and igore false positives
-
-##### Method `get_core_findings`
-
->     def get_core_findings(
->         self
->     )
-
-Get only core findings. Core findings appears in the table summary.
-
-##### Method `get_error`
-
->     def get_error(
->         self
->     )
-
-Return any error or None if no errors
-
 ##### Method `get_infos`
 
 >     def get_infos(
@@ -201,6 +97,23 @@ Return any error or None if no errors
 
 Get all infos from all components and add false positives as infos with
 “\[False positive\]” prefix
+
+##### Method `get_warnings`
+
+>     def get_warnings(
+>         self
+>     )
+
+Get all warnings from all components and igore false positives and
+automatically remove special warning if all vuln are ignored
+
+##### Method `get_alerts`
+
+>     def get_alerts(
+>         self
+>     )
+
+Get all alerts from all components and igore false positives
 
 ##### Method `get_results`
 
@@ -230,6 +143,14 @@ Returns a dictionnary structure like:
     'error':None
     }
 
+##### Method `get_core_findings`
+
+>     def get_core_findings(
+>         self
+>     )
+
+Get only core findings. Core findings appears in the table summary.
+
 ##### Method `get_summary_list`
 
 >     def get_summary_list(
@@ -238,14 +159,94 @@ Returns a dictionnary structure like:
 
 Return a list of dict with all plugins, vuls, and statuses.
 
+##### Method `get_error`
+
+>     def get_error(
+>         self
+>     )
+
+Return any error or None if no errors
+
+### Class `WPScanCliParser`
+
+>     class WPScanCliParser(
+>         wpscan_output,
+>         false_positives_strings=None
+>     )
+
+Main interface to parse WPScan CLI output.
+
+-   wpscan\_output: WPScan output as string.
+-   false\_positives\_strings: List of false positive strings.
+
+#### Ancestors (in MRO)
+
+-   [wpscan\_out\_parse.parser.base.\_Parser](#wpscan_out_parse.parser.base._Parser)
+-   [wpscan\_out\_parse.parser.base.\_Component](#wpscan_out_parse.parser.base._Component)
+-   [abc.ABC](#abc.ABC)
+
+#### Methods
+
+##### Method `get_infos`
+
+>     def get_infos(
+>         self
+>     )
+
+Return all the parsed infos
+
 ##### Method `get_warnings`
 
 >     def get_warnings(
 >         self
 >     )
 
-Get all warnings from all components and igore false positives and
-automatically remove special warning if all vuln are ignored
+Return all the parsed warnings
+
+##### Method `get_alerts`
+
+>     def get_alerts(
+>         self
+>     )
+
+Return all the parsed alerts
+
+##### Method `parse_cli`
+
+>     def parse_cli(
+>         self,
+>         wpscan_output
+>     )
+
+Parse the ( messages, warnings, alerts ) from WPScan CLI output string.
+Return results as tuple( messages, warnings, alerts ).
+
+##### Method `get_error`
+
+>     def get_error(
+>         self
+>     )
+
+Return any error or None if no errors
+
+##### Method `get_results`
+
+>     def get_results(
+>         self
+>     )
+
+Returns a dictionnary structure like:
+
+    {
+    'infos':[],
+    'warnings':[],
+    'alerts':[],
+    'summary':{
+        'table':None,
+        'line':'WPScan result summary: alerts={}, warnings={}, infos={}, error={}'
+        },
+    'error':None
+    }
 
 ------------------------------------------------------------------------
 
