@@ -107,30 +107,31 @@ with open('./test/output_files/wordpress_one_vuln.json', 'r') as wpscan_out:
 ### Additionnal alerts strings
 Some additionnal warnings and alerts are raised when detecting the following strings in your output file.  
 
+Alerts 
 ```python
-INTERESTING_FINDING_WARNING_STRINGS = [
-    "Upload directory has listing enabled",
-    "Registration is enabled",
-    "Debug Log found",
-    "codex.wordpress.org/Debugging_in_WordPress",
-    "Fantastico list found",
-    "www.acunetix.com/vulnerabilities/fantastico-fileslist/",
-]
-
-INTERESTING_FINDING_ALERT_STRINGS = [
-    "SQL Dump found",
-    "Full Path Disclosure found",
-    "www.owasp.org/index.php/Full_Path_Disclosure",
-    "codex.wordpress.org/Resetting_Your_Password#Using_the_Emergency_Password_Reset_Script",
-    "www.exploit-db.com/ghdb/3981/",
-    "A backup directory has been found",
-    "github.com/wpscanteam/wpscan/issues/422",
-    "ThemeMakers migration file found",
-    "packetstormsecurity.com/files/131957",
-    "Search Replace DB script found",
-    "interconnectit.com/products/search-and-replace-for-wordpress-databases/",
-]
+"SQL Dump found",
+"Full Path Disclosure found",
+"www.owasp.org/index.php/Full_Path_Disclosure",
+"codex.wordpress.org/Resetting_Your_Password#Using_the_Emergency_Password_Reset_Script",
+"www.exploit-db.com/ghdb/3981/",
+"A backup directory has been found",
+"github.com/wpscanteam/wpscan/issues/422",
+"ThemeMakers migration file found",
+"packetstormsecurity.com/files/131957",
+"Search Replace DB script found",
+"interconnectit.com/products/search-and-replace-for-wordpress-databases/"
 ```
+
+Warnings
+```python
+"Upload directory has listing enabled",
+"Registration is enabled",
+"Debug Log found",
+"codex.wordpress.org/Debugging_in_WordPress",
+"Fantastico list found",
+"www.acunetix.com/vulnerabilities/fantastico-fileslist/"
+```
+
 
 ### Full help
 ```bash
@@ -147,12 +148,18 @@ optional arguments:
   -h, --help            show this help message and exit
   --format <Format>     output format, choices are: "cli", "html", "json"
   --summary             display ony the summary of issues per component.
-  --inline              display only one line like: "WPScan result summary: alerts={}, warnings={}, infos={}, error={}".
-  --no_warnings         do not display warnings, only summary and alerts. Implies --no_infos.
+  --inline              display only one line like: "WPScan result summary:
+                        alerts={}, warnings={}, infos={}, error={}".
+  --no_warnings         do not display warnings, only summary and alerts.
+                        Implies --no_infos.
   --no_infos            do not display informations and findinds.
   --no_summary          do not display the summary of issues.
-  --show_all            show all findings details (found by, confidence, confirmed by).
+  --show_all            show all findings details (found by, confidence,
+                        confirmed by).
   --false_positive String [String ...]
-                        consider all matching messages as infos and add "[False positive]" prefix.
+                        consider all matching messages as infos and add
+                        "[False positive]" prefix.
+  --no_color            do not colorize output.
   --version             print wpscan_out_parse version and exit.
+
   ```
