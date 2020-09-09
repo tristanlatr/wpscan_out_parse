@@ -54,8 +54,6 @@ class WPScanJsonParser(_Parser):
 
     def __init__(self, data, false_positives_strings=None, show_all_details=False):
 
-        if not data:
-            data = {}
         # _Parser config: false positives string and verbosity (not available with cli parser)
         parser_config = dict(
             false_positives_strings=false_positives_strings,
@@ -64,117 +62,117 @@ class WPScanJsonParser(_Parser):
         super().__init__(data, **parser_config)
         self.components = []
         # Add WordPressVersion
-        if "version" in data:
-            self.version = WordPressVersion(data.get("version"), **parser_config)
+        if "version" in self.data:
+            self.version = WordPressVersion(self.data.get("version"), **parser_config)
         else:
             self.version = None
         # Add MainTheme
-        if "main_theme" in data:
-            self.main_theme = MainTheme(data.get("main_theme"), **parser_config)
+        if "main_theme" in self.data:
+            self.main_theme = MainTheme(self.data.get("main_theme"), **parser_config)
         else:
             self.main_theme = None
         # Add Plugins
-        if "plugins" in data:
+        if "plugins" in self.data:
             self.plugins = [
-                Plugin(data.get("plugins").get(slug), **parser_config)
-                for slug in data.get("plugins")
+                Plugin(self.data.get("plugins").get(slug), **parser_config)
+                for slug in self.data.get("plugins")
             ]
         else:
             self.plugins = []
         # Add Themes ; Make sure the main theme is not displayed twice
-        if "themes" in data:
+        if "themes" in self.data:
             self.themes = [
-                Theme(data.get("themes").get(slug), **parser_config)
-                for slug in data.get("themes")
+                Theme(self.data.get("themes").get(slug), **parser_config)
+                for slug in self.data.get("themes")
                 if not self.main_theme or slug != self.main_theme.slug
             ]
         else:
             self.themes = []
         # Add Interesting findings
-        if "interesting_findings" in data:
+        if "interesting_findings" in self.data:
             self.interesting_findings = [
                 InterestingFinding(finding, **parser_config)
-                for finding in data.get("interesting_findings")
+                for finding in self.data.get("interesting_findings")
             ]
         else:
             self.interesting_findings = []
         # Add Timthumbs
-        if "timthumbs" in data:
+        if "timthumbs" in self.data:
             self.timthumbs = [
-                Timthumb(url, data.get("timthumbs").get(url), **parser_config)
-                for url in data.get("timthumbs")
+                Timthumb(url, self.data.get("timthumbs").get(url), **parser_config)
+                for url in self.data.get("timthumbs")
             ]
         else:
             self.timthumbs = []
         # Add DBExport
-        if "db_exports" in data:
+        if "db_exports" in self.data:
             self.db_exports = [
-                DBExport(url, data.get("db_exports").get(url), **parser_config)
-                for url in data.get("db_exports")
+                DBExport(url, self.data.get("db_exports").get(url), **parser_config)
+                for url in self.data.get("db_exports")
             ]
         else:
             self.db_exports = []
         # Add Users
-        if "users" in data:
+        if "users" in self.data:
             self.users = [
-                User(url, data.get("users").get(url), **parser_config)
-                for url in data.get("users")
+                User(url, self.data.get("users").get(url), **parser_config)
+                for url in self.data.get("users")
             ]
         else:
             self.users = []
         # Add Medias
-        if "medias" in data:
+        if "medias" in self.data:
             self.medias = [
-                Media(url, data.get("medias").get(url), **parser_config)
-                for url in data.get("medias")
+                Media(url, self.data.get("medias").get(url), **parser_config)
+                for url in self.data.get("medias")
             ]
         else:
             self.medias = []
         # Add Config backups
-        if "config_backups" in data:
+        if "config_backups" in self.data:
             self.config_backups = [
-                ConfigBackup(url, data.get("config_backups").get(url), **parser_config)
-                for url in data.get("config_backups")
+                ConfigBackup(url, self.data.get("config_backups").get(url), **parser_config)
+                for url in self.data.get("config_backups")
             ]
         else:
             self.config_backups = []
         # Add VulnAPI
-        if "vuln_api" in data:
-            self.vuln_api = VulnAPI(data.get("vuln_api"), **parser_config)
+        if "vuln_api" in self.data:
+            self.vuln_api = VulnAPI(self.data.get("vuln_api"), **parser_config)
         else:
             self.vuln_api = None
         # Add Password attack
-        if data.get("password_attack", None):
+        if self.data.get("password_attack", None):
             self.password_attack = PasswordAttack(
-                data.get("password_attack"), **parser_config
+                self.data.get("password_attack"), **parser_config
             )
         else:
             self.password_attack = None
         # Add Not fully configured
-        if data.get("not_fully_configured", None):
+        if self.data.get("not_fully_configured", None):
             self.not_fully_configured = NotFullyConfigured(
-                data.get("not_fully_configured"), **parser_config
+                self.data.get("not_fully_configured"), **parser_config
             )
         else:
             self.not_fully_configured = None
         # Add
-        if data.get("banner", None):
-            self.banner = Banner(data.get("banner"), **parser_config)
+        if self.data.get("banner", None):
+            self.banner = Banner(self.data.get("banner"), **parser_config)
         else:
             self.banner = None
         # Add ScanStarted
-        if "target_url" in data:
-            self.scan_started = ScanStarted(data, **parser_config)
+        if "target_url" in self.data:
+            self.scan_started = ScanStarted(self.data, **parser_config)
         else:
             self.scan_started = None
         # Add ScanFinished
-        if "enlapsed" in data:
-            self.scan_finished = ScanFinished(data, **parser_config)
+        if "elapsed" in self.data:
+            self.scan_finished = ScanFinished(self.data, **parser_config)
         else:
             self.scan_finished = None
         # Add Scan aborted error
-        if data.get("scan_aborted", None):
-            self.error = "Scan Aborted: {}".format(data["scan_aborted"])
+        if self.data.get("scan_aborted", None):
+            self.error = "Scan Aborted: {}".format(self.data["scan_aborted"])
         else:
             self.error = None
         # All all components to list
