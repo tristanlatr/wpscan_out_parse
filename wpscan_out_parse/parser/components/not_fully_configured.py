@@ -21,4 +21,4 @@ class NotFullyConfigured(_CoreFindingNoVersion):
         return []
 
     def get_name(self):
-        return "Noy fully configured"
+        return "Not fully configured"

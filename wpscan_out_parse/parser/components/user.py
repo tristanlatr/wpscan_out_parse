@@ -17,7 +17,7 @@ class User(_Finding):
         """Return 1 info"""
         info = "User Identified: {}".format(self.username)
         if self.id:
-            info += "\nID: {}".format(self.id)
+            info += " (ID: {})".format(self.id)
         # If finding infos are present, add them
         if super().get_infos()[0] and self.show_all_details:
             info += "\n{}".format(super().get_infos()[0])

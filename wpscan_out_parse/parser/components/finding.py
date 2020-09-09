@@ -135,6 +135,8 @@ class _CoreFinding(_Finding):
 
 
 class _CoreFindingNoVersion(_CoreFinding):
+    """ Core WPScan finding that do not have version identifier.  """
+
     def get_version(self):
         """ Returns empty string"""
         return ""
