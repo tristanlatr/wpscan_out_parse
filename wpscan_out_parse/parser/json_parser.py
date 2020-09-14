@@ -131,7 +131,9 @@ class WPScanJsonParser(_Parser):
         # Add Config backups
         if "config_backups" in self.data:
             self.config_backups = [
-                ConfigBackup(url, self.data.get("config_backups").get(url), **parser_config)
+                ConfigBackup(
+                    url, self.data.get("config_backups").get(url), **parser_config
+                )
                 for url in self.data.get("config_backups")
             ]
         else:

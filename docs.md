@@ -75,7 +75,7 @@ Main interface to parse WPScan JSON data
 
 Once instanciated, the following properties are accessible:
 
--   <code>version</code>  
+-   <code>version</code>
 -   <code>main\_theme</code>
 -   <code>plugins</code> (list)
 -   <code>themes</code> (list)
@@ -282,7 +282,7 @@ Classes
 >         **kwargs
 >     )
 
-Generic WPScan finding
+Core WPScan finding: Shows on the summary table.
 
 From
 <a href="https://github.com/wpscanteam/wpscan/blob/master/app/views/json/wp_version/version.erb" class="uri">https://github.com/wpscanteam/wpscan/blob/master/app/views/json/wp_version/version.erb</a>
@@ -363,7 +363,7 @@ Return the name of the finding.
 >         **kwargs
 >     )
 
-Generic WPScan finding
+Core WPScan finding: Shows on the summary table.
 
 From
 <a href="https://github.com/wpscanteam/wpscan/blob/master/app/views/json/enumeration/plugins.erb" class="uri">https://github.com/wpscanteam/wpscan/blob/master/app/views/json/enumeration/plugins.erb</a>
@@ -410,7 +410,7 @@ Return the name of the finding.
 >         **kwargs
 >     )
 
-Generic WPScan finding
+Core WPScan finding: Shows on the summary table.
 
 From
 <a href="https://github.com/wpscanteam/wpscan/blob/master/app/views/json/theme.erb" class="uri">https://github.com/wpscanteam/wpscan/blob/master/app/views/json/theme.erb</a>
@@ -560,7 +560,7 @@ Return empty list
 >         **kwargs
 >     )
 
-Generic WPScan finding
+Core WPScan finding that do not have version identifier.
 
 From
 <a href="https://github.com/wpscanteam/wpscan/blob/master/app/views/json/enumeration/config_backups.erb" class="uri">https://github.com/wpscanteam/wpscan/blob/master/app/views/json/enumeration/config_backups.erb</a>
@@ -616,7 +616,7 @@ Return the name of the finding.
 >         **kwargs
 >     )
 
-Generic WPScan finding
+Core WPScan finding that do not have version identifier.
 
 From
 <a href="https://github.com/wpscanteam/wpscan/blob/master/app/views/json/enumeration/db_exports.erb" class="uri">https://github.com/wpscanteam/wpscan/blob/master/app/views/json/enumeration/db_exports.erb</a>
@@ -671,7 +671,7 @@ Return the name of the finding.
 >         **kwargs
 >     )
 
-Generic WPScan finding
+Core WPScan finding: Shows on the summary table.
 
 From
 <a href="https://github.com/wpscanteam/wpscan/blob/master/app/views/json/main_theme/theme.erb" class="uri">https://github.com/wpscanteam/wpscan/blob/master/app/views/json/main_theme/theme.erb</a>
@@ -765,7 +765,7 @@ Return empty list
 >         **kwargs
 >     )
 
-Generic WPScan finding
+Core WPScan finding that do not have version identifier.
 
 From
 <a href="https://github.com/wpscanteam/wpscan/blob/master/app/views/json/core/not_fully_configured.erb" class="uri">https://github.com/wpscanteam/wpscan/blob/master/app/views/json/core/not_fully_configured.erb</a>
@@ -820,7 +820,7 @@ Return the name of the finding.
 >         **kwargs
 >     )
 
-Generic WPScan finding
+Core WPScan finding that do not have version identifier.
 
 From
 <a href="https://github.com/wpscanteam/wpscan/blob/master/app/views/json/password_attack/users.erb" class="uri">https://github.com/wpscanteam/wpscan/blob/master/app/views/json/password_attack/users.erb</a>
@@ -964,7 +964,7 @@ Return empty list
 >         **kwargs
 >     )
 
-Generic WPScan finding
+Core WPScan finding: Shows on the summary table.
 
 From
 <a href="https://github.com/wpscanteam/wpscan/blob/master/app/views/json/enumeration/timthumbs.erb" class="uri">https://github.com/wpscanteam/wpscan/blob/master/app/views/json/enumeration/timthumbs.erb</a>
