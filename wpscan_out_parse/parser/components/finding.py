@@ -137,17 +137,17 @@ class _CoreFinding(_Finding):
 
     def component_is_false_positive(self):
         """
-        Return true if all alerts and warnings of the component are ignored by false positives strings.  
-        Return false if it's not a false positive or if there is no alerts or warnings.  
-        Does not work for parser objects because they process false positives.  
+        Return true if all alerts and warnings of the component are ignored by false positives strings.
+        Return false if it's not a false positive or if there is no alerts or warnings.
+        Does not work for parser objects because they process false positives.
         """
-        is_false_positive=True
+        is_false_positive = True
         alarms = self.get_warnings() + self.get_alerts()
         if not alarms:
-            is_false_positive=False
+            is_false_positive = False
         for s in alarms:
             if not self.is_false_positive(s):
-                is_false_positive=False
+                is_false_positive = False
                 break
         return is_false_positive
 
