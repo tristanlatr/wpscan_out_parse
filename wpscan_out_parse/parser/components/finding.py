@@ -119,10 +119,12 @@ class _CoreFinding(_Finding):
         pass
 
     def get_status(self):
-        """Return a string in : "Alert", "Warning", "Ok", "Unknown" """
+        """Return a string in : "Alert", "Warning", "Ok", "Ok (false positive)" or "Unknown" """
         try:
             return (
-                "Alert"
+                "Ok (false positive)"
+                if self.component_is_false_positive()
+                else "Alert"
                 if self.get_alerts()
                 else "Warning"
                 if self.get_warnings()
@@ -132,6 +134,22 @@ class _CoreFinding(_Finding):
             )
         except AttributeError:
             return None
+
+    def component_is_false_positive(self):
+        """
+        Return true if all alerts and warnings of the component are ignored by false positives strings.  
+        Return false if it's not a false positive or if there is no alerts or warnings.  
+        Does not work for parser objects because they process false positives.  
+        """
+        is_false_positive=True
+        alarms = self.get_warnings() + self.get_alerts()
+        if not alarms:
+            is_false_positive=False
+        for s in alarms:
+            if not self.is_false_positive(s):
+                is_false_positive=False
+                break
+        return is_false_positive
 
 
 class _CoreFindingNoVersion(_CoreFinding):
@@ -150,7 +168,7 @@ class _CoreFindingNoVersion(_CoreFinding):
         return ""
 
 
-# Class Vulnerability moved with Finding to avoid circular imorts errors
+# Class Vulnerability moved with Finding to avoid circular imports errors
 class Vulnerability(_Finding):
     def __init__(self, data, *args, **kwargs):
         """From https://github.com/wpscanteam/wpscan/blob/master/app/views/json/finding.erb"""
