@@ -1,6 +1,4 @@
 #! /usr/bin/env python3
-from gettext import install
-from xml.etree.ElementPath import find
 from setuptools import setup, find_packages
 import sys
 if sys.version_info[0] < 3: 
