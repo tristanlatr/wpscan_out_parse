@@ -86,9 +86,6 @@ def build_message(results, warnings=True, infos=True, format="cli", nocolor=Fals
         message += "\n".replace("\n", "<br/>\n" if format == "html" else "\n")
         message += format_issues("Informations", results["infos"], format=format)
 
-    if format == "html":
-        message = "<div>" + message + "</div>"
-
     return message
 
 
