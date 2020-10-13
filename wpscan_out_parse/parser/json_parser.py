@@ -172,11 +172,13 @@ class WPScanJsonParser(_Parser):
             self.scan_finished = ScanFinished(self.data, **parser_config)
         else:
             self.scan_finished = None
+        
         # Add Scan aborted error
         if self.data.get("scan_aborted", None):
             self.error = "Scan Aborted: {}".format(self.data["scan_aborted"])
         else:
             self.error = None
+            
         # All all components to list
         self.components = [
             c
@@ -293,6 +295,6 @@ class WPScanJsonParser(_Parser):
 
     def get_error(self):
         if self.error:
-            return "WPScan failed: {}".format(self.error)
+            return self.error
         else:
             return None
