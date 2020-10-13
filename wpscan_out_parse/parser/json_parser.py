@@ -172,13 +172,13 @@ class WPScanJsonParser(_Parser):
             self.scan_finished = ScanFinished(self.data, **parser_config)
         else:
             self.scan_finished = None
-        
+
         # Add Scan aborted error
         if self.data.get("scan_aborted", None):
             self.error = "Scan Aborted: {}".format(self.data["scan_aborted"])
         else:
             self.error = None
-            
+
         # All all components to list
         self.components = [
             c
@@ -202,7 +202,10 @@ class WPScanJsonParser(_Parser):
         for component in self.components:
             infos.extend(component.get_infos())
 
-            if isinstance(component, _CoreFinding) and component.component_is_false_positive():
+            if (
+                isinstance(component, _CoreFinding)
+                and component.component_is_false_positive()
+            ):
                 # If all vulns are ignored, add component message to infos
                 actually_false_positives = [
                     warning
@@ -224,10 +227,13 @@ class WPScanJsonParser(_Parser):
         for component in self.components:
 
             # Ignore false positives warnings
-            if isinstance(component, _CoreFinding) and component.component_is_false_positive():
+            if (
+                isinstance(component, _CoreFinding)
+                and component.component_is_false_positive()
+            ):
                 # Automatically remove wp item warning if all vuln are ignored and component does not present another issue
                 component_warnings = []
-            
+
             else:
                 component_warnings = [
                     warning
