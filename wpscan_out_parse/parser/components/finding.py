@@ -141,15 +141,25 @@ class _CoreFinding(_Finding):
         Return false if it's not a false positive or if there is no alerts or warnings.
         Does not work for parser objects because they process false positives.
         """
-        is_false_positive = True
+        
         alarms = self.get_warnings() + self.get_alerts()
-        if not alarms:
-            is_false_positive = False
-        for s in alarms:
-            if not self.is_false_positive(s):
-                is_false_positive = False
-                break
-        return is_false_positive
+
+        not_false_positives = [
+            a for a in alarms
+            if not self.is_false_positive(a)
+        ]
+
+        if ( ( len(not_false_positives) == 1
+            and "The version could not be determined" in not_false_positives[0]
+            and not "Directory listing is enabled" in not_false_positives[0]
+            and not "An error log file has been found" in not_false_positives[0] )
+            or (len(alarms)>0 and len(not_false_positives) == 0 )):
+
+            return True
+
+        else:
+
+            return False
 
 
 class _CoreFindingNoVersion(_CoreFinding):

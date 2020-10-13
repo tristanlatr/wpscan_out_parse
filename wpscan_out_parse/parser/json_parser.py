@@ -202,20 +202,15 @@ class WPScanJsonParser(_Parser):
         for component in self.components:
             infos.extend(component.get_infos())
 
-            # If all vulns are ignored, add component message to infos
-            component_warnings = [
-                warning
-                for warning in component.get_warnings()
-                if not self.is_false_positive(warning)
-            ]
-            # Automatically add wp item infos if all vuln are ignored and component does not present another issue
-            if (
-                len(component_warnings) == 1
-                and "The version could not be determined" in component_warnings[0]
-                and not "Directory listing is enabled" in component_warnings[0]
-                and not "An error log file has been found" in component_warnings[0]
-            ):
-                infos.extend(component_warnings)
+            if isinstance(component, _CoreFinding) and component.component_is_false_positive():
+                # If all vulns are ignored, add component message to infos
+                actually_false_positives = [
+                    warning
+                    for warning in component.get_warnings()
+                    if not self.is_false_positive(warning)
+                ]
+                # Automatically add wp item infos if all vuln are ignored and component does not present another issue
+                infos.extend(actually_false_positives)
 
             for alert in component.get_alerts() + component.get_warnings():
                 if self.is_false_positive(alert):
@@ -227,20 +222,18 @@ class WPScanJsonParser(_Parser):
         """Get all warnings from all components and igore false positives and automatically remove special warning if all vuln are ignored"""
         warnings = []
         for component in self.components:
+
             # Ignore false positives warnings
-            component_warnings = [
-                warning
-                for warning in component.get_warnings()
-                if not self.is_false_positive(warning)
-            ]
-            # Automatically remove wp item warning if all vuln are ignored and component does not present another issue
-            if (
-                len(component_warnings) == 1
-                and "The version could not be determined" in component_warnings[0]
-                and not "Directory listing is enabled" in component_warnings[0]
-                and not "An error log file has been found" in component_warnings[0]
-            ):
+            if isinstance(component, _CoreFinding) and component.component_is_false_positive():
+                # Automatically remove wp item warning if all vuln are ignored and component does not present another issue
                 component_warnings = []
+            
+            else:
+                component_warnings = [
+                    warning
+                    for warning in component.get_warnings()
+                    if not self.is_false_positive(warning)
+                ]
 
             warnings.extend(component_warnings)
 

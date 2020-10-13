@@ -1,5 +1,6 @@
 import unittest
-from wpscan_out_parse import parse_results_from_string, parse_results_from_file
+import json
+from wpscan_out_parse import parse_results_from_string, parse_results_from_file, WPScanJsonParser
 
 class T(unittest.TestCase):
     
@@ -40,6 +41,14 @@ class T(unittest.TestCase):
                      "Yoast SEO <= 9.1 - Authenticated Race Condition"])
 
               self.assertEqual(6, len(result['alerts']))
+              
+              results=parse_results_from_file("test/output_files/potential_vulns.json", false_positives_strings=["Potential Vulnerability"])
+              parser=WPScanJsonParser(json.load(open("test/output_files/potential_vulns.json")), false_positives_strings=["Potential Vulnerability"])
+              plugin = [ p for p in parser.plugins if p.slug == "contact-form-7-datepicker" ][0]
+              self.assertEqual(plugin.is_false_positive("Potential Vulnerability"), True )
+              self.assertIn("Potential Vulnerability", plugin.get_warnings()[1])
+              potential_vuln_summary_row = [ d for d in results['summary']['table'] if d["Component"] == "Plugin: contact-form-7-datepicker" ][0]
+              self.assertEqual(potential_vuln_summary_row['Status'], "Ok (false positive)")
 
        def test_version_could_not_be_detected_potential_vulns_warnings(self): 
               result=parse_results_from_file("test/output_files/potential_vulns.json")
