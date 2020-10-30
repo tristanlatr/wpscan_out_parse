@@ -1,0 +1,343 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+          "DTD/xhtml1-strict.dtd">
+<html>
+  <head>
+    <title>wpscan_out_parse.parser.components.DBExport : API documentation</title>
+
+    <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
+    <link rel="stylesheet" type="text/css" href="bootstrap.min.css" />
+    <link rel="stylesheet" type="text/css" href="apidocs.css" />
+  </head>
+  <body>
+
+    <nav class="navbar navbar-default">
+      <div class="container">
+        <div class="navbar-header">
+          <a class="navbar-brand" href="index.html">
+            <a href="https://github.com/tristanlatr/wpscan_out_parse">WPScan Output Parser</a> API Documentation
+          </a>
+        </div>
+      </div>
+    </nav>
+
+    <div id="showPrivate">
+      <button class="btn btn-link" onclick="togglePrivate()">Toggle Private API</button>
+    </div>
+
+    <div class="container">
+
+      <div class="page-header">
+        <h1 class="class"><code>wpscan_out_parse.parser.components.DBExport(<a href="wpscan_out_parse.parser.components.finding._CoreFindingNoVersion.html" class="code" data-type="Class">_CoreFindingNoVersion</a>)</code> <small>class documentation</small></h1>
+
+        <span id="partOf">
+          Part of <code><a href="wpscan_out_parse.html" class="code" data-type="Package">wpscan_out_parse</a>.<a href="wpscan_out_parse.parser.html" class="code" data-type="Package">parser</a>.<a href="wpscan_out_parse.parser.components.html" class="code" data-type="Package">components</a></code>
+          <a href="https://github.com/tristanlatr/wpscan_out_parse/tree/5d099172a6d738769f4b070714623132b2d90ac6/wpscan_out_parse/parser/components/db_export.py#L4">View Source</a>
+          <a href="classIndex.html#wpscan_out_parse.parser.components.DBExport">(View In Hierarchy)</a>
+        </span>
+      </div>
+
+      <div class="extrasDocstring">
+        
+      </div>
+
+      <div class="moduleDocstring">
+        <div class="undocumented">Undocumented</div>
+      </div>
+
+      <div id="splitTables">
+        <table class="children sortable" id="id33">
+  
+  <tr class="method">
+    
+    <td>Method</td>
+    <td><a href="wpscan_out_parse.parser.components.DBExport.html#__init__" class="code" data-type="Method">__init__</a></td>
+    <td><span>From https://github.com/wpscanteam/wpscan/blob/master/app/views/json/enumeration/db_exports.erb</span></td>
+  </tr><tr class="instancevariable">
+    
+    <td>Instance Variable</td>
+    <td><a href="wpscan_out_parse.parser.components.DBExport.html#url" class="code" data-type="Instance Variable">url</a></td>
+    <td><span class="undocumented">Undocumented</span></td>
+  </tr><tr class="method">
+    
+    <td>Method</td>
+    <td><a href="wpscan_out_parse.parser.components.DBExport.html#get_alerts" class="code" data-type="Method">get_alerts</a></td>
+    <td><span>Return 1 DBExport alert</span></td>
+  </tr><tr class="method">
+    
+    <td>Method</td>
+    <td><a href="wpscan_out_parse.parser.components.DBExport.html#get_warnings" class="code" data-type="Method">get_warnings</a></td>
+    <td><span>Return empty list</span></td>
+  </tr><tr class="method">
+    
+    <td>Method</td>
+    <td><a href="wpscan_out_parse.parser.components.DBExport.html#get_infos" class="code" data-type="Method">get_infos</a></td>
+    <td><span>Return empty list</span></td>
+  </tr><tr class="method">
+    
+    <td>Method</td>
+    <td><a href="wpscan_out_parse.parser.components.DBExport.html#get_name" class="code" data-type="Method">get_name</a></td>
+    <td><span>Return the name of the finding.</span></td>
+  </tr>
+</table>
+        
+          <p class="inheritedFrom">
+            Inherited from <a href="wpscan_out_parse.parser.components.finding._CoreFindingNoVersion.html" class="code" data-type="Class">_CoreFindingNoVersion</a>:
+          </p>
+          <table class="children sortable" id="id34">
+  
+  <tr class="basemethod">
+    
+    <td>Method</td>
+    <td><a href="wpscan_out_parse.parser.components.finding._CoreFindingNoVersion.html#get_version" class="code" data-type="Method">get_version</a></td>
+    <td><span>Returns empty string</span></td>
+  </tr><tr class="basemethod">
+    
+    <td>Method</td>
+    <td><a href="wpscan_out_parse.parser.components.finding._CoreFindingNoVersion.html#get_version_status" class="code" data-type="Method">get_version_status</a></td>
+    <td><span>Returns empty string</span></td>
+  </tr><tr class="basemethod">
+    
+    <td>Method</td>
+    <td><a href="wpscan_out_parse.parser.components.finding._CoreFindingNoVersion.html#get_vulnerabilities_string" class="code" data-type="Method">get_vulnerabilities_string</a></td>
+    <td><span>Returns empty string</span></td>
+  </tr>
+</table>
+          
+          <p class="inheritedFrom">
+            Inherited from <a href="wpscan_out_parse.parser.components.finding._CoreFinding.html" class="code" data-type="Class">_CoreFinding</a> (via <a href="wpscan_out_parse.parser.components.finding._CoreFindingNoVersion.html" class="code" data-type="Class">_CoreFindingNoVersion</a>):
+          </p>
+          <table class="children sortable" id="id35">
+  
+  <tr class="basemethod">
+    
+    <td>Method</td>
+    <td><a href="wpscan_out_parse.parser.components.finding._CoreFinding.html#get_status" class="code" data-type="Method">get_status</a></td>
+    <td><span>Return a string in : "Alert", "Warning", "Ok", "Ok (false positive)" or "Unknown"</span></td>
+  </tr><tr class="basemethod">
+    
+    <td>Method</td>
+    <td><a href="wpscan_out_parse.parser.components.finding._CoreFinding.html#component_is_false_positive" class="code" data-type="Method">component_is_false_positive</a></td>
+    <td><span>Return true if all alerts and warnings of the component are ignored by false positives strings. Return false if it's not a false positive or if there is no alerts or warnings. Does not work for parser objects because they process false positives.</span></td>
+  </tr>
+</table>
+          
+          <p class="inheritedFrom">
+            Inherited from <a href="wpscan_out_parse.parser.components.finding._Finding.html" class="code" data-type="Class">_Finding</a> (via <a href="wpscan_out_parse.parser.components.finding._CoreFindingNoVersion.html" class="code" data-type="Class">_CoreFindingNoVersion</a>, <a href="wpscan_out_parse.parser.components.finding._CoreFinding.html" class="code" data-type="Class">_CoreFinding</a>):
+          </p>
+          <table class="children sortable" id="id36">
+  
+  <tr class="baseinstancevariable">
+    
+    <td>Instance Variable</td>
+    <td><a href="wpscan_out_parse.parser.components.finding._Finding.html#found_by" class="code" data-type="Instance Variable">found_by</a></td>
+    <td><span class="undocumented">Undocumented</span></td>
+  </tr><tr class="baseinstancevariable">
+    
+    <td>Instance Variable</td>
+    <td><a href="wpscan_out_parse.parser.components.finding._Finding.html#confidence" class="code" data-type="Instance Variable">confidence</a></td>
+    <td><span class="undocumented">Undocumented</span></td>
+  </tr><tr class="baseinstancevariable">
+    
+    <td>Instance Variable</td>
+    <td><a href="wpscan_out_parse.parser.components.finding._Finding.html#interesting_entries" class="code" data-type="Instance Variable">interesting_entries</a></td>
+    <td><span class="undocumented">Undocumented</span></td>
+  </tr><tr class="baseinstancevariable">
+    
+    <td>Instance Variable</td>
+    <td><a href="wpscan_out_parse.parser.components.finding._Finding.html#confirmed_by" class="code" data-type="Instance Variable">confirmed_by</a></td>
+    <td><span class="undocumented">Undocumented</span></td>
+  </tr><tr class="baseinstancevariable">
+    
+    <td>Instance Variable</td>
+    <td><a href="wpscan_out_parse.parser.components.finding._Finding.html#vulnerabilities" class="code" data-type="Instance Variable">vulnerabilities</a></td>
+    <td><span class="undocumented">Undocumented</span></td>
+  </tr><tr class="baseinstancevariable">
+    
+    <td>Instance Variable</td>
+    <td><a href="wpscan_out_parse.parser.components.finding._Finding.html#references" class="code" data-type="Instance Variable">references</a></td>
+    <td><span class="undocumented">Undocumented</span></td>
+  </tr><tr class="basemethod">
+    
+    <td>Method</td>
+    <td><a href="wpscan_out_parse.parser.components.finding._Finding.html#get_references_str" class="code" data-type="Method">get_references_str</a></td>
+    <td><span>Process CVE, WPVulnDB, ExploitDB and Metasploit references to add links</span></td>
+  </tr>
+</table>
+          
+          <p class="inheritedFrom">
+            Inherited from <a href="wpscan_out_parse.parser.base._Component.html" class="code" data-type="Class">_Component</a> (via <a href="wpscan_out_parse.parser.components.finding._CoreFindingNoVersion.html" class="code" data-type="Class">_CoreFindingNoVersion</a>, <a href="wpscan_out_parse.parser.components.finding._CoreFinding.html" class="code" data-type="Class">_CoreFinding</a>, <a href="wpscan_out_parse.parser.components.finding._Finding.html" class="code" data-type="Class">_Finding</a>):
+          </p>
+          <table class="children sortable" id="id37">
+  
+  <tr class="baseinstancevariable">
+    
+    <td>Instance Variable</td>
+    <td><a href="wpscan_out_parse.parser.base._Component.html#data" class="code" data-type="Instance Variable">data</a></td>
+    <td><span class="undocumented">Undocumented</span></td>
+  </tr><tr class="baseinstancevariable">
+    
+    <td>Instance Variable</td>
+    <td><a href="wpscan_out_parse.parser.base._Component.html#false_positives_strings" class="code" data-type="Instance Variable">false_positives_strings</a></td>
+    <td><span class="undocumented">Undocumented</span></td>
+  </tr><tr class="baseinstancevariable">
+    
+    <td>Instance Variable</td>
+    <td><a href="wpscan_out_parse.parser.base._Component.html#show_all_details" class="code" data-type="Instance Variable">show_all_details</a></td>
+    <td><span class="undocumented">Undocumented</span></td>
+  </tr><tr class="basemethod">
+    
+    <td>Method</td>
+    <td><a href="wpscan_out_parse.parser.base._Component.html#is_false_positive" class="code" data-type="Method">is_false_positive</a></td>
+    <td><span>False Positive Detection</span></td>
+  </tr>
+</table>
+          
+
+          
+      </div>
+
+      <div id="childList">
+
+        <div class="basemethod">
+  
+  <a name="wpscan_out_parse.parser.components.DBExport.__init__">
+    
+  </a>
+  <a name="__init__">
+    
+  </a>
+  <div class="functionHeader">
+    
+    def
+    __init__(self, url, data, *args, **kwargs):
+    <a class="functionSourceLink" href="https://github.com/tristanlatr/wpscan_out_parse/tree/5d099172a6d738769f4b070714623132b2d90ac6/wpscan_out_parse/parser/components/db_export.py#L5">
+      
+      (source)
+    </a>
+  </div>
+  <div class="docstring functionBody">
+    <div class="interfaceinfo">overrides <a href="wpscan_out_parse.parser.components.finding._Finding.html#__init__" class="code" data-type="Method">wpscan_out_parse.parser.components.finding._Finding.__init__</a></div>
+    
+    <div><p class="pre">From https://github.com/wpscanteam/wpscan/blob/master/app/views/json/enumeration/db_exports.erb</p></div>
+  </div>
+</div><div class="baseinstancevariable">
+  
+  <a name="wpscan_out_parse.parser.components.DBExport.url">
+    
+  </a>
+  <a name="url">
+    
+  </a>
+  <div class="functionHeader">
+    url =
+    <a class="functionSourceLink" href="https://github.com/tristanlatr/wpscan_out_parse/tree/5d099172a6d738769f4b070714623132b2d90ac6/wpscan_out_parse/parser/components/db_export.py#L9">
+      
+      (source)
+    </a>
+  </div>
+  <div class="functionBody">
+    
+    <div class="undocumented">Undocumented</div>
+  </div>
+</div><div class="basemethod">
+  
+  <a name="wpscan_out_parse.parser.components.DBExport.get_alerts">
+    
+  </a>
+  <a name="get_alerts">
+    
+  </a>
+  <div class="functionHeader">
+    
+    def
+    get_alerts(self):
+    <a class="functionSourceLink" href="https://github.com/tristanlatr/wpscan_out_parse/tree/5d099172a6d738769f4b070714623132b2d90ac6/wpscan_out_parse/parser/components/db_export.py#L11">
+      
+      (source)
+    </a>
+  </div>
+  <div class="docstring functionBody">
+    <div class="interfaceinfo">overrides <a href="wpscan_out_parse.parser.components.finding._Finding.html#get_alerts" class="code" data-type="Method">wpscan_out_parse.parser.components.finding._Finding.get_alerts</a></div>
+    
+    <div><p class="pre">Return 1 DBExport alert</p></div>
+  </div>
+</div><div class="basemethod">
+  
+  <a name="wpscan_out_parse.parser.components.DBExport.get_warnings">
+    
+  </a>
+  <a name="get_warnings">
+    
+  </a>
+  <div class="functionHeader">
+    
+    def
+    get_warnings(self):
+    <a class="functionSourceLink" href="https://github.com/tristanlatr/wpscan_out_parse/tree/5d099172a6d738769f4b070714623132b2d90ac6/wpscan_out_parse/parser/components/db_export.py#L19">
+      
+      (source)
+    </a>
+  </div>
+  <div class="docstring functionBody">
+    <div class="interfaceinfo">overrides <a href="wpscan_out_parse.parser.base._Component.html#get_warnings" class="code" data-type="Method">wpscan_out_parse.parser.base._Component.get_warnings</a></div>
+    
+    <div><p class="pre">Return empty list</p></div>
+  </div>
+</div><div class="basemethod">
+  
+  <a name="wpscan_out_parse.parser.components.DBExport.get_infos">
+    
+  </a>
+  <a name="get_infos">
+    
+  </a>
+  <div class="functionHeader">
+    
+    def
+    get_infos(self):
+    <a class="functionSourceLink" href="https://github.com/tristanlatr/wpscan_out_parse/tree/5d099172a6d738769f4b070714623132b2d90ac6/wpscan_out_parse/parser/components/db_export.py#L23">
+      
+      (source)
+    </a>
+  </div>
+  <div class="docstring functionBody">
+    <div class="interfaceinfo">overrides <a href="wpscan_out_parse.parser.components.finding._Finding.html#get_infos" class="code" data-type="Method">wpscan_out_parse.parser.components.finding._Finding.get_infos</a></div>
+    
+    <div><p class="pre">Return empty list</p></div>
+  </div>
+</div><div class="basemethod">
+  
+  <a name="wpscan_out_parse.parser.components.DBExport.get_name">
+    
+  </a>
+  <a name="get_name">
+    
+  </a>
+  <div class="functionHeader">
+    
+    def
+    get_name(self):
+    <a class="functionSourceLink" href="https://github.com/tristanlatr/wpscan_out_parse/tree/5d099172a6d738769f4b070714623132b2d90ac6/wpscan_out_parse/parser/components/db_export.py#L27">
+      
+      (source)
+    </a>
+  </div>
+  <div class="docstring functionBody">
+    <div class="interfaceinfo">overrides <a href="wpscan_out_parse.parser.components.finding._CoreFinding.html#get_name" class="code" data-type="Method">wpscan_out_parse.parser.components.finding._CoreFinding.get_name</a></div>
+    
+    <div><p class="pre">Return the name of the finding. </p></div>
+  </div>
+</div>
+
+      </div>
+      <address>
+        <a href="index.html">API Documentation</a> for <a href="https://github.com/tristanlatr/wpscan_out_parse">WPScan Output Parser</a>, generated by <a href="https://github.com/twisted/pydoctor/">pydoctor</a> at 2020-10-30 20:04:12.
+      </address>
+
+    </div>
+
+    <script src="pydoctor.js" type="text/javascript"></script>
+
+  </body>
+</html>

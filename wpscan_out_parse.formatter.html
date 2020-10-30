@@ -1,0 +1,235 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+          "DTD/xhtml1-strict.dtd">
+<html>
+  <head>
+    <title>wpscan_out_parse.formatter : API documentation</title>
+
+    <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
+    <link rel="stylesheet" type="text/css" href="bootstrap.min.css" />
+    <link rel="stylesheet" type="text/css" href="apidocs.css" />
+  </head>
+  <body>
+
+    <nav class="navbar navbar-default">
+      <div class="container">
+        <div class="navbar-header">
+          <a class="navbar-brand" href="index.html">
+            <a href="https://github.com/tristanlatr/wpscan_out_parse">WPScan Output Parser</a> API Documentation
+          </a>
+        </div>
+      </div>
+    </nav>
+
+    <div id="showPrivate">
+      <button class="btn btn-link" onclick="togglePrivate()">Toggle Private API</button>
+    </div>
+
+    <div class="container">
+
+      <div class="page-header">
+        <h1 class="module"><code>wpscan_out_parse.formatter</code> <small>module documentation</small></h1>
+
+        <span id="partOf">
+          Part of <code><a href="wpscan_out_parse.html" class="code" data-type="Package">wpscan_out_parse</a></code>
+          <a href="https://github.com/tristanlatr/wpscan_out_parse/tree/5d099172a6d738769f4b070714623132b2d90ac6/wpscan_out_parse/formatter.py">View Source</a>
+          
+        </span>
+      </div>
+
+      <div class="extrasDocstring">
+        
+      </div>
+
+      <div class="moduleDocstring">
+        <div class="undocumented">Undocumented</div>
+      </div>
+
+      <div id="splitTables">
+        <table class="children sortable" id="id12">
+  
+  <tr class="function">
+    
+    <td>Function</td>
+    <td><a href="wpscan_out_parse.formatter.html#build_message" class="code" data-type="Function">build_message</a></td>
+    <td><span>Build mail message text base on report and warnngs and info switch</span></td>
+  </tr><tr class="function">
+    
+    <td>Function</td>
+    <td><a href="wpscan_out_parse.formatter.html#format_issues" class="code" data-type="Function">format_issues</a></td>
+    <td><span>Format one block of issues to text with the title</span></td>
+  </tr><tr class="function">
+    
+    <td>Function</td>
+    <td><a href="wpscan_out_parse.formatter.html#get_table_cell_color" class="code" data-type="Function">get_table_cell_color</a></td>
+    <td><span class="undocumented">Undocumented</span></td>
+  </tr><tr class="function">
+    
+    <td>Function</td>
+    <td><a href="wpscan_out_parse.formatter.html#format_summary_ascii_table" class="code" data-type="Function">format_summary_ascii_table</a></td>
+    <td><span>Return a nice string table Author: Thierry Husson - Use it as you want but don't blame me.</span></td>
+  </tr><tr class="function">
+    
+    <td>Function</td>
+    <td><a href="wpscan_out_parse.formatter.html#format_summary_html" class="code" data-type="Function">format_summary_html</a></td>
+    <td><span class="undocumented">Undocumented</span></td>
+  </tr><tr class="function">
+    
+    <td>Function</td>
+    <td><a href="wpscan_out_parse.formatter.html#replace" class="code" data-type="Function">replace</a></td>
+    <td><span>Multiple replacements helper method.  Stolen on the web</span></td>
+  </tr>
+</table>
+        
+
+          
+      </div>
+
+      <div id="childList">
+
+        <div class="basefunction">
+  
+  <a name="wpscan_out_parse.formatter.build_message">
+    
+  </a>
+  <a name="build_message">
+    
+  </a>
+  <div class="functionHeader">
+    
+    def
+    build_message(results, warnings=(True), infos=(True), format="""cli""", nocolor=(False)):
+    <a class="functionSourceLink" href="https://github.com/tristanlatr/wpscan_out_parse/tree/5d099172a6d738769f4b070714623132b2d90ac6/wpscan_out_parse/formatter.py#L25">
+      
+      (source)
+    </a>
+  </div>
+  <div class="docstring functionBody">
+    
+    
+    <div><p class="pre">Build mail message text base on report and warnngs and info switch</p></div>
+  </div>
+</div><div class="basefunction">
+  
+  <a name="wpscan_out_parse.formatter.format_issues">
+    
+  </a>
+  <a name="format_issues">
+    
+  </a>
+  <div class="functionHeader">
+    
+    def
+    format_issues(title, issues, format="""cli""", apply_br_tab_replace_on_issues=(True)):
+    <a class="functionSourceLink" href="https://github.com/tristanlatr/wpscan_out_parse/tree/5d099172a6d738769f4b070714623132b2d90ac6/wpscan_out_parse/formatter.py#L92">
+      
+      (source)
+    </a>
+  </div>
+  <div class="docstring functionBody">
+    
+    
+    <div><p class="pre">Format one block of issues to text with the title</p></div>
+  </div>
+</div><div class="basefunction">
+  
+  <a name="wpscan_out_parse.formatter.get_table_cell_color">
+    
+  </a>
+  <a name="get_table_cell_color">
+    
+  </a>
+  <div class="functionHeader">
+    
+    def
+    get_table_cell_color(col, val, ansi=(False)):
+    <a class="functionSourceLink" href="https://github.com/tristanlatr/wpscan_out_parse/tree/5d099172a6d738769f4b070714623132b2d90ac6/wpscan_out_parse/formatter.py#L116">
+      
+      (source)
+    </a>
+  </div>
+  <div class="docstring functionBody">
+    
+    
+    <div class="undocumented">Undocumented</div>
+  </div>
+</div><div class="basefunction">
+  
+  <a name="wpscan_out_parse.formatter.format_summary_ascii_table">
+    
+  </a>
+  <a name="format_summary_ascii_table">
+    
+  </a>
+  <div class="functionHeader">
+    
+    def
+    format_summary_ascii_table(table, line, nocolor=(False)):
+    <a class="functionSourceLink" href="https://github.com/tristanlatr/wpscan_out_parse/tree/5d099172a6d738769f4b070714623132b2d90ac6/wpscan_out_parse/formatter.py#L168">
+      
+      (source)
+    </a>
+  </div>
+  <div class="docstring functionBody">
+    
+    
+    <div><p class="pre">Return a nice string table
+Author: Thierry Husson - Use it as you want but don't blame me.</p></div>
+  </div>
+</div><div class="basefunction">
+  
+  <a name="wpscan_out_parse.formatter.format_summary_html">
+    
+  </a>
+  <a name="format_summary_html">
+    
+  </a>
+  <div class="functionHeader">
+    
+    def
+    format_summary_html(table, line, nocolor):
+    <a class="functionSourceLink" href="https://github.com/tristanlatr/wpscan_out_parse/tree/5d099172a6d738769f4b070714623132b2d90ac6/wpscan_out_parse/formatter.py#L211">
+      
+      (source)
+    </a>
+  </div>
+  <div class="docstring functionBody">
+    
+    
+    <div class="undocumented">Undocumented</div>
+  </div>
+</div><div class="basefunction">
+  
+  <a name="wpscan_out_parse.formatter.replace">
+    
+  </a>
+  <a name="replace">
+    
+  </a>
+  <div class="functionHeader">
+    
+    def
+    replace(text, conditions):
+    <a class="functionSourceLink" href="https://github.com/tristanlatr/wpscan_out_parse/tree/5d099172a6d738769f4b070714623132b2d90ac6/wpscan_out_parse/formatter.py#L263">
+      
+      (source)
+    </a>
+  </div>
+  <div class="docstring functionBody">
+    
+    
+    <div><p class="pre">Multiple replacements helper method.  Stolen on the web</p></div>
+  </div>
+</div>
+
+      </div>
+      <address>
+        <a href="index.html">API Documentation</a> for <a href="https://github.com/tristanlatr/wpscan_out_parse">WPScan Output Parser</a>, generated by <a href="https://github.com/twisted/pydoctor/">pydoctor</a> at 2020-10-30 20:04:12.
+      </address>
+
+    </div>
+
+    <script src="pydoctor.js" type="text/javascript"></script>
+
+  </body>
+</html>
