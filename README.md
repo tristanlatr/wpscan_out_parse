@@ -132,7 +132,7 @@ Once `WPScanJsonParser` instanciated, the following properties are accessible:
     
 All objects implements `get_alerts()`, `get_warnings()` and `get_infos()`
 
-See [docs.md](https://github.com/tristanlatr/wpscan_out_parse/blob/master/docs.md) for more technicals details on Python objects and library usage.  
+See the [API reference](https://tristanlatr.github.io/wpscan_out_parse/wpscan_out_parse.html) for Python objects API documentation 
 
 ### Additionnal alerts strings
 Some additionnal warnings and alerts are raised when detecting the following strings in your output file.  

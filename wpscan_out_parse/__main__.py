@@ -93,8 +93,7 @@ class WPScanOutParseCLI:
     @staticmethod
     def parse_args():
         parser = argparse.ArgumentParser(
-            description="""wpscan_out_parse is a Python parser for WPScan output files (JSON and CLI).  
-It analyze vulnerabilities, miscellaneous alerts and warnings and other findings.""",
+            description="""wpscan_out_parse is a Python parser for WPScan output files (JSON and CLI). It analyze vulnerabilities, miscellaneous alerts and warnings and other findings.""",
             prog="wpscan_out_parse",
             formatter_class=argparse.RawDescriptionHelpFormatter,
             usage="python3 -m wpscan_out_parse [Options] <File path>",
