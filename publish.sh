@@ -2,26 +2,11 @@
 
 title="WPScan Output Parser"
 module_folder="wpscan_out_parse"
-module_documented="wpscan_out_parse.__init__ wpscan_out_parse.parser.results wpscan_out_parse.parser.base wpscan_out_parse.parser.components.__init__ wpscan_out_parse.formatter"
-github_url="https://github.com/mfesiem/msiempy"
 version="$(python3 setup.py -V)"
 
 rm -rf ./dist
 rm -fr ./build
 rm -fr ./wpscan_out_parse.egg-info
-
-# Ask to generate docs.md and push it
-echo "[QUESTION] Do you want to generate documentation file 'docs.md' ?"
-read REPLY < /dev/tty
-if [ "$REPLY" = "y" ] || [ "$REPLY" = "yes" ] || [ "$REPLY" = "Y" ] || [ "$REPLY" = "Yes" ]; then
-    python3 -m pdoc --pdf --force --config sort_identifiers=False --config show_type_annotations=True ${module_documented} > pdf.md
-    pandoc --toc --toc-depth=4 --from=markdown+abbreviations --output=docs.md --to=gfm pdf.md
-    rm -f pdf.md
-    sleep 2
-    # git add docs.md
-    # git commit -m "Generate docs.md"
-    # git push
-fi
 
 # Ask to format code and push it
 echo "[QUESTION] Do you want to format code with black ?"
@@ -76,7 +61,7 @@ if [ "$REPLY" = "y" ] || [ "$REPLY" = "yes" ] || [ "$REPLY" = "Y" ] || [ "$REPLY
     if [ "$REPLY" = "y" ] || [ "$REPLY" = "yes" ] || [ "$REPLY" = "Y" ] || [ "$REPLY" = "Yes" ]; then
         echo "[RUNNING] git tag -a ${version} -m ${tag_msg} && git push --tags"
         git tag -a ${version} -F ./tmp_tag.txt && git push --tags
-        echo "[SUCCESS] Version ${version} tagged and pushed to ${github_url}/tags"
+        echo "[SUCCESS] Version ${version} tagged and pushed"
         echo "[INFO] You still need to create the realease from github"
     fi
     rm ./tmp_tag.txt
