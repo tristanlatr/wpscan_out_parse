@@ -33,7 +33,9 @@ jobs:
               --make-html \
               --html-output=./apidocs \
               --project-base-dir "$(pwd)" \
-              --docformat=restructuredtext
+              --docformat=restructuredtext \
+              --html-subject=wpscan_out_parse.WPScanJsonParser \
+              --html-subject=wpscan_out_parse.WPScanCliParser
 
     - name: Publish pydoctor documentation to the gh-pages branch
       uses: peaceiris/actions-gh-pages@v3
@@ -42,3 +44,4 @@ jobs:
         publish_dir: ./apidocs
         commit_message: "Generate pydoctor documentation"
         keep_files: true
+        destination_dir: test-html-subjects
