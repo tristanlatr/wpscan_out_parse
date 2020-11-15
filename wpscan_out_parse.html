@@ -28,21 +28,20 @@
     <div class="container">
 
       <div class="page-header">
-        <h1 class="package"><code>wpscan_out_parse</code> <small>package documentation</small></h1>
+        <h1 class="package"><code><a href="wpscan_out_parse.html" class="code" data-type="Package">wpscan_out_parse</a></code></h1>
+      </div>
 
-        <span id="partOf">
-          
-          <a href="https://github.com/tristanlatr/wpscan_out_parse/tree/7f8221af552fc00fb70cdf0f7dfa6cebf7b6b15f/wpscan_out_parse">View Source</a>
-          
-        </span>
+      <div class="categoryHeader">
+        package documentation
       </div>
 
       <div class="extrasDocstring">
         
+        <p></p>
       </div>
 
       <div class="moduleDocstring">
-        <div><p class="pre">WPScan Output Parser Python library documentation.  </p></div>
+        <div>WPScan Output Parser Python library documentation.</div>
       </div>
 
       <div id="splitTables">
@@ -57,7 +56,7 @@
     
     <td>Module</td>
     <td><a href="wpscan_out_parse.formatter.html" class="code" data-type="Module">formatter</a></td>
-    <td><span class="undocumented">No module docstring; 4/6 functions documented</span></td>
+    <td><span class="undocumented">No module4/6 functions documented</span></td>
   </tr><tr class="package">
     
     <td>Package</td>
@@ -89,6 +88,16 @@
     <td>Function</td>
     <td><a href="wpscan_out_parse.html#format_results" class="code" data-type="Function">format_results</a></td>
     <td><span>Format the results dict into a "html", "cli" or "json" string.</span></td>
+  </tr><tr class="function">
+    
+    <td>Function</td>
+    <td><a href="wpscan_out_parse.html#parse_results_from_file" class="code" data-type="Function">parse_results_from_file</a></td>
+    <td><span>Parse any WPScan output file.</span></td>
+  </tr><tr class="function">
+    
+    <td>Function</td>
+    <td><a href="wpscan_out_parse.html#parse_results_from_string" class="code" data-type="Function">parse_results_from_string</a></td>
+    <td><span>Parse any WPScan output string.</span></td>
   </tr>
 </table>
       </div>
@@ -105,7 +114,7 @@
   </a>
   <div class="functionHeader">
     VERSION =
-    <a class="functionSourceLink" href="https://github.com/tristanlatr/wpscan_out_parse/tree/7f8221af552fc00fb70cdf0f7dfa6cebf7b6b15f/wpscan_out_parse/__init__.py#L13">
+    <a class="functionSourceLink" href="https://github.com/tristanlatr/wpscan_out_parse/tree/a5e01325d091e7828be43471b07ca92085baf3a9/wpscan_out_parse/__init__.py#L13">
       
       (source)
     </a>
@@ -113,6 +122,87 @@
   <div class="functionBody">
     
     <div class="undocumented">Undocumented</div> (type: <code>str</code>)
+  </div>
+</div><div class="basefunction">
+  
+  <a name="wpscan_out_parse.parse_results_from_string">
+    
+  </a>
+  <a name="parse_results_from_string">
+    
+  </a>
+  <div class="functionHeader">
+    
+    def
+    parse_results_from_string(wpscan_output_string, false_positives_strings=None, show_all_details=(False)):
+    <a class="functionSourceLink" href="https://github.com/tristanlatr/wpscan_out_parse/tree/a5e01325d091e7828be43471b07ca92085baf3a9/wpscan_out_parse/parser/__init__.py#L9">
+      
+      (source)
+    </a>
+  </div>
+  <div class="docstring functionBody">
+    
+    
+    <div><p>Parse any WPScan output string.</p>
+<ul class="rst-simple">
+<li>wpscan_output_string: WPScan output as string</li>
+<li>false_positives_strings: List of false positive strings.</li>
+<li>show_all_details: Boolean, enable to show all wpscan infos (found by, confidence, etc). Only with JSON output.</li>
+</ul>
+<p>Return the results as dict object like</p>
+<pre class="rst-literal-block">
+{
+'infos':[],
+'warnings':[],
+'alerts':[],
+'summary':{
+    'table':[
+        {
+            'Component': None,
+            'Version': None,
+            'Version State': None,
+            'Vulnerabilities': None,
+            'Status': None
+        },
+        ...
+    ],
+    'line':'WPScan result summary: alerts={}, warnings={}, infos={}, error={}'
+    },
+'error':None
+}
+</pre>
+<p>(summary table is only parsed for JSON files)</p>
+</div>
+  </div>
+</div><div class="basefunction">
+  
+  <a name="wpscan_out_parse.parse_results_from_file">
+    
+  </a>
+  <a name="parse_results_from_file">
+    
+  </a>
+  <div class="functionHeader">
+    
+    def
+    parse_results_from_file(wpscan_output_file, false_positives_strings=None, show_all_details=(False)):
+    <a class="functionSourceLink" href="https://github.com/tristanlatr/wpscan_out_parse/tree/a5e01325d091e7828be43471b07ca92085baf3a9/wpscan_out_parse/parser/__init__.py#L53">
+      
+      (source)
+    </a>
+  </div>
+  <div class="docstring functionBody">
+    
+    
+    <div><p>Parse any WPScan output file.</p>
+<ul class="rst-simple">
+<li>wpscan_output_file: Path to WPScan output file</li>
+<li>false_positives_strings: List of false positive strings.</li>
+<li>show_all_details: Boolean, enable to show all wpscan infos (found by, confidence, etc). Only with JSON output.</li>
+</ul>
+<p>Return the results as dict object.</p>
+<p>See <a href="wpscan_out_parse.html#parse_results_from_string"><code>parse_results_from_string</code></a>.</p>
+</div>
   </div>
 </div><div class="basefunction">
   
@@ -126,7 +216,7 @@
     
     def
     format_results(results, format, warnings=(True), infos=(True), nocolor=(False)):
-    <a class="functionSourceLink" href="https://github.com/tristanlatr/wpscan_out_parse/tree/7f8221af552fc00fb70cdf0f7dfa6cebf7b6b15f/wpscan_out_parse/formatter.py#L6">
+    <a class="functionSourceLink" href="https://github.com/tristanlatr/wpscan_out_parse/tree/a5e01325d091e7828be43471b07ca92085baf3a9/wpscan_out_parse/formatter.py#L6">
       
       (source)
     </a>
@@ -134,16 +224,18 @@
   <div class="docstring functionBody">
     
     
-    <div><p class="pre">Format the results dict into a "html", "cli" or "json" string.
-
-- results: resutlts dict objject.
-- format: in `"html"`, `"cli"` or `"json"`</p></div>
+    <div><p>Format the results dict into a "html", "cli" or "json" string.</p>
+<ul class="rst-simple">
+<li>results: resutlts dict objject.</li>
+<li>format: in <code>"html"</code>, <code>"cli"</code> or <code>"json"</code></li>
+</ul>
+</div>
   </div>
 </div>
 
       </div>
       <address>
-        <a href="index.html">API Documentation</a> for <a href="https://github.com/tristanlatr/wpscan_out_parse">WPScan Output Parser</a>, generated by <a href="https://github.com/twisted/pydoctor/">pydoctor</a> at 2020-11-04 02:37:43.
+        <a href="index.html">API Documentation</a> for <a href="https://github.com/tristanlatr/wpscan_out_parse">WPScan Output Parser</a>, generated by <a href="https://github.com/twisted/pydoctor/">pydoctor</a> 20.7.1 at 2020-11-15 20:11:33.
       </address>
 
     </div>
