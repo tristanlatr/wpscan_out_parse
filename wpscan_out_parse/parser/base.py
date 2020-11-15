@@ -52,28 +52,30 @@ class _Parser(_Component):
 
     @abstractmethod
     def get_results(self):
-        """Returns a dictionnary structure like:
-        ```
-        {
-        'infos':[],
-        'warnings':[],
-        'alerts':[],
-        'summary':{
-            'table':[
-                {
-                    'Component': None,
-                    'Version': None,
-                    'Version State': None,
-                    'Vulnerabilities': None,
-                    'Status': None
+        """Returns a dictionnary structure like
+        
+        ::
+        
+            {
+            'infos':[],
+            'warnings':[],
+            'alerts':[],
+            'summary':{
+                'table':[
+                    {
+                        'Component': None,
+                        'Version': None,
+                        'Version State': None,
+                        'Vulnerabilities': None,
+                        'Status': None
+                    },
+                    ...
+                ],
+                'line':'WPScan result summary: alerts={}, warnings={}, infos={}, error={}'
                 },
-                ...
-            ],
-            'line':'WPScan result summary: alerts={}, warnings={}, infos={}, error={}'
-            },
-        'error':None
-        }
-        ```
+            'error':None
+            }
+        
         """
         pass
 

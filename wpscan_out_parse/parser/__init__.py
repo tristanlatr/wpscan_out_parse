@@ -15,7 +15,32 @@ def parse_results_from_string(
     - false_positives_strings: List of false positive strings.
     - show_all_details: Boolean, enable to show all wpscan infos (found by, confidence, etc). Only with JSON output.
 
-    Return the results as dict object"""
+    Return the results as dict object like
+    
+    ::
+        
+            {
+            'infos':[],
+            'warnings':[],
+            'alerts':[],
+            'summary':{
+                'table':[
+                    {
+                        'Component': None,
+                        'Version': None,
+                        'Version State': None,
+                        'Vulnerabilities': None,
+                        'Status': None
+                    },
+                    ...
+                ],
+                'line':'WPScan result summary: alerts={}, warnings={}, infos={}, error={}'
+                },
+            'error':None
+            }
+    
+    (summary table is only parsed for JSON files)
+    """
     try:
         data = json.loads(wpscan_output_string)
     except ValueError:
@@ -34,7 +59,9 @@ def parse_results_from_file(
     - false_positives_strings: List of false positive strings.
     - show_all_details: Boolean, enable to show all wpscan infos (found by, confidence, etc). Only with JSON output.
 
-     Return the results as dict object"""
+    Return the results as dict object. 
+    
+    See `parse_results_from_string`. """
     with open(wpscan_output_file, "r", encoding="utf-8") as wpscan_out:
         wpscan_out_string = wpscan_out.read()
         results = parse_results_from_string(

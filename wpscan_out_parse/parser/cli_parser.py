@@ -194,19 +194,21 @@ class WPScanCliParser(_Parser):
 
     def get_results(self):
         """
-        Returns a dictionnary structure like:
-        ```
-        {
-        'infos':[],
-        'warnings':[],
-        'alerts':[],
-        'summary':{
-            'table':None,
-            'line':'WPScan result summary: alerts={}, warnings={}, infos={}, error={}'
-            },
-        'error':None
-        }
-        ```
+        Returns a dictionnary structure like
+        
+        ::
+        
+            {
+            'infos':[],
+            'warnings':[],
+            'alerts':[],
+            'summary':{
+                'table':None,
+                'line':'WPScan result summary: alerts={}, warnings={}, infos={}, error={}'
+                },
+            'error':None
+            }
+        
         """
         results = _WPScanResults()
         results["infos"] = self.get_infos()

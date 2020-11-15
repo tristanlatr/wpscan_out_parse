@@ -21,19 +21,8 @@ jobs:
 
     - name: Generate pydoctor documentation
       run: |
-        # Allow pydoctor to exit with non-zero status code
-        set +e
-
         # Run pydoctor build
-        pydoctor \
-              --add-package=wpscan_out_parse \
-              --project-name="WPScan Output Parser" \
-              --project-url=https://github.com/$GITHUB_REPOSITORY \
-              --html-viewsource-base https://github.com/$GITHUB_REPOSITORY/tree/$GITHUB_SHA \
-              --make-html \
-              --html-output=./apidocs \
-              --project-base-dir "$(pwd)" \
-              --docformat=restructuredtext
+        ./build_docs.sh
 
     - name: Publish pydoctor documentation to the gh-pages branch
       uses: peaceiris/actions-gh-pages@v3
