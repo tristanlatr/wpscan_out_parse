@@ -13,22 +13,20 @@
 
     <nav class="navbar navbar-default">
       <div class="container">
-        <div class="navbar-header">
-          <a class="navbar-brand" href="index.html">
-            <a href="https://github.com/tristanlatr/wpscan_out_parse">WPScan Output Parser</a> API Documentation
-          </a>
+        <div class="navbar-header navbar-brand">
+          <a href="https://github.com/tristanlatr/wpscan_out_parse">WPScan Output Parser</a>
+          <a href="index.html">API Documentation</a>
         </div>
       </div>
     </nav>
 
-    <div id="showPrivate">
-      <button class="btn btn-link" onclick="togglePrivate()">Toggle Private API</button>
-    </div>
-
     <div class="container">
 
       <div class="page-header">
-        <h1 class="class"><code><a href="wpscan_out_parse.html" class="code" data-type="Package">wpscan_out_parse</a>.<a href="wpscan_out_parse.WPScanJsonParser.html" class="code" data-type="Class">WPScanJsonParser</a></code></h1>
+        <h1 class="class"><code><code><a href="wpscan_out_parse.html">wpscan_out_parse</a></code>.<code><a href="wpscan_out_parse.WPScanJsonParser.html">WPScanJsonParser</a></code></code></h1>
+        <div id="showPrivate">
+          <button class="btn btn-link" onclick="togglePrivate()">Toggle Private API</button>
+        </div>
       </div>
 
       <div class="categoryHeader">
@@ -36,7 +34,7 @@
       </div>
 
       <div class="extrasDocstring">
-        <p><code><span class="py-keyword">class</span> wpscan_out_parse.WPScanJsonParser(<a href="wpscan_out_parse.parser.base._Parser.html" class="code" data-type="Class">_Parser</a>): <a href="https://github.com/tristanlatr/wpscan_out_parse/tree/a5e01325d091e7828be43471b07ca92085baf3a9/wpscan_out_parse/parser/json_parser.py#L26">(source)</a></code></p>
+        <p><code><span class="py-keyword">class</span> <span class="py-defname">WPScanJsonParser</span>(<a href="wpscan_out_parse.parser.base._Parser.html" title="wpscan_out_parse.parser.base._Parser">_Parser</a>): <a href="https://github.com/tristanlatr/wpscan_out_parse/tree/d40af311b3e208b3d3cbc32108c8dd0dc7e03ae4/wpscan_out_parse/parser/json_parser.py#L26">(source)</a></code></p>
         <p><a href="classIndex.html#wpscan_out_parse.WPScanJsonParser">View In Hierarchy</a></p>
       </div>
 
@@ -49,22 +47,22 @@
 </ul>
 <p>Once instanciated, the following properties are accessible:</p>
 <ul class="rst-simple">
-<li><a href="wpscan_out_parse.WPScanJsonParser.html#version"><code>version</code></a></li>
-<li><a href="wpscan_out_parse.WPScanJsonParser.html#main_theme"><code>main_theme</code></a></li>
-<li><a href="wpscan_out_parse.WPScanJsonParser.html#plugins"><code>plugins</code></a> (list)</li>
-<li><a href="wpscan_out_parse.WPScanJsonParser.html#themes"><code>themes</code></a> (list)</li>
-<li><a href="wpscan_out_parse.WPScanJsonParser.html#interesting_findings"><code>interesting_findings</code></a> (list)</li>
-<li><a href="wpscan_out_parse.WPScanJsonParser.html#timthumbs"><code>timthumbs</code></a> (list)</li>
-<li><a href="wpscan_out_parse.WPScanJsonParser.html#db_exports"><code>db_exports</code></a> (list)</li>
-<li><a href="wpscan_out_parse.WPScanJsonParser.html#users"><code>users</code></a> (list)</li>
-<li><a href="wpscan_out_parse.WPScanJsonParser.html#medias"><code>medias</code></a> (list)</li>
-<li><a href="wpscan_out_parse.WPScanJsonParser.html#config_backups"><code>config_backups</code></a> (list)</li>
-<li><a href="wpscan_out_parse.WPScanJsonParser.html#password_attack"><code>password_attack</code></a></li>
-<li><a href="wpscan_out_parse.WPScanJsonParser.html#not_fully_configured"><code>not_fully_configured</code></a></li>
-<li><a href="wpscan_out_parse.WPScanJsonParser.html#vuln_api"><code>vuln_api</code></a></li>
-<li><a href="wpscan_out_parse.WPScanJsonParser.html#banner"><code>banner</code></a></li>
-<li><a href="wpscan_out_parse.WPScanJsonParser.html#scan_started"><code>scan_started</code></a></li>
-<li><a href="wpscan_out_parse.WPScanJsonParser.html#scan_finished"><code>scan_finished</code></a></li>
+<li><code><a href="#version">version</a></code></li>
+<li><code><a href="#main_theme">main_theme</a></code></li>
+<li><code><a href="#plugins">plugins</a></code> (list)</li>
+<li><code><a href="#themes">themes</a></code> (list)</li>
+<li><code><a href="#interesting_findings">interesting_findings</a></code> (list)</li>
+<li><code><a href="#timthumbs">timthumbs</a></code> (list)</li>
+<li><code><a href="#db_exports">db_exports</a></code> (list)</li>
+<li><code><a href="#users">users</a></code> (list)</li>
+<li><code><a href="#medias">medias</a></code> (list)</li>
+<li><code><a href="#config_backups">config_backups</a></code> (list)</li>
+<li><code><a href="#password_attack">password_attack</a></code></li>
+<li><code><a href="#not_fully_configured">not_fully_configured</a></code></li>
+<li><code><a href="#vuln_api">vuln_api</a></code></li>
+<li><code><a href="#banner">banner</a></code></li>
+<li><code><a href="#scan_started">scan_started</a></code></li>
+<li><code><a href="#scan_finished">scan_finished</a></code></li>
 </ul>
 <p>All objects implements <code>get_alerts()</code>, <code>get_warnings()</code> and <code>get_infos()</code></p>
 </div>
@@ -76,173 +74,173 @@
   <tr class="method">
     
     <td>Method</td>
-    <td><a href="wpscan_out_parse.WPScanJsonParser.html#__init__" class="code" data-type="Method">__init__</a></td>
+    <td><code><a href="#__init__">__init__</a></code></td>
     <td><span class="undocumented">Undocumented</span></td>
   </tr><tr class="instancevariable">
     
     <td>Instance Variable</td>
-    <td><a href="wpscan_out_parse.WPScanJsonParser.html#components" class="code" data-type="Instance Variable">components</a></td>
+    <td><code><a href="#components">components</a></code></td>
     <td><span class="undocumented">Undocumented</span></td>
   </tr><tr class="instancevariable">
     
     <td>Instance Variable</td>
-    <td><a href="wpscan_out_parse.WPScanJsonParser.html#version" class="code" data-type="Instance Variable">version</a></td>
+    <td><code><a href="#version">version</a></code></td>
     <td><span class="undocumented">Undocumented</span></td>
   </tr><tr class="instancevariable">
     
     <td>Instance Variable</td>
-    <td><a href="wpscan_out_parse.WPScanJsonParser.html#main_theme" class="code" data-type="Instance Variable">main_theme</a></td>
+    <td><code><a href="#main_theme">main_theme</a></code></td>
     <td><span class="undocumented">Undocumented</span></td>
   </tr><tr class="instancevariable">
     
     <td>Instance Variable</td>
-    <td><a href="wpscan_out_parse.WPScanJsonParser.html#plugins" class="code" data-type="Instance Variable">plugins</a></td>
+    <td><code><a href="#plugins">plugins</a></code></td>
     <td><span class="undocumented">Undocumented</span></td>
   </tr><tr class="instancevariable">
     
     <td>Instance Variable</td>
-    <td><a href="wpscan_out_parse.WPScanJsonParser.html#themes" class="code" data-type="Instance Variable">themes</a></td>
+    <td><code><a href="#themes">themes</a></code></td>
     <td><span class="undocumented">Undocumented</span></td>
   </tr><tr class="instancevariable">
     
     <td>Instance Variable</td>
-    <td><a href="wpscan_out_parse.WPScanJsonParser.html#interesting_findings" class="code" data-type="Instance Variable">interesting_findings</a></td>
+    <td><code><a href="#interesting_findings">interesting_findings</a></code></td>
     <td><span class="undocumented">Undocumented</span></td>
   </tr><tr class="instancevariable">
     
     <td>Instance Variable</td>
-    <td><a href="wpscan_out_parse.WPScanJsonParser.html#timthumbs" class="code" data-type="Instance Variable">timthumbs</a></td>
+    <td><code><a href="#timthumbs">timthumbs</a></code></td>
     <td><span class="undocumented">Undocumented</span></td>
   </tr><tr class="instancevariable">
     
     <td>Instance Variable</td>
-    <td><a href="wpscan_out_parse.WPScanJsonParser.html#db_exports" class="code" data-type="Instance Variable">db_exports</a></td>
+    <td><code><a href="#db_exports">db_exports</a></code></td>
     <td><span class="undocumented">Undocumented</span></td>
   </tr><tr class="instancevariable">
     
     <td>Instance Variable</td>
-    <td><a href="wpscan_out_parse.WPScanJsonParser.html#users" class="code" data-type="Instance Variable">users</a></td>
+    <td><code><a href="#users">users</a></code></td>
     <td><span class="undocumented">Undocumented</span></td>
   </tr><tr class="instancevariable">
     
     <td>Instance Variable</td>
-    <td><a href="wpscan_out_parse.WPScanJsonParser.html#medias" class="code" data-type="Instance Variable">medias</a></td>
+    <td><code><a href="#medias">medias</a></code></td>
     <td><span class="undocumented">Undocumented</span></td>
   </tr><tr class="instancevariable">
     
     <td>Instance Variable</td>
-    <td><a href="wpscan_out_parse.WPScanJsonParser.html#config_backups" class="code" data-type="Instance Variable">config_backups</a></td>
+    <td><code><a href="#config_backups">config_backups</a></code></td>
     <td><span class="undocumented">Undocumented</span></td>
   </tr><tr class="instancevariable">
     
     <td>Instance Variable</td>
-    <td><a href="wpscan_out_parse.WPScanJsonParser.html#vuln_api" class="code" data-type="Instance Variable">vuln_api</a></td>
+    <td><code><a href="#vuln_api">vuln_api</a></code></td>
     <td><span class="undocumented">Undocumented</span></td>
   </tr><tr class="instancevariable">
     
     <td>Instance Variable</td>
-    <td><a href="wpscan_out_parse.WPScanJsonParser.html#password_attack" class="code" data-type="Instance Variable">password_attack</a></td>
+    <td><code><a href="#password_attack">password_attack</a></code></td>
     <td><span class="undocumented">Undocumented</span></td>
   </tr><tr class="instancevariable">
     
     <td>Instance Variable</td>
-    <td><a href="wpscan_out_parse.WPScanJsonParser.html#not_fully_configured" class="code" data-type="Instance Variable">not_fully_configured</a></td>
+    <td><code><a href="#not_fully_configured">not_fully_configured</a></code></td>
     <td><span class="undocumented">Undocumented</span></td>
   </tr><tr class="instancevariable">
     
     <td>Instance Variable</td>
-    <td><a href="wpscan_out_parse.WPScanJsonParser.html#banner" class="code" data-type="Instance Variable">banner</a></td>
+    <td><code><a href="#banner">banner</a></code></td>
     <td><span class="undocumented">Undocumented</span></td>
   </tr><tr class="instancevariable">
     
     <td>Instance Variable</td>
-    <td><a href="wpscan_out_parse.WPScanJsonParser.html#scan_started" class="code" data-type="Instance Variable">scan_started</a></td>
+    <td><code><a href="#scan_started">scan_started</a></code></td>
     <td><span class="undocumented">Undocumented</span></td>
   </tr><tr class="instancevariable">
     
     <td>Instance Variable</td>
-    <td><a href="wpscan_out_parse.WPScanJsonParser.html#scan_finished" class="code" data-type="Instance Variable">scan_finished</a></td>
+    <td><code><a href="#scan_finished">scan_finished</a></code></td>
     <td><span class="undocumented">Undocumented</span></td>
   </tr><tr class="instancevariable">
     
     <td>Instance Variable</td>
-    <td><a href="wpscan_out_parse.WPScanJsonParser.html#error" class="code" data-type="Instance Variable">error</a></td>
+    <td><code><a href="#error">error</a></code></td>
     <td><span class="undocumented">Undocumented</span></td>
   </tr><tr class="method">
     
     <td>Method</td>
-    <td><a href="wpscan_out_parse.WPScanJsonParser.html#get_infos" class="code" data-type="Method">get_infos</a></td>
+    <td><code><a href="#get_infos">get_infos</a></code></td>
     <td><span>Get all infos from all components and add false positives as infos with "[False positive]" prefix</span></td>
   </tr><tr class="method">
     
     <td>Method</td>
-    <td><a href="wpscan_out_parse.WPScanJsonParser.html#get_warnings" class="code" data-type="Method">get_warnings</a></td>
+    <td><code><a href="#get_warnings">get_warnings</a></code></td>
     <td><span>Get all warnings from all components and igore false positives and automatically remove special warning if all vuln are ignored</span></td>
   </tr><tr class="method">
     
     <td>Method</td>
-    <td><a href="wpscan_out_parse.WPScanJsonParser.html#get_alerts" class="code" data-type="Method">get_alerts</a></td>
+    <td><code><a href="#get_alerts">get_alerts</a></code></td>
     <td><span>Get all alerts from all components and igore false positives</span></td>
   </tr><tr class="method">
     
     <td>Method</td>
-    <td><a href="wpscan_out_parse.WPScanJsonParser.html#get_results" class="code" data-type="Method">get_results</a></td>
+    <td><code><a href="#get_results">get_results</a></code></td>
     <td><span>Returns a dictionnary structure like</span></td>
   </tr><tr class="method">
     
     <td>Method</td>
-    <td><a href="wpscan_out_parse.WPScanJsonParser.html#get_core_findings" class="code" data-type="Method">get_core_findings</a></td>
+    <td><code><a href="#get_core_findings">get_core_findings</a></code></td>
     <td><span>Get only core findings. Core findings appears in the table summary.</span></td>
   </tr><tr class="method">
     
     <td>Method</td>
-    <td><a href="wpscan_out_parse.WPScanJsonParser.html#get_summary_list" class="code" data-type="Method">get_summary_list</a></td>
+    <td><code><a href="#get_summary_list">get_summary_list</a></code></td>
     <td><span>Return a list of dict with all plugins, vuls, and statuses.</span></td>
   </tr><tr class="method">
     
     <td>Method</td>
-    <td><a href="wpscan_out_parse.WPScanJsonParser.html#get_error" class="code" data-type="Method">get_error</a></td>
+    <td><code><a href="#get_error">get_error</a></code></td>
     <td><span>Return any error or None if no errors</span></td>
   </tr>
 </table>
         
           <p class="inheritedFrom">
-            Inherited from <a href="wpscan_out_parse.parser.base._Parser.html" class="code" data-type="Class">_Parser</a>:
+            Inherited from <code><a href="wpscan_out_parse.parser.base._Parser.html">_Parser</a></code>:
           </p>
           <table class="children sortable" id="id4">
   
   <tr class="basemethod">
     
     <td>Method</td>
-    <td><a href="wpscan_out_parse.parser.base._Parser.html#get_summary_line" class="code" data-type="Method">get_summary_line</a></td>
+    <td><code><a href="wpscan_out_parse.parser.base._Parser.html#get_summary_line">get_summary_line</a></code></td>
     <td><span>Return the summary string in one line</span></td>
   </tr>
 </table>
           
           <p class="inheritedFrom">
-            Inherited from <a href="wpscan_out_parse.parser.base._Component.html" class="code" data-type="Class">_Component</a> (via <a href="wpscan_out_parse.parser.base._Parser.html" class="code" data-type="Class">_Parser</a>):
+            Inherited from <code><a href="wpscan_out_parse.parser.base._Component.html">_Component</a></code> (via <code><a href="wpscan_out_parse.parser.base._Parser.html">_Parser</a></code>):
           </p>
           <table class="children sortable" id="id5">
   
   <tr class="baseinstancevariable">
     
     <td>Instance Variable</td>
-    <td><a href="wpscan_out_parse.parser.base._Component.html#data" class="code" data-type="Instance Variable">data</a></td>
+    <td><code><a href="wpscan_out_parse.parser.base._Component.html#data">data</a></code></td>
     <td><span class="undocumented">Undocumented</span></td>
   </tr><tr class="baseinstancevariable">
     
     <td>Instance Variable</td>
-    <td><a href="wpscan_out_parse.parser.base._Component.html#false_positives_strings" class="code" data-type="Instance Variable">false_positives_strings</a></td>
+    <td><code><a href="wpscan_out_parse.parser.base._Component.html#false_positives_strings">false_positives_strings</a></code></td>
     <td><span class="undocumented">Undocumented</span></td>
   </tr><tr class="baseinstancevariable">
     
     <td>Instance Variable</td>
-    <td><a href="wpscan_out_parse.parser.base._Component.html#show_all_details" class="code" data-type="Instance Variable">show_all_details</a></td>
+    <td><code><a href="wpscan_out_parse.parser.base._Component.html#show_all_details">show_all_details</a></code></td>
     <td><span class="undocumented">Undocumented</span></td>
   </tr><tr class="basemethod">
     
     <td>Method</td>
-    <td><a href="wpscan_out_parse.parser.base._Component.html#is_false_positive" class="code" data-type="Method">is_false_positive</a></td>
+    <td><code><a href="wpscan_out_parse.parser.base._Component.html#is_false_positive">is_false_positive</a></code></td>
     <td><span>False Positive Detection</span></td>
   </tr>
 </table>
@@ -263,17 +261,16 @@
   </a>
   <div class="functionHeader">
     
-    def
-    __init__(self, data, false_positives_strings=None, show_all_details=(False)):
-    <a class="functionSourceLink" href="https://github.com/tristanlatr/wpscan_out_parse/tree/a5e01325d091e7828be43471b07ca92085baf3a9/wpscan_out_parse/parser/json_parser.py#L55">
+    <span class="py-keyword">def</span> <span class="py-defname">__init__</span>(self, data, false_positives_strings=None, show_all_details=False):
+    <a class="functionSourceLink" href="https://github.com/tristanlatr/wpscan_out_parse/tree/d40af311b3e208b3d3cbc32108c8dd0dc7e03ae4/wpscan_out_parse/parser/json_parser.py#L55">
       
       (source)
     </a>
   </div>
   <div class="docstring functionBody">
-    <div class="interfaceinfo">overrides <a href="wpscan_out_parse.parser.base._Parser.html#__init__" class="code" data-type="Method">wpscan_out_parse.parser.base._Parser.__init__</a></div>
+    <div class="interfaceinfo">overrides <code><a href="wpscan_out_parse.parser.base._Parser.html#__init__">wpscan_out_parse.parser.base._Parser.__init__</a></code></div>
     
-    <div class="undocumented">Undocumented</div>
+    <div><p class="undocumented">Undocumented</p></div>
   </div>
 </div><div class="baseinstancevariable">
   
@@ -284,15 +281,17 @@
     
   </a>
   <div class="functionHeader">
-    components =
-    <a class="functionSourceLink" href="https://github.com/tristanlatr/wpscan_out_parse/tree/a5e01325d091e7828be43471b07ca92085baf3a9/wpscan_out_parse/parser/json_parser.py#L63">
+    
+    <span class="py-defname">components</span> =
+    <a class="functionSourceLink" href="https://github.com/tristanlatr/wpscan_out_parse/tree/d40af311b3e208b3d3cbc32108c8dd0dc7e03ae4/wpscan_out_parse/parser/json_parser.py#L63">
       
       (source)
     </a>
   </div>
   <div class="functionBody">
     
-    <div class="undocumented">Undocumented</div>
+    
+    <div><p class="undocumented">Undocumented</p></div>
   </div>
 </div><div class="baseinstancevariable">
   
@@ -303,15 +302,17 @@
     
   </a>
   <div class="functionHeader">
-    version =
-    <a class="functionSourceLink" href="https://github.com/tristanlatr/wpscan_out_parse/tree/a5e01325d091e7828be43471b07ca92085baf3a9/wpscan_out_parse/parser/json_parser.py#L66">
+    
+    <span class="py-defname">version</span> =
+    <a class="functionSourceLink" href="https://github.com/tristanlatr/wpscan_out_parse/tree/d40af311b3e208b3d3cbc32108c8dd0dc7e03ae4/wpscan_out_parse/parser/json_parser.py#L66">
       
       (source)
     </a>
   </div>
   <div class="functionBody">
     
-    <div class="undocumented">Undocumented</div>
+    
+    <div><p class="undocumented">Undocumented</p></div>
   </div>
 </div><div class="baseinstancevariable">
   
@@ -322,15 +323,17 @@
     
   </a>
   <div class="functionHeader">
-    main_theme =
-    <a class="functionSourceLink" href="https://github.com/tristanlatr/wpscan_out_parse/tree/a5e01325d091e7828be43471b07ca92085baf3a9/wpscan_out_parse/parser/json_parser.py#L71">
+    
+    <span class="py-defname">main_theme</span> =
+    <a class="functionSourceLink" href="https://github.com/tristanlatr/wpscan_out_parse/tree/d40af311b3e208b3d3cbc32108c8dd0dc7e03ae4/wpscan_out_parse/parser/json_parser.py#L71">
       
       (source)
     </a>
   </div>
   <div class="functionBody">
     
-    <div class="undocumented">Undocumented</div>
+    
+    <div><p class="undocumented">Undocumented</p></div>
   </div>
 </div><div class="baseinstancevariable">
   
@@ -341,15 +344,17 @@
     
   </a>
   <div class="functionHeader">
-    plugins =
-    <a class="functionSourceLink" href="https://github.com/tristanlatr/wpscan_out_parse/tree/a5e01325d091e7828be43471b07ca92085baf3a9/wpscan_out_parse/parser/json_parser.py#L76">
+    
+    <span class="py-defname">plugins</span> =
+    <a class="functionSourceLink" href="https://github.com/tristanlatr/wpscan_out_parse/tree/d40af311b3e208b3d3cbc32108c8dd0dc7e03ae4/wpscan_out_parse/parser/json_parser.py#L76">
       
       (source)
     </a>
   </div>
   <div class="functionBody">
     
-    <div class="undocumented">Undocumented</div> (type: <code>List</code>)
+    
+    <div><p class="undocumented">Undocumented</p></div> (type: <code>list</code>)
   </div>
 </div><div class="baseinstancevariable">
   
@@ -360,15 +365,17 @@
     
   </a>
   <div class="functionHeader">
-    themes =
-    <a class="functionSourceLink" href="https://github.com/tristanlatr/wpscan_out_parse/tree/a5e01325d091e7828be43471b07ca92085baf3a9/wpscan_out_parse/parser/json_parser.py#L84">
+    
+    <span class="py-defname">themes</span> =
+    <a class="functionSourceLink" href="https://github.com/tristanlatr/wpscan_out_parse/tree/d40af311b3e208b3d3cbc32108c8dd0dc7e03ae4/wpscan_out_parse/parser/json_parser.py#L84">
       
       (source)
     </a>
   </div>
   <div class="functionBody">
     
-    <div class="undocumented">Undocumented</div> (type: <code>List</code>)
+    
+    <div><p class="undocumented">Undocumented</p></div> (type: <code>list</code>)
   </div>
 </div><div class="baseinstancevariable">
   
@@ -379,15 +386,17 @@
     
   </a>
   <div class="functionHeader">
-    interesting_findings =
-    <a class="functionSourceLink" href="https://github.com/tristanlatr/wpscan_out_parse/tree/a5e01325d091e7828be43471b07ca92085baf3a9/wpscan_out_parse/parser/json_parser.py#L93">
+    
+    <span class="py-defname">interesting_findings</span> =
+    <a class="functionSourceLink" href="https://github.com/tristanlatr/wpscan_out_parse/tree/d40af311b3e208b3d3cbc32108c8dd0dc7e03ae4/wpscan_out_parse/parser/json_parser.py#L93">
       
       (source)
     </a>
   </div>
   <div class="functionBody">
     
-    <div class="undocumented">Undocumented</div> (type: <code>List</code>)
+    
+    <div><p class="undocumented">Undocumented</p></div> (type: <code>list</code>)
   </div>
 </div><div class="baseinstancevariable">
   
@@ -398,15 +407,17 @@
     
   </a>
   <div class="functionHeader">
-    timthumbs =
-    <a class="functionSourceLink" href="https://github.com/tristanlatr/wpscan_out_parse/tree/a5e01325d091e7828be43471b07ca92085baf3a9/wpscan_out_parse/parser/json_parser.py#L101">
+    
+    <span class="py-defname">timthumbs</span> =
+    <a class="functionSourceLink" href="https://github.com/tristanlatr/wpscan_out_parse/tree/d40af311b3e208b3d3cbc32108c8dd0dc7e03ae4/wpscan_out_parse/parser/json_parser.py#L101">
       
       (source)
     </a>
   </div>
   <div class="functionBody">
     
-    <div class="undocumented">Undocumented</div> (type: <code>List</code>)
+    
+    <div><p class="undocumented">Undocumented</p></div> (type: <code>list</code>)
   </div>
 </div><div class="baseinstancevariable">
   
@@ -417,15 +428,17 @@
     
   </a>
   <div class="functionHeader">
-    db_exports =
-    <a class="functionSourceLink" href="https://github.com/tristanlatr/wpscan_out_parse/tree/a5e01325d091e7828be43471b07ca92085baf3a9/wpscan_out_parse/parser/json_parser.py#L109">
+    
+    <span class="py-defname">db_exports</span> =
+    <a class="functionSourceLink" href="https://github.com/tristanlatr/wpscan_out_parse/tree/d40af311b3e208b3d3cbc32108c8dd0dc7e03ae4/wpscan_out_parse/parser/json_parser.py#L109">
       
       (source)
     </a>
   </div>
   <div class="functionBody">
     
-    <div class="undocumented">Undocumented</div> (type: <code>List</code>)
+    
+    <div><p class="undocumented">Undocumented</p></div> (type: <code>list</code>)
   </div>
 </div><div class="baseinstancevariable">
   
@@ -436,15 +449,17 @@
     
   </a>
   <div class="functionHeader">
-    users =
-    <a class="functionSourceLink" href="https://github.com/tristanlatr/wpscan_out_parse/tree/a5e01325d091e7828be43471b07ca92085baf3a9/wpscan_out_parse/parser/json_parser.py#L117">
+    
+    <span class="py-defname">users</span> =
+    <a class="functionSourceLink" href="https://github.com/tristanlatr/wpscan_out_parse/tree/d40af311b3e208b3d3cbc32108c8dd0dc7e03ae4/wpscan_out_parse/parser/json_parser.py#L117">
       
       (source)
     </a>
   </div>
   <div class="functionBody">
     
-    <div class="undocumented">Undocumented</div> (type: <code>List</code>)
+    
+    <div><p class="undocumented">Undocumented</p></div> (type: <code>list</code>)
   </div>
 </div><div class="baseinstancevariable">
   
@@ -455,15 +470,17 @@
     
   </a>
   <div class="functionHeader">
-    medias =
-    <a class="functionSourceLink" href="https://github.com/tristanlatr/wpscan_out_parse/tree/a5e01325d091e7828be43471b07ca92085baf3a9/wpscan_out_parse/parser/json_parser.py#L125">
+    
+    <span class="py-defname">medias</span> =
+    <a class="functionSourceLink" href="https://github.com/tristanlatr/wpscan_out_parse/tree/d40af311b3e208b3d3cbc32108c8dd0dc7e03ae4/wpscan_out_parse/parser/json_parser.py#L125">
       
       (source)
     </a>
   </div>
   <div class="functionBody">
     
-    <div class="undocumented">Undocumented</div> (type: <code>List</code>)
+    
+    <div><p class="undocumented">Undocumented</p></div> (type: <code>list</code>)
   </div>
 </div><div class="baseinstancevariable">
   
@@ -474,15 +491,17 @@
     
   </a>
   <div class="functionHeader">
-    config_backups =
-    <a class="functionSourceLink" href="https://github.com/tristanlatr/wpscan_out_parse/tree/a5e01325d091e7828be43471b07ca92085baf3a9/wpscan_out_parse/parser/json_parser.py#L133">
+    
+    <span class="py-defname">config_backups</span> =
+    <a class="functionSourceLink" href="https://github.com/tristanlatr/wpscan_out_parse/tree/d40af311b3e208b3d3cbc32108c8dd0dc7e03ae4/wpscan_out_parse/parser/json_parser.py#L133">
       
       (source)
     </a>
   </div>
   <div class="functionBody">
     
-    <div class="undocumented">Undocumented</div> (type: <code>List</code>)
+    
+    <div><p class="undocumented">Undocumented</p></div> (type: <code>list</code>)
   </div>
 </div><div class="baseinstancevariable">
   
@@ -493,15 +512,17 @@
     
   </a>
   <div class="functionHeader">
-    vuln_api =
-    <a class="functionSourceLink" href="https://github.com/tristanlatr/wpscan_out_parse/tree/a5e01325d091e7828be43471b07ca92085baf3a9/wpscan_out_parse/parser/json_parser.py#L143">
+    
+    <span class="py-defname">vuln_api</span> =
+    <a class="functionSourceLink" href="https://github.com/tristanlatr/wpscan_out_parse/tree/d40af311b3e208b3d3cbc32108c8dd0dc7e03ae4/wpscan_out_parse/parser/json_parser.py#L143">
       
       (source)
     </a>
   </div>
   <div class="functionBody">
     
-    <div class="undocumented">Undocumented</div>
+    
+    <div><p class="undocumented">Undocumented</p></div>
   </div>
 </div><div class="baseinstancevariable">
   
@@ -512,15 +533,17 @@
     
   </a>
   <div class="functionHeader">
-    password_attack =
-    <a class="functionSourceLink" href="https://github.com/tristanlatr/wpscan_out_parse/tree/a5e01325d091e7828be43471b07ca92085baf3a9/wpscan_out_parse/parser/json_parser.py#L148">
+    
+    <span class="py-defname">password_attack</span> =
+    <a class="functionSourceLink" href="https://github.com/tristanlatr/wpscan_out_parse/tree/d40af311b3e208b3d3cbc32108c8dd0dc7e03ae4/wpscan_out_parse/parser/json_parser.py#L148">
       
       (source)
     </a>
   </div>
   <div class="functionBody">
     
-    <div class="undocumented">Undocumented</div>
+    
+    <div><p class="undocumented">Undocumented</p></div>
   </div>
 </div><div class="baseinstancevariable">
   
@@ -531,15 +554,17 @@
     
   </a>
   <div class="functionHeader">
-    not_fully_configured =
-    <a class="functionSourceLink" href="https://github.com/tristanlatr/wpscan_out_parse/tree/a5e01325d091e7828be43471b07ca92085baf3a9/wpscan_out_parse/parser/json_parser.py#L155">
+    
+    <span class="py-defname">not_fully_configured</span> =
+    <a class="functionSourceLink" href="https://github.com/tristanlatr/wpscan_out_parse/tree/d40af311b3e208b3d3cbc32108c8dd0dc7e03ae4/wpscan_out_parse/parser/json_parser.py#L155">
       
       (source)
     </a>
   </div>
   <div class="functionBody">
     
-    <div class="undocumented">Undocumented</div>
+    
+    <div><p class="undocumented">Undocumented</p></div>
   </div>
 </div><div class="baseinstancevariable">
   
@@ -550,15 +575,17 @@
     
   </a>
   <div class="functionHeader">
-    banner =
-    <a class="functionSourceLink" href="https://github.com/tristanlatr/wpscan_out_parse/tree/a5e01325d091e7828be43471b07ca92085baf3a9/wpscan_out_parse/parser/json_parser.py#L162">
+    
+    <span class="py-defname">banner</span> =
+    <a class="functionSourceLink" href="https://github.com/tristanlatr/wpscan_out_parse/tree/d40af311b3e208b3d3cbc32108c8dd0dc7e03ae4/wpscan_out_parse/parser/json_parser.py#L162">
       
       (source)
     </a>
   </div>
   <div class="functionBody">
     
-    <div class="undocumented">Undocumented</div>
+    
+    <div><p class="undocumented">Undocumented</p></div>
   </div>
 </div><div class="baseinstancevariable">
   
@@ -569,15 +596,17 @@
     
   </a>
   <div class="functionHeader">
-    scan_started =
-    <a class="functionSourceLink" href="https://github.com/tristanlatr/wpscan_out_parse/tree/a5e01325d091e7828be43471b07ca92085baf3a9/wpscan_out_parse/parser/json_parser.py#L167">
+    
+    <span class="py-defname">scan_started</span> =
+    <a class="functionSourceLink" href="https://github.com/tristanlatr/wpscan_out_parse/tree/d40af311b3e208b3d3cbc32108c8dd0dc7e03ae4/wpscan_out_parse/parser/json_parser.py#L167">
       
       (source)
     </a>
   </div>
   <div class="functionBody">
     
-    <div class="undocumented">Undocumented</div>
+    
+    <div><p class="undocumented">Undocumented</p></div>
   </div>
 </div><div class="baseinstancevariable">
   
@@ -588,15 +617,17 @@
     
   </a>
   <div class="functionHeader">
-    scan_finished =
-    <a class="functionSourceLink" href="https://github.com/tristanlatr/wpscan_out_parse/tree/a5e01325d091e7828be43471b07ca92085baf3a9/wpscan_out_parse/parser/json_parser.py#L172">
+    
+    <span class="py-defname">scan_finished</span> =
+    <a class="functionSourceLink" href="https://github.com/tristanlatr/wpscan_out_parse/tree/d40af311b3e208b3d3cbc32108c8dd0dc7e03ae4/wpscan_out_parse/parser/json_parser.py#L172">
       
       (source)
     </a>
   </div>
   <div class="functionBody">
     
-    <div class="undocumented">Undocumented</div>
+    
+    <div><p class="undocumented">Undocumented</p></div>
   </div>
 </div><div class="baseinstancevariable">
   
@@ -607,15 +638,17 @@
     
   </a>
   <div class="functionHeader">
-    error =
-    <a class="functionSourceLink" href="https://github.com/tristanlatr/wpscan_out_parse/tree/a5e01325d091e7828be43471b07ca92085baf3a9/wpscan_out_parse/parser/json_parser.py#L178">
+    
+    <span class="py-defname">error</span> =
+    <a class="functionSourceLink" href="https://github.com/tristanlatr/wpscan_out_parse/tree/d40af311b3e208b3d3cbc32108c8dd0dc7e03ae4/wpscan_out_parse/parser/json_parser.py#L178">
       
       (source)
     </a>
   </div>
   <div class="functionBody">
     
-    <div class="undocumented">Undocumented</div>
+    
+    <div><p class="undocumented">Undocumented</p></div>
   </div>
 </div><div class="basemethod">
   
@@ -627,15 +660,14 @@
   </a>
   <div class="functionHeader">
     
-    def
-    get_infos(self):
-    <a class="functionSourceLink" href="https://github.com/tristanlatr/wpscan_out_parse/tree/a5e01325d091e7828be43471b07ca92085baf3a9/wpscan_out_parse/parser/json_parser.py#L199">
+    <span class="py-keyword">def</span> <span class="py-defname">get_infos</span>(self):
+    <a class="functionSourceLink" href="https://github.com/tristanlatr/wpscan_out_parse/tree/d40af311b3e208b3d3cbc32108c8dd0dc7e03ae4/wpscan_out_parse/parser/json_parser.py#L199">
       
       (source)
     </a>
   </div>
   <div class="docstring functionBody">
-    <div class="interfaceinfo">overrides <a href="wpscan_out_parse.parser.base._Component.html#get_infos" class="code" data-type="Method">wpscan_out_parse.parser.base._Component.get_infos</a></div>
+    <div class="interfaceinfo">overrides <code><a href="wpscan_out_parse.parser.base._Component.html#get_infos">wpscan_out_parse.parser.base._Component.get_infos</a></code></div>
     
     <div>Get all infos from all components and add false positives as infos with "[False positive]" prefix</div>
   </div>
@@ -649,15 +681,14 @@
   </a>
   <div class="functionHeader">
     
-    def
-    get_warnings(self):
-    <a class="functionSourceLink" href="https://github.com/tristanlatr/wpscan_out_parse/tree/a5e01325d091e7828be43471b07ca92085baf3a9/wpscan_out_parse/parser/json_parser.py#L224">
+    <span class="py-keyword">def</span> <span class="py-defname">get_warnings</span>(self):
+    <a class="functionSourceLink" href="https://github.com/tristanlatr/wpscan_out_parse/tree/d40af311b3e208b3d3cbc32108c8dd0dc7e03ae4/wpscan_out_parse/parser/json_parser.py#L224">
       
       (source)
     </a>
   </div>
   <div class="docstring functionBody">
-    <div class="interfaceinfo">overrides <a href="wpscan_out_parse.parser.base._Component.html#get_warnings" class="code" data-type="Method">wpscan_out_parse.parser.base._Component.get_warnings</a></div>
+    <div class="interfaceinfo">overrides <code><a href="wpscan_out_parse.parser.base._Component.html#get_warnings">wpscan_out_parse.parser.base._Component.get_warnings</a></code></div>
     
     <div>Get all warnings from all components and igore false positives and automatically remove special warning if all vuln are ignored</div>
   </div>
@@ -671,15 +702,14 @@
   </a>
   <div class="functionHeader">
     
-    def
-    get_alerts(self):
-    <a class="functionSourceLink" href="https://github.com/tristanlatr/wpscan_out_parse/tree/a5e01325d091e7828be43471b07ca92085baf3a9/wpscan_out_parse/parser/json_parser.py#L248">
+    <span class="py-keyword">def</span> <span class="py-defname">get_alerts</span>(self):
+    <a class="functionSourceLink" href="https://github.com/tristanlatr/wpscan_out_parse/tree/d40af311b3e208b3d3cbc32108c8dd0dc7e03ae4/wpscan_out_parse/parser/json_parser.py#L248">
       
       (source)
     </a>
   </div>
   <div class="docstring functionBody">
-    <div class="interfaceinfo">overrides <a href="wpscan_out_parse.parser.base._Component.html#get_alerts" class="code" data-type="Method">wpscan_out_parse.parser.base._Component.get_alerts</a></div>
+    <div class="interfaceinfo">overrides <code><a href="wpscan_out_parse.parser.base._Component.html#get_alerts">wpscan_out_parse.parser.base._Component.get_alerts</a></code></div>
     
     <div>Get all alerts from all components and igore false positives</div>
   </div>
@@ -693,15 +723,14 @@
   </a>
   <div class="functionHeader">
     
-    def
-    get_results(self):
-    <a class="functionSourceLink" href="https://github.com/tristanlatr/wpscan_out_parse/tree/a5e01325d091e7828be43471b07ca92085baf3a9/wpscan_out_parse/parser/json_parser.py#L261">
+    <span class="py-keyword">def</span> <span class="py-defname">get_results</span>(self):
+    <a class="functionSourceLink" href="https://github.com/tristanlatr/wpscan_out_parse/tree/d40af311b3e208b3d3cbc32108c8dd0dc7e03ae4/wpscan_out_parse/parser/json_parser.py#L261">
       
       (source)
     </a>
   </div>
   <div class="docstring functionBody">
-    <div class="interfaceinfo">overrides <a href="wpscan_out_parse.parser.base._Parser.html#get_results" class="code" data-type="Method">wpscan_out_parse.parser.base._Parser.get_results</a></div>
+    <div class="interfaceinfo">overrides <code><a href="wpscan_out_parse.parser.base._Parser.html#get_results">wpscan_out_parse.parser.base._Parser.get_results</a></code></div>
     
     <div><p>Returns a dictionnary structure like</p>
 <pre class="rst-literal-block">
@@ -737,9 +766,8 @@
   </a>
   <div class="functionHeader">
     
-    def
-    get_core_findings(self):
-    <a class="functionSourceLink" href="https://github.com/tristanlatr/wpscan_out_parse/tree/a5e01325d091e7828be43471b07ca92085baf3a9/wpscan_out_parse/parser/json_parser.py#L271">
+    <span class="py-keyword">def</span> <span class="py-defname">get_core_findings</span>(self):
+    <a class="functionSourceLink" href="https://github.com/tristanlatr/wpscan_out_parse/tree/d40af311b3e208b3d3cbc32108c8dd0dc7e03ae4/wpscan_out_parse/parser/json_parser.py#L271">
       
       (source)
     </a>
@@ -759,9 +787,8 @@
   </a>
   <div class="functionHeader">
     
-    def
-    get_summary_list(self):
-    <a class="functionSourceLink" href="https://github.com/tristanlatr/wpscan_out_parse/tree/a5e01325d091e7828be43471b07ca92085baf3a9/wpscan_out_parse/parser/json_parser.py#L279">
+    <span class="py-keyword">def</span> <span class="py-defname">get_summary_list</span>(self):
+    <a class="functionSourceLink" href="https://github.com/tristanlatr/wpscan_out_parse/tree/d40af311b3e208b3d3cbc32108c8dd0dc7e03ae4/wpscan_out_parse/parser/json_parser.py#L279">
       
       (source)
     </a>
@@ -781,15 +808,14 @@
   </a>
   <div class="functionHeader">
     
-    def
-    get_error(self):
-    <a class="functionSourceLink" href="https://github.com/tristanlatr/wpscan_out_parse/tree/a5e01325d091e7828be43471b07ca92085baf3a9/wpscan_out_parse/parser/json_parser.py#L295">
+    <span class="py-keyword">def</span> <span class="py-defname">get_error</span>(self):
+    <a class="functionSourceLink" href="https://github.com/tristanlatr/wpscan_out_parse/tree/d40af311b3e208b3d3cbc32108c8dd0dc7e03ae4/wpscan_out_parse/parser/json_parser.py#L295">
       
       (source)
     </a>
   </div>
   <div class="docstring functionBody">
-    <div class="interfaceinfo">overrides <a href="wpscan_out_parse.parser.base._Parser.html#get_error" class="code" data-type="Method">wpscan_out_parse.parser.base._Parser.get_error</a></div>
+    <div class="interfaceinfo">overrides <code><a href="wpscan_out_parse.parser.base._Parser.html#get_error">wpscan_out_parse.parser.base._Parser.get_error</a></code></div>
     
     <div>Return any error or None if no errors</div>
   </div>
@@ -797,7 +823,7 @@
 
       </div>
       <address>
-        <a href="index.html">API Documentation</a> for <a href="https://github.com/tristanlatr/wpscan_out_parse">WPScan Output Parser</a>, generated by <a href="https://github.com/twisted/pydoctor/">pydoctor</a> 20.7.1 at 2020-11-15 20:11:33.
+        <a href="index.html">API Documentation</a> for <a href="https://github.com/tristanlatr/wpscan_out_parse">WPScan Output Parser</a>, generated by <a href="https://github.com/twisted/pydoctor/">pydoctor</a> 21.2.2 at 2021-04-08 17:44:03.
       </address>
 
     </div>

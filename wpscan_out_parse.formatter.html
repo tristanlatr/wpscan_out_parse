@@ -13,22 +13,20 @@
 
     <nav class="navbar navbar-default">
       <div class="container">
-        <div class="navbar-header">
-          <a class="navbar-brand" href="index.html">
-            <a href="https://github.com/tristanlatr/wpscan_out_parse">WPScan Output Parser</a> API Documentation
-          </a>
+        <div class="navbar-header navbar-brand">
+          <a href="https://github.com/tristanlatr/wpscan_out_parse">WPScan Output Parser</a>
+          <a href="index.html">API Documentation</a>
         </div>
       </div>
     </nav>
 
-    <div id="showPrivate">
-      <button class="btn btn-link" onclick="togglePrivate()">Toggle Private API</button>
-    </div>
-
     <div class="container">
 
       <div class="page-header">
-        <h1 class="module"><code><a href="wpscan_out_parse.html" class="code" data-type="Package">wpscan_out_parse</a>.<a href="wpscan_out_parse.formatter.html" class="code" data-type="Module">formatter</a></code></h1>
+        <h1 class="module"><code><code><a href="wpscan_out_parse.html">wpscan_out_parse</a></code>.<code><a href="wpscan_out_parse.formatter.html">formatter</a></code></code></h1>
+        <div id="showPrivate">
+          <button class="btn btn-link" onclick="togglePrivate()">Toggle Private API</button>
+        </div>
       </div>
 
       <div class="categoryHeader">
@@ -36,12 +34,12 @@
       </div>
 
       <div class="extrasDocstring">
-        <a href="https://github.com/tristanlatr/wpscan_out_parse/tree/a5e01325d091e7828be43471b07ca92085baf3a9/wpscan_out_parse/formatter.py">(source)</a>
+        <a href="https://github.com/tristanlatr/wpscan_out_parse/tree/d40af311b3e208b3d3cbc32108c8dd0dc7e03ae4/wpscan_out_parse/formatter.py">(source)</a>
         <p></p>
       </div>
 
       <div class="moduleDocstring">
-        <div class="undocumented">Undocumented</div>
+        <div><p class="undocumented">Undocumented</p></div>
       </div>
 
       <div id="splitTables">
@@ -50,32 +48,32 @@
   <tr class="function">
     
     <td>Function</td>
-    <td><a href="wpscan_out_parse.formatter.html#build_message" class="code" data-type="Function">build_message</a></td>
+    <td><code><a href="#build_message">build_message</a></code></td>
     <td><span>Build mail message text base on report and warnngs and info switch</span></td>
   </tr><tr class="function">
     
     <td>Function</td>
-    <td><a href="wpscan_out_parse.formatter.html#format_issues" class="code" data-type="Function">format_issues</a></td>
+    <td><code><a href="#format_issues">format_issues</a></code></td>
     <td><span>Format one block of issues to text with the title</span></td>
   </tr><tr class="function">
     
     <td>Function</td>
-    <td><a href="wpscan_out_parse.formatter.html#get_table_cell_color" class="code" data-type="Function">get_table_cell_color</a></td>
+    <td><code><a href="#get_table_cell_color">get_table_cell_color</a></code></td>
     <td><span class="undocumented">Undocumented</span></td>
   </tr><tr class="function">
     
     <td>Function</td>
-    <td><a href="wpscan_out_parse.formatter.html#format_summary_ascii_table" class="code" data-type="Function">format_summary_ascii_table</a></td>
+    <td><code><a href="#format_summary_ascii_table">format_summary_ascii_table</a></code></td>
     <td><span>Return a nice string table Author: Thierry Husson - Use it as you want but don't blame me.</span></td>
   </tr><tr class="function">
     
     <td>Function</td>
-    <td><a href="wpscan_out_parse.formatter.html#format_summary_html" class="code" data-type="Function">format_summary_html</a></td>
+    <td><code><a href="#format_summary_html">format_summary_html</a></code></td>
     <td><span class="undocumented">Undocumented</span></td>
   </tr><tr class="function">
     
     <td>Function</td>
-    <td><a href="wpscan_out_parse.formatter.html#replace" class="code" data-type="Function">replace</a></td>
+    <td><code><a href="#replace">replace</a></code></td>
     <td><span>Multiple replacements helper method.  Stolen on the web</span></td>
   </tr>
 </table>
@@ -96,9 +94,8 @@
   </a>
   <div class="functionHeader">
     
-    def
-    build_message(results, warnings=(True), infos=(True), format="""cli""", nocolor=(False)):
-    <a class="functionSourceLink" href="https://github.com/tristanlatr/wpscan_out_parse/tree/a5e01325d091e7828be43471b07ca92085baf3a9/wpscan_out_parse/formatter.py#L25">
+    <span class="py-keyword">def</span> <span class="py-defname">build_message</span>(results, warnings=True, infos=True, format='cli', nocolor=False):
+    <a class="functionSourceLink" href="https://github.com/tristanlatr/wpscan_out_parse/tree/d40af311b3e208b3d3cbc32108c8dd0dc7e03ae4/wpscan_out_parse/formatter.py#L25">
       
       (source)
     </a>
@@ -118,9 +115,8 @@
   </a>
   <div class="functionHeader">
     
-    def
-    format_issues(title, issues, format="""cli""", apply_br_tab_replace_on_issues=(True)):
-    <a class="functionSourceLink" href="https://github.com/tristanlatr/wpscan_out_parse/tree/a5e01325d091e7828be43471b07ca92085baf3a9/wpscan_out_parse/formatter.py#L92">
+    <span class="py-keyword">def</span> <span class="py-defname">format_issues</span>(title, issues, format='cli', apply_br_tab_replace_on_issues=True):
+    <a class="functionSourceLink" href="https://github.com/tristanlatr/wpscan_out_parse/tree/d40af311b3e208b3d3cbc32108c8dd0dc7e03ae4/wpscan_out_parse/formatter.py#L92">
       
       (source)
     </a>
@@ -140,9 +136,8 @@
   </a>
   <div class="functionHeader">
     
-    def
-    get_table_cell_color(col, val, ansi=(False)):
-    <a class="functionSourceLink" href="https://github.com/tristanlatr/wpscan_out_parse/tree/a5e01325d091e7828be43471b07ca92085baf3a9/wpscan_out_parse/formatter.py#L116">
+    <span class="py-keyword">def</span> <span class="py-defname">get_table_cell_color</span>(col, val, ansi=False):
+    <a class="functionSourceLink" href="https://github.com/tristanlatr/wpscan_out_parse/tree/d40af311b3e208b3d3cbc32108c8dd0dc7e03ae4/wpscan_out_parse/formatter.py#L116">
       
       (source)
     </a>
@@ -150,7 +145,7 @@
   <div class="docstring functionBody">
     
     
-    <div class="undocumented">Undocumented</div>
+    <div><p class="undocumented">Undocumented</p></div>
   </div>
 </div><div class="basefunction">
   
@@ -162,9 +157,8 @@
   </a>
   <div class="functionHeader">
     
-    def
-    format_summary_ascii_table(table, line, nocolor=(False)):
-    <a class="functionSourceLink" href="https://github.com/tristanlatr/wpscan_out_parse/tree/a5e01325d091e7828be43471b07ca92085baf3a9/wpscan_out_parse/formatter.py#L168">
+    <span class="py-keyword">def</span> <span class="py-defname">format_summary_ascii_table</span>(table, line, nocolor=False):
+    <a class="functionSourceLink" href="https://github.com/tristanlatr/wpscan_out_parse/tree/d40af311b3e208b3d3cbc32108c8dd0dc7e03ae4/wpscan_out_parse/formatter.py#L168">
       
       (source)
     </a>
@@ -185,9 +179,8 @@ Author: Thierry Husson - Use it as you want but don't blame me.</div>
   </a>
   <div class="functionHeader">
     
-    def
-    format_summary_html(table, line, nocolor):
-    <a class="functionSourceLink" href="https://github.com/tristanlatr/wpscan_out_parse/tree/a5e01325d091e7828be43471b07ca92085baf3a9/wpscan_out_parse/formatter.py#L211">
+    <span class="py-keyword">def</span> <span class="py-defname">format_summary_html</span>(table, line, nocolor):
+    <a class="functionSourceLink" href="https://github.com/tristanlatr/wpscan_out_parse/tree/d40af311b3e208b3d3cbc32108c8dd0dc7e03ae4/wpscan_out_parse/formatter.py#L211">
       
       (source)
     </a>
@@ -195,7 +188,7 @@ Author: Thierry Husson - Use it as you want but don't blame me.</div>
   <div class="docstring functionBody">
     
     
-    <div class="undocumented">Undocumented</div>
+    <div><p class="undocumented">Undocumented</p></div>
   </div>
 </div><div class="basefunction">
   
@@ -207,9 +200,8 @@ Author: Thierry Husson - Use it as you want but don't blame me.</div>
   </a>
   <div class="functionHeader">
     
-    def
-    replace(text, conditions):
-    <a class="functionSourceLink" href="https://github.com/tristanlatr/wpscan_out_parse/tree/a5e01325d091e7828be43471b07ca92085baf3a9/wpscan_out_parse/formatter.py#L263">
+    <span class="py-keyword">def</span> <span class="py-defname">replace</span>(text, conditions):
+    <a class="functionSourceLink" href="https://github.com/tristanlatr/wpscan_out_parse/tree/d40af311b3e208b3d3cbc32108c8dd0dc7e03ae4/wpscan_out_parse/formatter.py#L263">
       
       (source)
     </a>
@@ -223,7 +215,7 @@ Author: Thierry Husson - Use it as you want but don't blame me.</div>
 
       </div>
       <address>
-        <a href="index.html">API Documentation</a> for <a href="https://github.com/tristanlatr/wpscan_out_parse">WPScan Output Parser</a>, generated by <a href="https://github.com/twisted/pydoctor/">pydoctor</a> 20.7.1 at 2020-11-15 20:11:33.
+        <a href="index.html">API Documentation</a> for <a href="https://github.com/tristanlatr/wpscan_out_parse">WPScan Output Parser</a>, generated by <a href="https://github.com/twisted/pydoctor/">pydoctor</a> 21.2.2 at 2021-04-08 17:44:03.
       </address>
 
     </div>
