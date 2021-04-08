@@ -38,7 +38,7 @@ class WordPressVersion(_CoreFinding):
     def get_warnings(self):
         """Return 0 or 1 warning"""
 
-        if self.status == "insecure":
+        if self.status in ["insecure", "outdated"]:
             warning = "Outdated "
             warning += self._get_infos()[0]
             return [warning]
@@ -55,7 +55,7 @@ class WordPressVersion(_CoreFinding):
 
     def get_version_status(self):
         if self.number:
-            if self.status == "insecure":
+            if self.status in ["insecure", "outdated"]:
                 return "Outdated"
             elif self.status == "latest":
                 return "Latest"

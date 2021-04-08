@@ -62,7 +62,7 @@ class WPScanCliParser(_Parser):
         # Warning for insecure Wordpress and based on interesting findings strings
         if any(
             string in line
-            for string in ["Insecure"]
+            for string in ["Insecure", "Outdated"]
             + InterestingFinding.INTERESTING_FINDING_WARNING_STRINGS
         ):
             warning_on = True
