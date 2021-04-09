@@ -14,8 +14,8 @@ VERSION = "1.8.1"
 
 ###################### IMPORTS  ######################
 
-from .parser.json_parser import WPScanJsonParser
-from .parser.cli_parser import WPScanCliParser
+from .parser._json_parser import WPScanJsonParser
+from .parser._cli_parser import WPScanCliParser
 from .parser import parse_results_from_string
 from .parser import parse_results_from_file
 from .formatter import format_results

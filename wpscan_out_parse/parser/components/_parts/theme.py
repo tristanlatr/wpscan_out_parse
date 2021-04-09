@@ -1,14 +1,16 @@
+from typing import Any, Dict, Sequence
+from itertools import chain
 from .wp_item import WPItem
 
 
 class Theme(WPItem):
-    def __init__(self, data, *args, **kwargs):
+    def __init__(self, data:Dict[str,Any], *args: Any, **kwargs: Any) -> None:
         """From https://github.com/wpscanteam/wpscan/blob/master/app/views/json/theme.erb"""
 
         super().__init__(data, *args, **kwargs)
 
         self.style_url = self.data.get("style_url", None)
-        self.style_name = self.data.get("style_name", None)
+        self.style_name= self.data.get("style_name", None)
         self.style_uri = self.data.get("style_uri", None)
         self.description = self.data.get("description", None)
         self.author = self.data.get("author", None)
@@ -22,10 +24,11 @@ class Theme(WPItem):
             Theme(theme, *args, **kwargs) for theme in self.data.get("parents", [])
         ]
 
-    def _get_infos(self):
+    def _get_infos(self) -> Sequence[str]:
         """Return 1 info"""
-        info = super()._get_infos()[0]
+        super_infos = super()._get_infos()
 
+        info = ""
         if self.style_url:
             info += "\nStyle CSS: {}".format(self.style_url)
         if self.style_name and self.show_all_details:
@@ -54,15 +57,15 @@ class Theme(WPItem):
                     ", ".join([p.slug for p in self.parents])
                 )
 
-        return [info]
+        return ["".join(chain(super_infos, [info]))]
 
-    def get_infos(self):
+    def get_infos(self) -> Sequence[str]:
         if super().get_infos():
-            return ["Theme: {}".format(super().get_infos()[0])]
+            return ["".join("Theme: ", *super().get_infos())]
         else:
             return []
 
-    def get_warnings(self):
+    def get_warnings(self) -> Sequence[str]:
         """Return theme warnings"""
         return [
             "{}{}".format(
@@ -72,5 +75,5 @@ class Theme(WPItem):
             for warning in super().get_warnings()
         ]
 
-    def get_name(self):
+    def get_name(self) -> str:
         return "Theme: {}".format(self.slug)

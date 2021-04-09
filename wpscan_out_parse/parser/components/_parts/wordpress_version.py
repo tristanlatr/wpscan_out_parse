@@ -1,16 +1,17 @@
+from typing import Any, Dict, Sequence
 from .finding import _CoreFinding
 
 
 class WordPressVersion(_CoreFinding):
-    def __init__(self, data, *args, **kwargs):
+    def __init__(self, data:Dict[str,Any], *args: Any, **kwargs: Any) -> None:
         """From https://github.com/wpscanteam/wpscan/blob/master/app/views/json/wp_version/version.erb"""
 
         super().__init__(data, *args, **kwargs)
-        self.number = self.data.get("number", None)
-        self.release_date = self.data.get("release_date", None)
-        self.status = self.data.get("status", None)
+        self.number: str = self.data.get("number", None)
+        self.release_date: str = self.data.get("release_date", None)
+        self.status: str = self.data.get("status", None)
 
-    def _get_infos(self):
+    def _get_infos(self) -> Sequence[str]:
         """Return 1 info"""
         if self.number:
             info = "Wordpress version: {}".format(self.number)
@@ -24,36 +25,37 @@ class WordPressVersion(_CoreFinding):
         else:
             info = "The WordPress version could not be detected"
         # If finding infos are present and show_all_details, add them
-        if super().get_infos()[0] and self.show_all_details:
-            info += "\n{}".format(super().get_infos()[0])
+        super_infos = super().get_infos()
+        if super_infos and all(super_infos) and self.show_all_details:
+            info += "\n{}".format(next(iter(super_infos)))
         return [info]
 
-    def get_infos(self):
+    def get_infos(self) -> Sequence[str]:
         """Return 0 or 1 info, no infos if WordPressVersion triggedred warning, use get_warnings()"""
         if not self.get_warnings():
             return self._get_infos()
         else:
             return []
 
-    def get_warnings(self):
+    def get_warnings(self) -> Sequence[str]:
         """Return 0 or 1 warning"""
 
         if self.status in ["insecure", "outdated"]:
             warning = "Outdated "
-            warning += self._get_infos()[0]
+            warning += next(iter(self._get_infos()))
             return [warning]
         else:
             return []
 
-    def get_alerts(self):
+    def get_alerts(self) -> Sequence[str]:
         """Return Wordpress Version vulnerabilities"""
         return ["Wordpress {}".format(alert) for alert in super().get_alerts()]
 
-    def get_version(self):
+    def get_version(self) -> str:
         """Return the version string or 'Unknown'"""
         return self.number if self.number else "Unknown"
 
-    def get_version_status(self):
+    def get_version_status(self) -> str:
         if self.number:
             if self.status in ["insecure", "outdated"]:
                 return "Outdated"
@@ -64,10 +66,10 @@ class WordPressVersion(_CoreFinding):
         else:
             return "N/A"
 
-    def get_vulnerabilities_string(self):
+    def get_vulnerabilities_string(self) -> str:
         return "{}".format(len(self.vulnerabilities))
 
-    def get_name(self):
+    def get_name(self) -> str:
         return "WordPress {} {}".format(
             self.get_version(),
             "({})".format(self.release_date)

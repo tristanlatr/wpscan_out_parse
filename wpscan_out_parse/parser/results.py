@@ -1,8 +1,9 @@
-import collections
-
 ############ RESULTS CLASS ###########################
 
-TEMPLATE_SCAN_RESULTS = {
+from typing import Any, Dict
+
+
+TEMPLATE_SCAN_RESULTS: Dict[str, Any] = {
     "infos": None,
     "warnings": None,
     "alerts": None,
@@ -10,7 +11,7 @@ TEMPLATE_SCAN_RESULTS = {
     "error": None,
 }
 
-TEMPLATE_SCAN_RESULTS_SUMMARY_ROW = {
+TEMPLATE_SCAN_RESULTS_SUMMARY_ROW: Dict[str, Any] = {
     "Component": None,
     "Version": None,
     "Version State": None,
@@ -19,19 +20,19 @@ TEMPLATE_SCAN_RESULTS_SUMMARY_ROW = {
 }
 
 
-class _WPScanResults(collections.UserDict):
-    def __init__(self, data=None):
-        super().__init__(data)
+class WPScanResults(dict):
+    def __init__(self, **kwargs: Any) -> None:
+        super().__init__(**kwargs)
         # Init dict with default values if not already passed with data
         for key in TEMPLATE_SCAN_RESULTS.keys():
-            if key not in self.data:
-                self.data[key] = TEMPLATE_SCAN_RESULTS[key]
+            if key not in self:
+                self[key] = TEMPLATE_SCAN_RESULTS[key]
 
 
-class _WPScanResultsSummaryRow(collections.UserDict):
-    def __init__(self, data=None):
-        super().__init__(data)
+class WPScanResultsSummaryRow(dict):
+    def __init__(self, **kwargs: Any) -> None:
+        super().__init__(**kwargs)
         # Init dict with default values if not already passed with data
         for key in TEMPLATE_SCAN_RESULTS_SUMMARY_ROW.keys():
-            if key not in self.data:
-                self.data[key] = TEMPLATE_SCAN_RESULTS_SUMMARY_ROW[key]
+            if key not in self:
+                self[key] = TEMPLATE_SCAN_RESULTS_SUMMARY_ROW[key]

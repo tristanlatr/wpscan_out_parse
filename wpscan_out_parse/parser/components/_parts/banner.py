@@ -1,20 +1,21 @@
-from ..base import _Component
+from typing import Any, Dict, Sequence, List
+from ...base import Component
 
 
-class Banner(_Component):
-    def __init__(self, data, *args, **kwargs):
+class Banner(Component):
+    def __init__(self, data: Dict[str, Any], *args: Any, **kwargs: Any):
         """From https://github.com/wpscanteam/wpscan/blob/master/app/views/json/core/banner.erb"""
 
         super().__init__(data, *args, **kwargs)
 
-        self.description = self.data.get("description", None)
-        self.version = self.data.get("version", None)
-        self.authors = self.data.get("authors", None)
-        self.sponsor = self.data.get("sponsor", None) or self.data.get(
+        self.description:str = self.data.get("description", None)
+        self.version:str = self.data.get("version", None)
+        self.authors:List[str] = self.data.get("authors", None)
+        self.sponsor:str = self.data.get("sponsor", None) or self.data.get(
             "sponsored_by", None
         )
 
-    def get_infos(self):
+    def get_infos(self)-> Sequence[str]:
         info = "Scanned with {}".format(self.description)
         info += "\nVersion: {}".format(self.version)
         if self.show_all_details:
@@ -24,10 +25,10 @@ class Banner(_Component):
 
         return [info]
 
-    def get_warnings(self):
+    def get_warnings(self)-> Sequence[str]:
         """Return empty list"""
         return []
 
-    def get_alerts(self):
+    def get_alerts(self)-> Sequence[str]:
         """Return empty list"""
         return []

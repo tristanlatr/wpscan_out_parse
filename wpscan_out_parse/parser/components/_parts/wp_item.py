@@ -1,9 +1,10 @@
+from typing import Any, Dict, Sequence
 from .finding import _CoreFinding
 from .wp_item_version import WPItemVersion
 
 
 class WPItem(_CoreFinding):
-    def __init__(self, data, *args, **kwargs):
+    def __init__(self, data: Dict[str, Any], *args: Any, **kwargs: Any) -> None:
         """From https://github.com/wpscanteam/wpscan/blob/master/app/views/json/wp_item.erb"""
 
         super().__init__(data, *args, **kwargs)
@@ -18,7 +19,7 @@ class WPItem(_CoreFinding):
         self.error_log_url = self.data.get("error_log_url", None)
         self.version = WPItemVersion(self.data.get("version", None), *args, **kwargs)
 
-    def _get_warnings(self):
+    def _get_warnings(self) -> Sequence[str]:
         """Return 0 or 1 warning. The warning can contain infos about oudated plugin, directory listing or accessible error log.
         First line of warning string is the plugin slug. Location also added as a reference."""
         # Test if there is issues
@@ -38,7 +39,7 @@ class WPItem(_CoreFinding):
         else:
             return [issue_data]
 
-    def get_alerts(self):
+    def get_alerts(self) -> Sequence[str]:
         """Return list of know plugin or theme vulnerability. Empty list is returned if plugin version is unrecognized"""
         alerts = []
         if self.version.get_infos():
@@ -46,7 +47,7 @@ class WPItem(_CoreFinding):
             alerts.extend(["{}".format(alert) for alert in self.version.get_alerts()])
         return alerts
 
-    def get_warnings(self):
+    def get_warnings(self) -> Sequence[str]:
         """Return plugin or theme warnings, if oudated plugin, directory listing, accessible error log and
         for all know vulnerabilities if plugin version could not be recognized.
         Adds a special text saying the version is unrecognized if that's the case"""
@@ -55,11 +56,11 @@ class WPItem(_CoreFinding):
         warning = self.slug if self.slug else str()
         # Get oudated theme warning
         if self._get_warnings():
-            warning += self._get_warnings()[0]
+            warning += next(iter(self._get_warnings()))
         if warning:
             warning += "\n"
         # Get generic infos
-        warning += self._get_infos()[0]
+        warning += next(iter(self._get_infos()))
         # If vulns are found and the version is unrecognized
         if not self.version.get_infos() and super().get_alerts():
             # Adds a special text saying all vulns are listed
@@ -79,7 +80,7 @@ class WPItem(_CoreFinding):
             )
         return warnings
 
-    def _get_infos(self):
+    def _get_infos(self) -> Sequence[str]:
         """Return 1 info"""
         info = ""
         if self.show_all_details:
@@ -94,10 +95,12 @@ class WPItem(_CoreFinding):
         # If finding infos are present, add them
         if info:
             info += "\n"
-        if super().get_infos()[0] and self.show_all_details:
-            info += "{}\n".format(super().get_infos()[0])
+
+        super_infos = super().get_infos()
+        if super_infos and all(super_infos) and self.show_all_details:
+            info += "{}\n".format(next(iter(super_infos)))
         if self.version.get_infos():
-            info += self.version.get_infos()[0]
+            info += next(iter(self.version.get_infos()))
             if self.version.number == self.latest_version:
                 info += " (up to date)"
             elif self.latest_version:
@@ -109,17 +112,17 @@ class WPItem(_CoreFinding):
 
         return [info]
 
-    def get_infos(self):
+    def get_infos(self) -> Sequence[str]:
         """Return 0 or 1 info, no info if WPItem triggered warning, use get_warnings()"""
         if not self.get_warnings():
-            return ["{}\n{}".format(self.slug, self._get_infos()[0])]
+            return ["{}\n{}".format(self.slug, next(iter(self._get_infos())))]
         else:
             return []
 
-    def get_version(self):
+    def get_version(self) -> str:
         return self.version.get_version()
 
-    def get_version_status(self):
+    def get_version_status(self) -> str:
         if self.version.get_infos():
             if self.outdated:
                 val = "Outdated"
@@ -139,7 +142,7 @@ class WPItem(_CoreFinding):
 
         return val
 
-    def get_vulnerabilities_string(self):
+    def get_vulnerabilities_string(self) -> str:
         return "{}{}".format(
             len(self.vulnerabilities),
             " (potential)"

@@ -1,9 +1,9 @@
 import json
 import re
-from string import Template
+from typing import Any, Dict, Sequence, List
 
 
-def format_results(results, format, warnings=True, infos=True, nocolor=False):
+def format_results(results: Dict[str, Any], format:str, warnings:bool=True, infos:bool=True, nocolor:bool=False) -> str:
     """
     Format the results dict into a "html", "cli" or "json" string.
 
@@ -22,7 +22,7 @@ def format_results(results, format, warnings=True, infos=True, nocolor=False):
         )
 
 
-def build_message(results, warnings=True, infos=True, format="cli", nocolor=False):
+def build_message(results:dict, warnings:bool=True, infos:bool=True, format:str="cli", nocolor:bool=False) -> str:
     """Build mail message text base on report and warnngs and info switch"""
     message = ""
     if results["error"]:
@@ -89,7 +89,7 @@ def build_message(results, warnings=True, infos=True, format="cli", nocolor=Fals
     return message
 
 
-def format_issues(title, issues, format="cli", apply_br_tab_replace_on_issues=True):
+def format_issues(title:str, issues:Sequence[str], format:str="cli", apply_br_tab_replace_on_issues:bool=True) -> str:
     """Format one block of issues to text with the title"""
     message = ""
     if issues:
@@ -113,7 +113,7 @@ def format_issues(title, issues, format="cli", apply_br_tab_replace_on_issues=Tr
     return message
 
 
-def get_table_cell_color(col, val, ansi=False):
+def get_table_cell_color(col:str, val:str, ansi:bool=False) -> str:
     color = ""
     if col == "Version State":
         if ansi:
@@ -165,12 +165,12 @@ def get_table_cell_color(col, val, ansi=False):
     return color
 
 
-def format_summary_ascii_table(table, line, nocolor=False):
+def format_summary_ascii_table(table: List[Dict[str, Any]], line:str, nocolor:bool=False) -> str:
     """Return a nice string table
     Author: Thierry Husson - Use it as you want but don't blame me.
     """
     try:
-        from colors import color, ansilen
+        from colors import color, ansilen #type: ignore
     except ImportError:
         nocolor = True
 
@@ -208,7 +208,7 @@ def format_summary_ascii_table(table, line, nocolor=False):
     return string + "\n\n" + line
 
 
-def format_summary_html(table, line, nocolor):
+def format_summary_html(table: List[Dict[str, Any]], line: str, nocolor: bool) -> str:
     row_fmt = """      <tr>
         <td>{}</td>
         <td>{}</td>
@@ -260,10 +260,9 @@ def format_summary_html(table, line, nocolor):
     )
 
 
-def replace(text, conditions):
+def replace(text: str, conditions: dict) -> str:
     """Multiple replacements helper method.  Stolen on the web"""
     rep = conditions
     rep = dict((re.escape(k), rep[k]) for k in rep)
     pattern = re.compile("|".join(rep.keys()))
-    text = pattern.sub(lambda m: rep[re.escape(m.group(0))], text)
-    return text
+    return pattern.sub(lambda m: rep[re.escape(m.group(0))], text) #type: ignore
