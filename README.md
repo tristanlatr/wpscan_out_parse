@@ -1,4 +1,4 @@
-# WPScan Output Parse
+# WPScan Output Parser
 
 **`wpscan_out_parse` is a Python parser for WPScan output files** (JSON and CLI).  
 It analyze vulnerabilities, miscellaneous alerts and warnings and other findings.  
@@ -24,7 +24,6 @@ Design of summary table is largely inspired by [wpscan-analyze](https://github.c
 ```
 python3 -m pip install wpscan-out-parse
 ```
-No dependencies
 
 ## How to use
 
@@ -38,7 +37,7 @@ Run **`wpscan_out_parse`**
 ```bash
 python3 -m wpscan_out_parse file.json
 ```
-And process output and/or exit code
+And process output and/or exit code.
 
 #### Exit codes
 - 5 -> ALERT: Your WordPress site is vulnerable
@@ -49,34 +48,6 @@ And process output and/or exit code
 
 #### Exemples
 
-Display results in CLI format
-```bash
-% python3 -m wpscan_out_parse ./test/output_files/wordpress_many_vuln.json --no_warn --no_color
-
-Vulnerabilities have been detected by WPScan.
-
-        Summary
-        -------
-
-Component                    | Version | Version State | Vulnerabilities | Status 
----------------------------- | ------- | ------------- | --------------- | -------
-WordPress 5.2.2 (2019-06-18) | 5.2.2   | Latest        | 0               | Ok     
-Main Theme: customizr        | 4.1.42  | Latest        | 1               | Alert  
-Plugin: youtube-embed-plus   | Unknown | N/A           | 2 (potential)   | Warning
-
-WPScan result summary: alerts=1, warnings=5, infos=9, error=0
-
-        Alerts
-        ------
-
-Vulnerability: YouTube Embed <= 13.8.1 - Cross-Site Request Forgery (CSRF)
-Fixed in: 11.8.2
-References: 
-- Url: https://security.dxw.com/advisories/csrf-in-youtube-plugin/
-- Url: http://seclists.org/fulldisclosure/2017/Jul/64
-- WPVulnDB: https://wpvulndb.com/vulnerabilities/8873
-```
-
 Display results in HTML format
 ```bash
 % python3 -m wpscan_out_parse ./test/output_files/potential_vulns.json --format html > html_output.html
@@ -86,53 +57,7 @@ Display results in HTML format
 
 ### As a Python library
 
-The python module exposes helper methods and Parser objects to parse WPScan results as your convevnience.  
-
-#### Exemples
-
-Using helper method `parse_results_from_file()`.  Return all results as a simple dictionnary.  
-
-```python
-import pprint
-from wpscan_out_parse import parse_results_from_file
-
-results = parse_results_from_file('./test/output_files/wordpress_many_vuln.json')
-pprint.pprint(results)
-```
-
-Using `WPScanJsonParser` object.  
-
-```python
-import json
-import pprint
-from wpscan_out_parse import WPScanJsonParser
-
-with open('./test/output_files/wordpress_one_vuln.json', 'r') as wpscan_out:
-    parser = WPScanJsonParser(json.load(wpscan_out))
-    pprint.pprint(parser.get_warnings())
-```
-Once `WPScanJsonParser` instanciated, the following properties are accessible:  
-
-  - `version`  
-  - `main_theme` 
-  - `plugins` (list)
-  - `themes` (list)
-  - `interesting_findings` (list)
-  - `timthumbs` (list)
-  - `db_exports` (list)
-  - `users` (list)
-  - `medias` (list)
-  - `config_backups` (list)
-  - `password_attack`
-  - `not_fully_configured`
-  - `vuln_api`
-  - `banner`
-  - `scan_started`
-  - `scan_finished`
-    
-All objects implements `get_alerts()`, `get_warnings()` and `get_infos()`
-
-See the [API reference](https://tristanlatr.github.io/wpscan_out_parse/wpscan_out_parse.html) for Python objects API documentation 
+See the [API reference](https://tristanlatr.github.io/wpscan_out_parse/wpscan_out_parse.html). 
 
 ### Additionnal alerts strings
 Some additionnal warnings and alerts are raised when detecting the following strings in your output file.  
