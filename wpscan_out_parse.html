@@ -14,7 +14,7 @@
     <nav class="navbar navbar-default">
       <div class="container">
         <div class="navbar-header navbar-brand">
-          <a href="https://github.com/tristanlatr/wpscan_out_parse">WPScan Output Parser</a>
+          <a href="https://github.com/$GITHUB_REPOSITORY">WPScan Output Parser</a>
           <a href="index.html">API Documentation</a>
         </div>
       </div>
@@ -34,12 +34,30 @@
       </div>
 
       <div class="extrasDocstring">
-        <a href="https://github.com/tristanlatr/wpscan_out_parse/tree/d40af311b3e208b3d3cbc32108c8dd0dc7e03ae4/wpscan_out_parse/__init__.py">(source)</a>
+        <a href="https://github.com/$GITHUB_REPOSITORY/tree/$GITHUB_SHA/wpscan_out_parse/__init__.py">(source)</a>
         <p></p>
       </div>
 
       <div class="moduleDocstring">
-        <div>WPScan Output Parser Python library documentation.</div>
+        <div><p>WPScan Output Parser Python library documentation.</p>
+<p>The python module exposes helper methods and
+Parser objects to parse WPScan results as your convevnience.</p>
+<p><strong>Exemples</strong></p>
+<p>Using helper method <code><a href="#parse_results_from_file">parse_results_from_file</a></code>.  Return all results as a simple dictionnary.</p>
+<pre class="py-doctest">
+<span class="py-keyword">import</span> pprint
+<span class="py-keyword">from</span> wpscan_out_parse <span class="py-keyword">import</span> parse_results_from_file
+
+results = parse_results_from_file(<span class="py-string">'./test/output_files/wordpress_many_vuln.json'</span>)
+pprint.pprint(results)</pre><p>Using <code><a href="wpscan_out_parse.WPScanJsonParser.html">WPScanJsonParser</a></code> object.</p>
+<pre class="py-doctest">
+<span class="py-keyword">import</span> json
+<span class="py-keyword">import</span> pprint
+<span class="py-keyword">from</span> wpscan_out_parse <span class="py-keyword">import</span> WPScanJsonParser
+
+<span class="py-keyword">with</span> <span class="py-builtin">open</span>(<span class="py-string">'./test/output_files/wordpress_one_vuln.json'</span>, <span class="py-string">'r'</span>) <span class="py-keyword">as</span> wpscan_out:
+    parser = WPScanJsonParser(json.load(wpscan_out))
+    pprint.pprint(parser.get_warnings())</pre></div>
       </div>
 
       <div id="splitTables">
@@ -113,7 +131,7 @@
   <div class="functionHeader">
     
     <span class="py-defname">VERSION</span> =
-    <a class="functionSourceLink" href="https://github.com/tristanlatr/wpscan_out_parse/tree/d40af311b3e208b3d3cbc32108c8dd0dc7e03ae4/wpscan_out_parse/__init__.py#L13">
+    <a class="functionSourceLink" href="https://github.com/$GITHUB_REPOSITORY/tree/$GITHUB_SHA/wpscan_out_parse/__init__.py#L42">
       
       (source)
     </a>
@@ -134,7 +152,7 @@
   <div class="functionHeader">
     
     <span class="py-keyword">def</span> <span class="py-defname">parse_results_from_string</span>(wpscan_output_string, false_positives_strings=None, show_all_details=False):
-    <a class="functionSourceLink" href="https://github.com/tristanlatr/wpscan_out_parse/tree/d40af311b3e208b3d3cbc32108c8dd0dc7e03ae4/wpscan_out_parse/parser/__init__.py#L9">
+    <a class="functionSourceLink" href="https://github.com/$GITHUB_REPOSITORY/tree/$GITHUB_SHA/wpscan_out_parse/parser/__init__.py#L12">
       
       (source)
     </a>
@@ -171,7 +189,7 @@
 }
 </pre>
 <p>(summary table is only parsed for JSON files)</p>
-</div>
+<table class="fieldTable"><tr class="fieldStart"><td class="fieldName">Parameters</td><td class="fieldArg">wpscan_output_string</td><td><span class="undocumented">Undocumented</span> (type: <code>str</code>)</td></tr><tr><td></td><td class="fieldArg">false_positives_strings</td><td><span class="undocumented">Undocumented</span> (type: <code>Optional[Sequence[str]]</code>)</td></tr><tr><td></td><td class="fieldArg">show_all_details</td><td><span class="undocumented">Undocumented</span> (type: <code>bool</code>)</td></tr><tr class="fieldStart"><td class="fieldName">Returns</td><td colspan="2"><span class="undocumented">Undocumented</span> (type: <code>WPScanResults</code>)</td></tr></table></div>
   </div>
 </div><div class="basefunction">
   
@@ -184,7 +202,7 @@
   <div class="functionHeader">
     
     <span class="py-keyword">def</span> <span class="py-defname">parse_results_from_file</span>(wpscan_output_file, false_positives_strings=None, show_all_details=False):
-    <a class="functionSourceLink" href="https://github.com/tristanlatr/wpscan_out_parse/tree/d40af311b3e208b3d3cbc32108c8dd0dc7e03ae4/wpscan_out_parse/parser/__init__.py#L53">
+    <a class="functionSourceLink" href="https://github.com/$GITHUB_REPOSITORY/tree/$GITHUB_SHA/wpscan_out_parse/parser/__init__.py#L59">
       
       (source)
     </a>
@@ -200,7 +218,7 @@
 </ul>
 <p>Return the results as dict object.</p>
 <p>See <code><a href="#parse_results_from_string">parse_results_from_string</a></code>.</p>
-</div>
+<table class="fieldTable"><tr class="fieldStart"><td class="fieldName">Parameters</td><td class="fieldArg">wpscan_output_file</td><td><span class="undocumented">Undocumented</span> (type: <code>str</code>)</td></tr><tr><td></td><td class="fieldArg">false_positives_strings</td><td><span class="undocumented">Undocumented</span> (type: <code>Optional[Sequence[str]]</code>)</td></tr><tr><td></td><td class="fieldArg">show_all_details</td><td><span class="undocumented">Undocumented</span> (type: <code>bool</code>)</td></tr><tr class="fieldStart"><td class="fieldName">Returns</td><td colspan="2"><span class="undocumented">Undocumented</span> (type: <code>WPScanResults</code>)</td></tr></table></div>
   </div>
 </div><div class="basefunction">
   
@@ -213,7 +231,7 @@
   <div class="functionHeader">
     
     <span class="py-keyword">def</span> <span class="py-defname">format_results</span>(results, format, warnings=True, infos=True, nocolor=False):
-    <a class="functionSourceLink" href="https://github.com/tristanlatr/wpscan_out_parse/tree/d40af311b3e208b3d3cbc32108c8dd0dc7e03ae4/wpscan_out_parse/formatter.py#L6">
+    <a class="functionSourceLink" href="https://github.com/$GITHUB_REPOSITORY/tree/$GITHUB_SHA/wpscan_out_parse/formatter.py#L6">
       
       (source)
     </a>
@@ -226,13 +244,13 @@
 <li>results: resutlts dict objject.</li>
 <li>format: in <code>"html"</code>, <code>"cli"</code> or <code>"json"</code></li>
 </ul>
-</div>
+<table class="fieldTable"><tr class="fieldStart"><td class="fieldName">Parameters</td><td class="fieldArg">results</td><td><span class="undocumented">Undocumented</span> (type: <code>Dict[str, Any]</code>)</td></tr><tr><td></td><td class="fieldArg">format</td><td><span class="undocumented">Undocumented</span> (type: <code>str</code>)</td></tr><tr><td></td><td class="fieldArg">warnings</td><td><span class="undocumented">Undocumented</span> (type: <code>bool</code>)</td></tr><tr><td></td><td class="fieldArg">infos</td><td><span class="undocumented">Undocumented</span> (type: <code>bool</code>)</td></tr><tr><td></td><td class="fieldArg">nocolor</td><td><span class="undocumented">Undocumented</span> (type: <code>bool</code>)</td></tr><tr class="fieldStart"><td class="fieldName">Returns</td><td colspan="2"><span class="undocumented">Undocumented</span> (type: <code>str</code>)</td></tr></table></div>
   </div>
 </div>
 
       </div>
       <address>
-        <a href="index.html">API Documentation</a> for <a href="https://github.com/tristanlatr/wpscan_out_parse">WPScan Output Parser</a>, generated by <a href="https://github.com/twisted/pydoctor/">pydoctor</a> 21.2.2 at 2021-04-08 17:44:03.
+        <a href="index.html">API Documentation</a> for <a href="https://github.com/$GITHUB_REPOSITORY">WPScan Output Parser</a>, generated by <a href="https://github.com/twisted/pydoctor/">pydoctor</a> 21.2.2 at 2021-04-12 15:36:05.
       </address>
 
     </div>

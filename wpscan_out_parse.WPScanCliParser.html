@@ -14,7 +14,7 @@
     <nav class="navbar navbar-default">
       <div class="container">
         <div class="navbar-header navbar-brand">
-          <a href="https://github.com/tristanlatr/wpscan_out_parse">WPScan Output Parser</a>
+          <a href="https://github.com/$GITHUB_REPOSITORY">WPScan Output Parser</a>
           <a href="index.html">API Documentation</a>
         </div>
       </div>
@@ -34,7 +34,7 @@
       </div>
 
       <div class="extrasDocstring">
-        <p><code><span class="py-keyword">class</span> <span class="py-defname">WPScanCliParser</span>(<a href="wpscan_out_parse.parser.base._Parser.html" title="wpscan_out_parse.parser.base._Parser">_Parser</a>): <a href="https://github.com/tristanlatr/wpscan_out_parse/tree/d40af311b3e208b3d3cbc32108c8dd0dc7e03ae4/wpscan_out_parse/parser/cli_parser.py#L10">(source)</a></code></p>
+        <p><code><span class="py-keyword">class</span> <span class="py-defname">WPScanCliParser</span>(<a href="wpscan_out_parse.parser.base.Parser.html" title="wpscan_out_parse.parser.base.Parser">Parser</a>): <a href="https://github.com/$GITHUB_REPOSITORY/tree/$GITHUB_SHA/wpscan_out_parse/parser/_cli_parser.py#L11">(source)</a></code></p>
         <p><a href="classIndex.html#wpscan_out_parse.WPScanCliParser">View In Hierarchy</a></p>
       </div>
 
@@ -54,21 +54,6 @@
     
     <td>Method</td>
     <td><code><a href="#__init__">__init__</a></code></td>
-    <td><span class="undocumented">Undocumented</span></td>
-  </tr><tr class="instancevariable">
-    
-    <td>Instance Variable</td>
-    <td><code><a href="#infos">infos</a></code></td>
-    <td><span class="undocumented">Undocumented</span></td>
-  </tr><tr class="instancevariable">
-    
-    <td>Instance Variable</td>
-    <td><code><a href="#warnings">warnings</a></code></td>
-    <td><span class="undocumented">Undocumented</span></td>
-  </tr><tr class="instancevariable">
-    
-    <td>Instance Variable</td>
-    <td><code><a href="#alerts">alerts</a></code></td>
     <td><span class="undocumented">Undocumented</span></td>
   </tr><tr class="method">
     
@@ -100,6 +85,21 @@
     <td>Method</td>
     <td><code><a href="#get_results">get_results</a></code></td>
     <td><span>Returns a dictionnary structure like</span></td>
+  </tr><tr class="instancevariable private">
+    
+    <td>Instance Variable</td>
+    <td><code><a href="#_infos">_infos</a></code></td>
+    <td><span class="undocumented">Undocumented</span></td>
+  </tr><tr class="instancevariable private">
+    
+    <td>Instance Variable</td>
+    <td><code><a href="#_warnings">_warnings</a></code></td>
+    <td><span class="undocumented">Undocumented</span></td>
+  </tr><tr class="instancevariable private">
+    
+    <td>Instance Variable</td>
+    <td><code><a href="#_alerts">_alerts</a></code></td>
+    <td><span class="undocumented">Undocumented</span></td>
   </tr><tr class="method private">
     
     <td>Method</td>
@@ -114,42 +114,42 @@
 </table>
         
           <p class="inheritedFrom">
-            Inherited from <code><a href="wpscan_out_parse.parser.base._Parser.html">_Parser</a></code>:
+            Inherited from <code><a href="wpscan_out_parse.parser.base.Parser.html">Parser</a></code>:
           </p>
           <table class="children sortable" id="id7">
   
   <tr class="basemethod">
     
     <td>Method</td>
-    <td><code><a href="wpscan_out_parse.parser.base._Parser.html#get_summary_line">get_summary_line</a></code></td>
+    <td><code><a href="wpscan_out_parse.parser.base.Parser.html#get_summary_line">get_summary_line</a></code></td>
     <td><span>Return the summary string in one line</span></td>
   </tr>
 </table>
           
           <p class="inheritedFrom">
-            Inherited from <code><a href="wpscan_out_parse.parser.base._Component.html">_Component</a></code> (via <code><a href="wpscan_out_parse.parser.base._Parser.html">_Parser</a></code>):
+            Inherited from <code><a href="wpscan_out_parse.parser.base.Component.html">Component</a></code> (via <code><a href="wpscan_out_parse.parser.base.Parser.html">Parser</a></code>):
           </p>
           <table class="children sortable" id="id8">
   
   <tr class="baseinstancevariable">
     
     <td>Instance Variable</td>
-    <td><code><a href="wpscan_out_parse.parser.base._Component.html#data">data</a></code></td>
+    <td><code><a href="wpscan_out_parse.parser.base.Component.html#data">data</a></code></td>
+    <td><span>Initial data.</span></td>
+  </tr><tr class="baseinstancevariable">
+    
+    <td>Instance Variable</td>
+    <td><code><a href="wpscan_out_parse.parser.base.Component.html#false_positives_strings">false_positives_strings</a></code></td>
     <td><span class="undocumented">Undocumented</span></td>
   </tr><tr class="baseinstancevariable">
     
     <td>Instance Variable</td>
-    <td><code><a href="wpscan_out_parse.parser.base._Component.html#false_positives_strings">false_positives_strings</a></code></td>
-    <td><span class="undocumented">Undocumented</span></td>
-  </tr><tr class="baseinstancevariable">
-    
-    <td>Instance Variable</td>
-    <td><code><a href="wpscan_out_parse.parser.base._Component.html#show_all_details">show_all_details</a></code></td>
+    <td><code><a href="wpscan_out_parse.parser.base.Component.html#show_all_details">show_all_details</a></code></td>
     <td><span class="undocumented">Undocumented</span></td>
   </tr><tr class="basemethod">
     
     <td>Method</td>
-    <td><code><a href="wpscan_out_parse.parser.base._Component.html#is_false_positive">is_false_positive</a></code></td>
+    <td><code><a href="wpscan_out_parse.parser.base.Component.html#is_false_positive">is_false_positive</a></code></td>
     <td><span>False Positive Detection</span></td>
   </tr>
 </table>
@@ -171,28 +171,28 @@
   <div class="functionHeader">
     
     <span class="py-keyword">def</span> <span class="py-defname">__init__</span>(self, wpscan_output, false_positives_strings=None):
-    <a class="functionSourceLink" href="https://github.com/tristanlatr/wpscan_out_parse/tree/d40af311b3e208b3d3cbc32108c8dd0dc7e03ae4/wpscan_out_parse/parser/cli_parser.py#L18">
+    <a class="functionSourceLink" href="https://github.com/$GITHUB_REPOSITORY/tree/$GITHUB_SHA/wpscan_out_parse/parser/_cli_parser.py#L19">
       
       (source)
     </a>
   </div>
   <div class="docstring functionBody">
-    <div class="interfaceinfo">overrides <code><a href="wpscan_out_parse.parser.base._Parser.html#__init__">wpscan_out_parse.parser.base._Parser.__init__</a></code></div>
+    <div class="interfaceinfo">overrides <code><a href="wpscan_out_parse.parser.base.Parser.html#__init__">wpscan_out_parse.parser.base.Parser.__init__</a></code></div>
     
-    <div><p class="undocumented">Undocumented</p></div>
+    <div><p class="undocumented">Undocumented</p><table class="fieldTable"><tr class="fieldStart"><td class="fieldName">Parameters</td><td class="fieldArg">wpscan_output</td><td><span class="undocumented">Undocumented</span> (type: <code>str</code>)</td></tr><tr><td></td><td class="fieldArg">false_positives_strings</td><td><span class="undocumented">Undocumented</span> (type: <code>Optional[Sequence[str]]</code>)</td></tr></table></div>
   </div>
-</div><div class="baseinstancevariable">
+</div><div class="baseinstancevariable private">
   
-  <a name="wpscan_out_parse.WPScanCliParser.infos">
+  <a name="wpscan_out_parse.WPScanCliParser._infos">
     
   </a>
-  <a name="infos">
+  <a name="_infos">
     
   </a>
   <div class="functionHeader">
     
-    <span class="py-defname">infos</span> =
-    <a class="functionSourceLink" href="https://github.com/tristanlatr/wpscan_out_parse/tree/d40af311b3e208b3d3cbc32108c8dd0dc7e03ae4/wpscan_out_parse/parser/cli_parser.py#L27">
+    <span class="py-defname">_infos</span> =
+    <a class="functionSourceLink" href="https://github.com/$GITHUB_REPOSITORY/tree/$GITHUB_SHA/wpscan_out_parse/parser/_cli_parser.py#L29">
       
       (source)
     </a>
@@ -202,18 +202,18 @@
     
     <div><p class="undocumented">Undocumented</p></div>
   </div>
-</div><div class="baseinstancevariable">
+</div><div class="baseinstancevariable private">
   
-  <a name="wpscan_out_parse.WPScanCliParser.warnings">
+  <a name="wpscan_out_parse.WPScanCliParser._warnings">
     
   </a>
-  <a name="warnings">
+  <a name="_warnings">
     
   </a>
   <div class="functionHeader">
     
-    <span class="py-defname">warnings</span> =
-    <a class="functionSourceLink" href="https://github.com/tristanlatr/wpscan_out_parse/tree/d40af311b3e208b3d3cbc32108c8dd0dc7e03ae4/wpscan_out_parse/parser/cli_parser.py#L27">
+    <span class="py-defname">_warnings</span> =
+    <a class="functionSourceLink" href="https://github.com/$GITHUB_REPOSITORY/tree/$GITHUB_SHA/wpscan_out_parse/parser/_cli_parser.py#L29">
       
       (source)
     </a>
@@ -223,18 +223,18 @@
     
     <div><p class="undocumented">Undocumented</p></div>
   </div>
-</div><div class="baseinstancevariable">
+</div><div class="baseinstancevariable private">
   
-  <a name="wpscan_out_parse.WPScanCliParser.alerts">
+  <a name="wpscan_out_parse.WPScanCliParser._alerts">
     
   </a>
-  <a name="alerts">
+  <a name="_alerts">
     
   </a>
   <div class="functionHeader">
     
-    <span class="py-defname">alerts</span> =
-    <a class="functionSourceLink" href="https://github.com/tristanlatr/wpscan_out_parse/tree/d40af311b3e208b3d3cbc32108c8dd0dc7e03ae4/wpscan_out_parse/parser/cli_parser.py#L27">
+    <span class="py-defname">_alerts</span> =
+    <a class="functionSourceLink" href="https://github.com/$GITHUB_REPOSITORY/tree/$GITHUB_SHA/wpscan_out_parse/parser/_cli_parser.py#L29">
       
       (source)
     </a>
@@ -255,15 +255,15 @@
   <div class="functionHeader">
     
     <span class="py-keyword">def</span> <span class="py-defname">get_infos</span>(self):
-    <a class="functionSourceLink" href="https://github.com/tristanlatr/wpscan_out_parse/tree/d40af311b3e208b3d3cbc32108c8dd0dc7e03ae4/wpscan_out_parse/parser/cli_parser.py#L29">
+    <a class="functionSourceLink" href="https://github.com/$GITHUB_REPOSITORY/tree/$GITHUB_SHA/wpscan_out_parse/parser/_cli_parser.py#L31">
       
       (source)
     </a>
   </div>
   <div class="docstring functionBody">
-    <div class="interfaceinfo">overrides <code><a href="wpscan_out_parse.parser.base._Component.html#get_infos">wpscan_out_parse.parser.base._Component.get_infos</a></code></div>
+    <div class="interfaceinfo">overrides <code><a href="wpscan_out_parse.parser.base.Component.html#get_infos">wpscan_out_parse.parser.base.Component.get_infos</a></code></div>
     
-    <div>Return all the parsed infos</div>
+    <div>Return all the parsed infos<table class="fieldTable"><tr class="fieldStart"><td class="fieldName">Returns</td><td colspan="2"><span class="undocumented">Undocumented</span> (type: <code>Sequence[str]</code>)</td></tr></table></div>
   </div>
 </div><div class="basemethod">
   
@@ -276,15 +276,15 @@
   <div class="functionHeader">
     
     <span class="py-keyword">def</span> <span class="py-defname">get_warnings</span>(self):
-    <a class="functionSourceLink" href="https://github.com/tristanlatr/wpscan_out_parse/tree/d40af311b3e208b3d3cbc32108c8dd0dc7e03ae4/wpscan_out_parse/parser/cli_parser.py#L33">
+    <a class="functionSourceLink" href="https://github.com/$GITHUB_REPOSITORY/tree/$GITHUB_SHA/wpscan_out_parse/parser/_cli_parser.py#L35">
       
       (source)
     </a>
   </div>
   <div class="docstring functionBody">
-    <div class="interfaceinfo">overrides <code><a href="wpscan_out_parse.parser.base._Component.html#get_warnings">wpscan_out_parse.parser.base._Component.get_warnings</a></code></div>
+    <div class="interfaceinfo">overrides <code><a href="wpscan_out_parse.parser.base.Component.html#get_warnings">wpscan_out_parse.parser.base.Component.get_warnings</a></code></div>
     
-    <div>Return all the parsed warnings</div>
+    <div>Return all the parsed warnings<table class="fieldTable"><tr class="fieldStart"><td class="fieldName">Returns</td><td colspan="2"><span class="undocumented">Undocumented</span> (type: <code>Sequence[str]</code>)</td></tr></table></div>
   </div>
 </div><div class="basemethod">
   
@@ -297,15 +297,15 @@
   <div class="functionHeader">
     
     <span class="py-keyword">def</span> <span class="py-defname">get_alerts</span>(self):
-    <a class="functionSourceLink" href="https://github.com/tristanlatr/wpscan_out_parse/tree/d40af311b3e208b3d3cbc32108c8dd0dc7e03ae4/wpscan_out_parse/parser/cli_parser.py#L37">
+    <a class="functionSourceLink" href="https://github.com/$GITHUB_REPOSITORY/tree/$GITHUB_SHA/wpscan_out_parse/parser/_cli_parser.py#L39">
       
       (source)
     </a>
   </div>
   <div class="docstring functionBody">
-    <div class="interfaceinfo">overrides <code><a href="wpscan_out_parse.parser.base._Component.html#get_alerts">wpscan_out_parse.parser.base._Component.get_alerts</a></code></div>
+    <div class="interfaceinfo">overrides <code><a href="wpscan_out_parse.parser.base.Component.html#get_alerts">wpscan_out_parse.parser.base.Component.get_alerts</a></code></div>
     
-    <div>Return all the parsed alerts</div>
+    <div>Return all the parsed alerts<table class="fieldTable"><tr class="fieldStart"><td class="fieldName">Returns</td><td colspan="2"><span class="undocumented">Undocumented</span> (type: <code>Sequence[str]</code>)</td></tr></table></div>
   </div>
 </div><div class="basemethod private">
   
@@ -318,7 +318,7 @@
   <div class="functionHeader">
     
     <span class="py-keyword">def</span> <span class="py-defname">_parse_cli_toogle</span>(self, line, warning_on, alert_on):
-    <a class="functionSourceLink" href="https://github.com/tristanlatr/wpscan_out_parse/tree/d40af311b3e208b3d3cbc32108c8dd0dc7e03ae4/wpscan_out_parse/parser/cli_parser.py#L41">
+    <a class="functionSourceLink" href="https://github.com/$GITHUB_REPOSITORY/tree/$GITHUB_SHA/wpscan_out_parse/parser/_cli_parser.py#L43">
       
       (source)
     </a>
@@ -326,7 +326,7 @@
   <div class="docstring functionBody">
     
     
-    <div><p class="undocumented">Undocumented</p></div>
+    <div><p class="undocumented">Undocumented</p><table class="fieldTable"><tr class="fieldStart"><td class="fieldName">Parameters</td><td class="fieldArg">line</td><td><span class="undocumented">Undocumented</span> (type: <code>str</code>)</td></tr><tr><td></td><td class="fieldArg">warning_on</td><td><span class="undocumented">Undocumented</span> (type: <code>bool</code>)</td></tr><tr><td></td><td class="fieldArg">alert_on</td><td><span class="undocumented">Undocumented</span> (type: <code>bool</code>)</td></tr><tr class="fieldStart"><td class="fieldName">Returns</td><td colspan="2"><span class="undocumented">Undocumented</span> (type: <code>Tuple[bool, bool]</code>)</td></tr></table></div>
   </div>
 </div><div class="basemethod private">
   
@@ -339,7 +339,7 @@
   <div class="functionHeader">
     
     <span class="py-keyword">def</span> <span class="py-defname">_ignore_false_positives</span>(self, infos, warnings, alerts):
-    <a class="functionSourceLink" href="https://github.com/tristanlatr/wpscan_out_parse/tree/d40af311b3e208b3d3cbc32108c8dd0dc7e03ae4/wpscan_out_parse/parser/cli_parser.py#L81">
+    <a class="functionSourceLink" href="https://github.com/$GITHUB_REPOSITORY/tree/$GITHUB_SHA/wpscan_out_parse/parser/_cli_parser.py#L83">
       
       (source)
     </a>
@@ -347,7 +347,7 @@
   <div class="docstring functionBody">
     
     
-    <div>Process false positives</div>
+    <div>Process false positives<table class="fieldTable"><tr class="fieldStart"><td class="fieldName">Parameters</td><td class="fieldArg">infos</td><td><span class="undocumented">Undocumented</span> (type: <code>List[str]</code>)</td></tr><tr><td></td><td class="fieldArg">warnings</td><td><span class="undocumented">Undocumented</span> (type: <code>List[str]</code>)</td></tr><tr><td></td><td class="fieldArg">alerts</td><td><span class="undocumented">Undocumented</span> (type: <code>List[str]</code>)</td></tr><tr class="fieldStart"><td class="fieldName">Returns</td><td colspan="2"><span class="undocumented">Undocumented</span> (type: <code>Tuple[List[str], List[str], List[str]]</code>)</td></tr></table></div>
   </div>
 </div><div class="basemethod">
   
@@ -360,7 +360,7 @@
   <div class="functionHeader">
     
     <span class="py-keyword">def</span> <span class="py-defname">parse_cli</span>(self, wpscan_output):
-    <a class="functionSourceLink" href="https://github.com/tristanlatr/wpscan_out_parse/tree/d40af311b3e208b3d3cbc32108c8dd0dc7e03ae4/wpscan_out_parse/parser/cli_parser.py#L93">
+    <a class="functionSourceLink" href="https://github.com/$GITHUB_REPOSITORY/tree/$GITHUB_SHA/wpscan_out_parse/parser/_cli_parser.py#L95">
       
       (source)
     </a>
@@ -369,7 +369,7 @@
     
     
     <div>Parse the ( messages, warnings, alerts ) from WPScan CLI output string.
-Return results as tuple( messages, warnings, alerts ).</div>
+Return results as tuple( messages, warnings, alerts ).<table class="fieldTable"><tr class="fieldStart"><td class="fieldName">Parameters</td><td class="fieldArg">wpscan_output</td><td><span class="undocumented">Undocumented</span> (type: <code>str</code>)</td></tr><tr class="fieldStart"><td class="fieldName">Returns</td><td colspan="2"><span class="undocumented">Undocumented</span> (type: <code>Tuple[List[str], List[str], List[str]]</code>)</td></tr></table></div>
   </div>
 </div><div class="basemethod">
   
@@ -382,15 +382,15 @@ Return results as tuple( messages, warnings, alerts ).</div>
   <div class="functionHeader">
     
     <span class="py-keyword">def</span> <span class="py-defname">get_error</span>(self):
-    <a class="functionSourceLink" href="https://github.com/tristanlatr/wpscan_out_parse/tree/d40af311b3e208b3d3cbc32108c8dd0dc7e03ae4/wpscan_out_parse/parser/cli_parser.py#L185">
+    <a class="functionSourceLink" href="https://github.com/$GITHUB_REPOSITORY/tree/$GITHUB_SHA/wpscan_out_parse/parser/_cli_parser.py#L187">
       
       (source)
     </a>
   </div>
   <div class="docstring functionBody">
-    <div class="interfaceinfo">overrides <code><a href="wpscan_out_parse.parser.base._Parser.html#get_error">wpscan_out_parse.parser.base._Parser.get_error</a></code></div>
+    <div class="interfaceinfo">overrides <code><a href="wpscan_out_parse.parser.base.Parser.html#get_error">wpscan_out_parse.parser.base.Parser.get_error</a></code></div>
     
-    <div>Return any error or None if no errors</div>
+    <div>Return any error or None if no errors<table class="fieldTable"><tr class="fieldStart"><td class="fieldName">Returns</td><td colspan="2"><span class="undocumented">Undocumented</span> (type: <code>Optional[str]</code>)</td></tr></table></div>
   </div>
 </div><div class="basemethod">
   
@@ -403,13 +403,13 @@ Return results as tuple( messages, warnings, alerts ).</div>
   <div class="functionHeader">
     
     <span class="py-keyword">def</span> <span class="py-defname">get_results</span>(self):
-    <a class="functionSourceLink" href="https://github.com/tristanlatr/wpscan_out_parse/tree/d40af311b3e208b3d3cbc32108c8dd0dc7e03ae4/wpscan_out_parse/parser/cli_parser.py#L195">
+    <a class="functionSourceLink" href="https://github.com/$GITHUB_REPOSITORY/tree/$GITHUB_SHA/wpscan_out_parse/parser/_cli_parser.py#L197">
       
       (source)
     </a>
   </div>
   <div class="docstring functionBody">
-    <div class="interfaceinfo">overrides <code><a href="wpscan_out_parse.parser.base._Parser.html#get_results">wpscan_out_parse.parser.base._Parser.get_results</a></code></div>
+    <div class="interfaceinfo">overrides <code><a href="wpscan_out_parse.parser.base.Parser.html#get_results">wpscan_out_parse.parser.base.Parser.get_results</a></code></div>
     
     <div><p>Returns a dictionnary structure like</p>
 <pre class="rst-literal-block">
@@ -424,13 +424,13 @@ Return results as tuple( messages, warnings, alerts ).</div>
 'error':None
 }
 </pre>
-</div>
+<table class="fieldTable"><tr class="fieldStart"><td class="fieldName">Returns</td><td colspan="2"><span class="undocumented">Undocumented</span> (type: <code>WPScanResults</code>)</td></tr></table></div>
   </div>
 </div>
 
       </div>
       <address>
-        <a href="index.html">API Documentation</a> for <a href="https://github.com/tristanlatr/wpscan_out_parse">WPScan Output Parser</a>, generated by <a href="https://github.com/twisted/pydoctor/">pydoctor</a> 21.2.2 at 2021-04-08 17:44:03.
+        <a href="index.html">API Documentation</a> for <a href="https://github.com/$GITHUB_REPOSITORY">WPScan Output Parser</a>, generated by <a href="https://github.com/twisted/pydoctor/">pydoctor</a> 21.2.2 at 2021-04-12 15:36:05.
       </address>
 
     </div>

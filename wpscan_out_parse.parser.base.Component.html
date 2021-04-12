@@ -1,0 +1,277 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+          "DTD/xhtml1-strict.dtd">
+<html>
+  <head>
+    <title>wpscan_out_parse.parser.base.Component : API documentation</title>
+
+    <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
+    <link rel="stylesheet" type="text/css" href="bootstrap.min.css" />
+    <link rel="stylesheet" type="text/css" href="apidocs.css" />
+  </head>
+  <body>
+
+    <nav class="navbar navbar-default">
+      <div class="container">
+        <div class="navbar-header navbar-brand">
+          <a href="https://github.com/$GITHUB_REPOSITORY">WPScan Output Parser</a>
+          <a href="index.html">API Documentation</a>
+        </div>
+      </div>
+    </nav>
+
+    <div class="container">
+
+      <div class="page-header">
+        <h1 class="class"><code><code><a href="wpscan_out_parse.html">wpscan_out_parse</a></code>.<code><a href="wpscan_out_parse.parser.html">parser</a></code>.<code><a href="wpscan_out_parse.parser.base.html">base</a></code>.<code><a href="wpscan_out_parse.parser.base.Component.html">Component</a></code></code></h1>
+        <div id="showPrivate">
+          <button class="btn btn-link" onclick="togglePrivate()">Toggle Private API</button>
+        </div>
+      </div>
+
+      <div class="categoryHeader">
+        class documentation
+      </div>
+
+      <div class="extrasDocstring">
+        <p><code><span class="py-keyword">class</span> <span class="py-defname">Component</span>(<span title="abc.ABC">ABC</span>): <a href="https://github.com/$GITHUB_REPOSITORY/tree/$GITHUB_SHA/wpscan_out_parse/parser/base.py#L8">(source)</a></code></p><p>Known subclasses: <code><a href="wpscan_out_parse.parser.base.Parser.html">wpscan_out_parse.parser.base.Parser</a></code>, <code><a href="wpscan_out_parse.parser.components._parts.finding.Finding.html">wpscan_out_parse.parser.components._parts.finding.Finding</a></code>, <code><a href="wpscan_out_parse.parser.components.Banner.html">wpscan_out_parse.parser.components.Banner</a></code>, <code><a href="wpscan_out_parse.parser.components.ScanFinished.html">wpscan_out_parse.parser.components.ScanFinished</a></code>, <code><a href="wpscan_out_parse.parser.components.ScanStarted.html">wpscan_out_parse.parser.components.ScanStarted</a></code>, <code><a href="wpscan_out_parse.parser.components.VulnAPI.html">wpscan_out_parse.parser.components.VulnAPI</a></code></p>
+        <p><a href="classIndex.html#wpscan_out_parse.parser.base.Component">View In Hierarchy</a></p>
+      </div>
+
+      <div class="moduleDocstring">
+        <div>Base abstract class for all WPScan JSON and CLI components</div>
+      </div>
+
+      <div id="splitTables">
+        <table class="children sortable" id="id14">
+  
+  <tr class="method">
+    
+    <td>Method</td>
+    <td><code><a href="#__init__">__init__</a></code></td>
+    <td><span class="undocumented">Undocumented</span></td>
+  </tr><tr class="instancevariable">
+    
+    <td>Instance Variable</td>
+    <td><code><a href="#data">data</a></code></td>
+    <td><span>Initial data.</span></td>
+  </tr><tr class="instancevariable">
+    
+    <td>Instance Variable</td>
+    <td><code><a href="#false_positives_strings">false_positives_strings</a></code></td>
+    <td><span class="undocumented">Undocumented</span></td>
+  </tr><tr class="instancevariable">
+    
+    <td>Instance Variable</td>
+    <td><code><a href="#show_all_details">show_all_details</a></code></td>
+    <td><span class="undocumented">Undocumented</span></td>
+  </tr><tr class="method">
+    
+    <td>Method</td>
+    <td><code><a href="#is_false_positive">is_false_positive</a></code></td>
+    <td><span>False Positive Detection</span></td>
+  </tr><tr class="method">
+    
+    <td>Method</td>
+    <td><code><a href="#get_infos">get_infos</a></code></td>
+    <td><span>Return the component informations as a list of strings.</span></td>
+  </tr><tr class="method">
+    
+    <td>Method</td>
+    <td><code><a href="#get_warnings">get_warnings</a></code></td>
+    <td><span>Return the component warnings as a list of strings.</span></td>
+  </tr><tr class="method">
+    
+    <td>Method</td>
+    <td><code><a href="#get_alerts">get_alerts</a></code></td>
+    <td><span>Return the component alerts as a list of strings.</span></td>
+  </tr>
+</table>
+        
+
+          
+      </div>
+
+      <div id="childList">
+
+        <div class="basemethod">
+  
+  <a name="wpscan_out_parse.parser.base.Component.__init__">
+    
+  </a>
+  <a name="__init__">
+    
+  </a>
+  <div class="functionHeader">
+    
+    <span class="py-keyword">def</span> <span class="py-defname">__init__</span>(self, data, false_positives_strings, show_all_details):
+    <a class="functionSourceLink" href="https://github.com/$GITHUB_REPOSITORY/tree/$GITHUB_SHA/wpscan_out_parse/parser/base.py#L11">
+      
+      (source)
+    </a>
+  </div>
+  <div class="docstring functionBody">
+    <div class="interfaceinfo">overridden in <code><a href="wpscan_out_parse.parser.base.Parser.html">wpscan_out_parse.parser.base.Parser</a></code>, <code><a href="wpscan_out_parse.parser.components._parts.finding.Finding.html">wpscan_out_parse.parser.components._parts.finding.Finding</a></code>, <code><a href="wpscan_out_parse.parser.components.Banner.html">wpscan_out_parse.parser.components.Banner</a></code>, <code><a href="wpscan_out_parse.parser.components.ScanFinished.html">wpscan_out_parse.parser.components.ScanFinished</a></code>, <code><a href="wpscan_out_parse.parser.components.ScanStarted.html">wpscan_out_parse.parser.components.ScanStarted</a></code>, <code><a href="wpscan_out_parse.parser.components.VulnAPI.html">wpscan_out_parse.parser.components.VulnAPI</a></code></div>
+    
+    <div><p class="undocumented">Undocumented</p><table class="fieldTable"><tr class="fieldStart"><td class="fieldName">Parameters</td><td class="fieldArg">data</td><td><span class="undocumented">Undocumented</span> (type: <code>Dict[str, Any]</code>)</td></tr><tr><td></td><td class="fieldArg">false_positives_strings</td><td><span class="undocumented">Undocumented</span> (type: <code>Sequence[str]</code>)</td></tr><tr><td></td><td class="fieldArg">show_all_details</td><td><span class="undocumented">Undocumented</span> (type: <code>bool</code>)</td></tr></table></div>
+  </div>
+</div><div class="baseinstancevariable">
+  
+  <a name="wpscan_out_parse.parser.base.Component.data">
+    
+  </a>
+  <a name="data">
+    
+  </a>
+  <div class="functionHeader">
+    
+    <span class="py-defname">data</span> =
+    <a class="functionSourceLink" href="https://github.com/$GITHUB_REPOSITORY/tree/$GITHUB_SHA/wpscan_out_parse/parser/base.py#L17">
+      
+      (source)
+    </a>
+  </div>
+  <div class="functionBody">
+    
+    
+    <div>Initial data.</div> (type: <code>Dict[str, Any]</code>)
+  </div>
+</div><div class="baseinstancevariable">
+  
+  <a name="wpscan_out_parse.parser.base.Component.false_positives_strings">
+    
+  </a>
+  <a name="false_positives_strings">
+    
+  </a>
+  <div class="functionHeader">
+    
+    <span class="py-defname">false_positives_strings</span> =
+    <a class="functionSourceLink" href="https://github.com/$GITHUB_REPOSITORY/tree/$GITHUB_SHA/wpscan_out_parse/parser/base.py#L22">
+      
+      (source)
+    </a>
+  </div>
+  <div class="functionBody">
+    
+    
+    <div><p class="undocumented">Undocumented</p></div> (type: <code>Sequence[str]</code>)
+  </div>
+</div><div class="baseinstancevariable">
+  
+  <a name="wpscan_out_parse.parser.base.Component.show_all_details">
+    
+  </a>
+  <a name="show_all_details">
+    
+  </a>
+  <div class="functionHeader">
+    
+    <span class="py-defname">show_all_details</span> =
+    <a class="functionSourceLink" href="https://github.com/$GITHUB_REPOSITORY/tree/$GITHUB_SHA/wpscan_out_parse/parser/base.py#L25">
+      
+      (source)
+    </a>
+  </div>
+  <div class="functionBody">
+    
+    
+    <div><p class="undocumented">Undocumented</p></div> (type: <code>bool</code>)
+  </div>
+</div><div class="basemethod">
+  
+  <a name="wpscan_out_parse.parser.base.Component.is_false_positive">
+    
+  </a>
+  <a name="is_false_positive">
+    
+  </a>
+  <div class="functionHeader">
+    
+    <span class="py-keyword">def</span> <span class="py-defname">is_false_positive</span>(self, string):
+    <a class="functionSourceLink" href="https://github.com/$GITHUB_REPOSITORY/tree/$GITHUB_SHA/wpscan_out_parse/parser/base.py#L29">
+      
+      (source)
+    </a>
+  </div>
+  <div class="docstring functionBody">
+    
+    
+    <div>False Positive Detection<table class="fieldTable"><tr class="fieldStart"><td class="fieldName">Parameters</td><td class="fieldArg">string</td><td><span class="undocumented">Undocumented</span> (type: <code>str</code>)</td></tr><tr class="fieldStart"><td class="fieldName">Returns</td><td colspan="2"><span class="undocumented">Undocumented</span> (type: <code>bool</code>)</td></tr></table></div>
+  </div>
+</div><div class="basemethod">
+  
+  <a name="wpscan_out_parse.parser.base.Component.get_infos">
+    
+  </a>
+  <a name="get_infos">
+    
+  </a>
+  <div class="functionHeader">
+    @abstractmethod<br />
+    <span class="py-keyword">def</span> <span class="py-defname">get_infos</span>(self):
+    <a class="functionSourceLink" href="https://github.com/$GITHUB_REPOSITORY/tree/$GITHUB_SHA/wpscan_out_parse/parser/base.py#L38">
+      
+      (source)
+    </a>
+  </div>
+  <div class="docstring functionBody">
+    <div class="interfaceinfo">overridden in <code><a href="wpscan_out_parse.parser.components._parts.finding.Finding.html">wpscan_out_parse.parser.components._parts.finding.Finding</a></code>, <code><a href="wpscan_out_parse.parser.components.Banner.html">wpscan_out_parse.parser.components.Banner</a></code>, <code><a href="wpscan_out_parse.parser.components.ScanFinished.html">wpscan_out_parse.parser.components.ScanFinished</a></code>, <code><a href="wpscan_out_parse.parser.components.ScanStarted.html">wpscan_out_parse.parser.components.ScanStarted</a></code>, <code><a href="wpscan_out_parse.parser.components.VulnAPI.html">wpscan_out_parse.parser.components.VulnAPI</a></code>, <code><a href="wpscan_out_parse.WPScanCliParser.html">wpscan_out_parse.WPScanCliParser</a></code>, <code><a href="wpscan_out_parse.WPScanJsonParser.html">wpscan_out_parse.WPScanJsonParser</a></code></div>
+    
+    <div>Return the component informations as a list of strings.<table class="fieldTable"><tr class="fieldStart"><td class="fieldName">Returns</td><td colspan="2"><span class="undocumented">Undocumented</span> (type: <code>Sequence[str]</code>)</td></tr></table></div>
+  </div>
+</div><div class="basemethod">
+  
+  <a name="wpscan_out_parse.parser.base.Component.get_warnings">
+    
+  </a>
+  <a name="get_warnings">
+    
+  </a>
+  <div class="functionHeader">
+    @abstractmethod<br />
+    <span class="py-keyword">def</span> <span class="py-defname">get_warnings</span>(self):
+    <a class="functionSourceLink" href="https://github.com/$GITHUB_REPOSITORY/tree/$GITHUB_SHA/wpscan_out_parse/parser/base.py#L43">
+      
+      (source)
+    </a>
+  </div>
+  <div class="docstring functionBody">
+    <div class="interfaceinfo">overridden in <code><a href="wpscan_out_parse.parser.components._parts.finding.Vulnerability.html">wpscan_out_parse.parser.components._parts.finding.Vulnerability</a></code>, <code><a href="wpscan_out_parse.parser.components._parts.wp_item.WPItem.html">wpscan_out_parse.parser.components._parts.wp_item.WPItem</a></code>, <code><a href="wpscan_out_parse.parser.components._parts.wp_item_version.WPItemVersion.html">wpscan_out_parse.parser.components._parts.wp_item_version.WPItemVersion</a></code>, <code><a href="wpscan_out_parse.parser.components.Banner.html">wpscan_out_parse.parser.components.Banner</a></code>, <code><a href="wpscan_out_parse.parser.components.ConfigBackup.html">wpscan_out_parse.parser.components.ConfigBackup</a></code>, <code><a href="wpscan_out_parse.parser.components.DBExport.html">wpscan_out_parse.parser.components.DBExport</a></code>, <code><a href="wpscan_out_parse.parser.components.InterestingFinding.html">wpscan_out_parse.parser.components.InterestingFinding</a></code>, <code><a href="wpscan_out_parse.parser.components.Media.html">wpscan_out_parse.parser.components.Media</a></code>, <code><a href="wpscan_out_parse.parser.components.NotFullyConfigured.html">wpscan_out_parse.parser.components.NotFullyConfigured</a></code>, <code><a href="wpscan_out_parse.parser.components.PasswordAttack.html">wpscan_out_parse.parser.components.PasswordAttack</a></code>, <code><a href="wpscan_out_parse.parser.components.ScanFinished.html">wpscan_out_parse.parser.components.ScanFinished</a></code>, <code><a href="wpscan_out_parse.parser.components.ScanStarted.html">wpscan_out_parse.parser.components.ScanStarted</a></code>, <code><a href="wpscan_out_parse.parser.components.User.html">wpscan_out_parse.parser.components.User</a></code>, <code><a href="wpscan_out_parse.parser.components.VulnAPI.html">wpscan_out_parse.parser.components.VulnAPI</a></code>, <code><a href="wpscan_out_parse.parser.components.WordPressVersion.html">wpscan_out_parse.parser.components.WordPressVersion</a></code>, <code><a href="wpscan_out_parse.WPScanCliParser.html">wpscan_out_parse.WPScanCliParser</a></code>, <code><a href="wpscan_out_parse.WPScanJsonParser.html">wpscan_out_parse.WPScanJsonParser</a></code></div>
+    
+    <div>Return the component warnings as a list of strings.<table class="fieldTable"><tr class="fieldStart"><td class="fieldName">Returns</td><td colspan="2"><span class="undocumented">Undocumented</span> (type: <code>Sequence[str]</code>)</td></tr></table></div>
+  </div>
+</div><div class="basemethod">
+  
+  <a name="wpscan_out_parse.parser.base.Component.get_alerts">
+    
+  </a>
+  <a name="get_alerts">
+    
+  </a>
+  <div class="functionHeader">
+    @abstractmethod<br />
+    <span class="py-keyword">def</span> <span class="py-defname">get_alerts</span>(self):
+    <a class="functionSourceLink" href="https://github.com/$GITHUB_REPOSITORY/tree/$GITHUB_SHA/wpscan_out_parse/parser/base.py#L48">
+      
+      (source)
+    </a>
+  </div>
+  <div class="docstring functionBody">
+    <div class="interfaceinfo">overridden in <code><a href="wpscan_out_parse.parser.components._parts.finding.Finding.html">wpscan_out_parse.parser.components._parts.finding.Finding</a></code>, <code><a href="wpscan_out_parse.parser.components.Banner.html">wpscan_out_parse.parser.components.Banner</a></code>, <code><a href="wpscan_out_parse.parser.components.ScanFinished.html">wpscan_out_parse.parser.components.ScanFinished</a></code>, <code><a href="wpscan_out_parse.parser.components.ScanStarted.html">wpscan_out_parse.parser.components.ScanStarted</a></code>, <code><a href="wpscan_out_parse.parser.components.VulnAPI.html">wpscan_out_parse.parser.components.VulnAPI</a></code>, <code><a href="wpscan_out_parse.WPScanCliParser.html">wpscan_out_parse.WPScanCliParser</a></code>, <code><a href="wpscan_out_parse.WPScanJsonParser.html">wpscan_out_parse.WPScanJsonParser</a></code></div>
+    
+    <div>Return the component alerts as a list of strings.<table class="fieldTable"><tr class="fieldStart"><td class="fieldName">Returns</td><td colspan="2"><span class="undocumented">Undocumented</span> (type: <code>Sequence[str]</code>)</td></tr></table></div>
+  </div>
+</div>
+
+      </div>
+      <address>
+        <a href="index.html">API Documentation</a> for <a href="https://github.com/$GITHUB_REPOSITORY">WPScan Output Parser</a>, generated by <a href="https://github.com/twisted/pydoctor/">pydoctor</a> 21.2.2 at 2021-04-12 15:36:05.
+      </address>
+
+    </div>
+
+    <script src="pydoctor.js" type="text/javascript"></script>
+
+  </body>
+</html>
