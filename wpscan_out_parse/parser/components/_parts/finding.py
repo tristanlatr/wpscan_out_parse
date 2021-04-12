@@ -144,7 +144,7 @@ class _CoreFinding(Finding):
         Does not work for parser objects because they process false positives.
         """
 
-        alarms = chain(self.get_warnings(), self.get_alerts())
+        alarms = list(chain(self.get_warnings(), self.get_alerts()))
 
         not_false_positives = [a for a in alarms if not self.is_false_positive(a)]
 
@@ -153,7 +153,7 @@ class _CoreFinding(Finding):
             and "The version could not be determined" in not_false_positives[0]
             and not "Directory listing is enabled" in not_false_positives[0]
             and not "An error log file has been found" in not_false_positives[0]
-        ) or (alarms and not not_false_positives):
+        ) or (len(alarms)>0 and len(not_false_positives)==0):
 
             return True
 
