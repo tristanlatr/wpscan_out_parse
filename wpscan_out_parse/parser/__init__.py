@@ -1,14 +1,19 @@
 import json
+from typing import Any, Dict, Sequence, Optional
 
-from .json_parser import WPScanJsonParser
-from .cli_parser import WPScanCliParser
+from .base import Parser
+from .results import WPScanResults
+from ._json_parser import WPScanJsonParser
+from ._cli_parser import WPScanCliParser
 
 ####################### INTERFACE METHODS ####################
 
 
 def parse_results_from_string(
-    wpscan_output_string, false_positives_strings=None, show_all_details=False
-):
+    wpscan_output_string: str, 
+    false_positives_strings:Optional[Sequence[str]]=None, 
+    show_all_details:bool=False
+) -> WPScanResults:
     """Parse any WPScan output string.
 
     - wpscan_output_string: WPScan output as string
@@ -41,6 +46,7 @@ def parse_results_from_string(
     
     (summary table is only parsed for JSON files)
     """
+    parser: Parser
     try:
         data = json.loads(wpscan_output_string)
     except ValueError:
@@ -51,8 +57,10 @@ def parse_results_from_string(
 
 
 def parse_results_from_file(
-    wpscan_output_file, false_positives_strings=None, show_all_details=False
-):
+    wpscan_output_file: str, 
+    false_positives_strings:Optional[Sequence[str]]=None, 
+    show_all_details:bool=False
+) -> WPScanResults:
     """Parse any WPScan output file.
 
     - wpscan_output_file: Path to WPScan output file

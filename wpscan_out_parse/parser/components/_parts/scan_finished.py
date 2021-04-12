@@ -1,8 +1,9 @@
-from ..base import _Component
+from typing import Any, Dict, Sequence
+from ...base import Component
 
 
-class ScanFinished(_Component):
-    def __init__(self, data, *args, **kwargs):
+class ScanFinished(Component):
+    def __init__(self, data:Dict[str,Any], *args: Any, **kwargs: Any) -> None:
         """From https://github.com/wpscanteam/CMSScanner/blob/master/app/views/json/core/finished.erb"""
 
         super().__init__(data, *args, **kwargs)
@@ -15,7 +16,7 @@ class ScanFinished(_Component):
         self.data_received_humanised = self.data.get("data_received_humanised", None)
         self.used_memory_humanised = self.data.get("used_memory_humanised", None)
 
-    def get_infos(self):
+    def get_infos(self) -> Sequence[str]:
         """Return 1 Scan Finished info"""
 
         info = "Scan duration: {} seconds".format(self.elapsed)
@@ -29,10 +30,10 @@ class ScanFinished(_Component):
 
         return [info]
 
-    def get_warnings(self):
+    def get_warnings(self) -> Sequence[str]:
         """Return empty list"""
         return []
 
-    def get_alerts(self):
+    def get_alerts(self) -> Sequence[str]:
         """Return empty list"""
         return []

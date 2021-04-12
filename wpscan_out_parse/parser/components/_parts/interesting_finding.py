@@ -1,7 +1,8 @@
-from .finding import _Finding
+from typing import Any, Dict, Sequence
+from .finding import Finding
 
 
-class InterestingFinding(_Finding):
+class InterestingFinding(Finding):
 
     INTERESTING_FINDING_WARNING_STRINGS = [
         "Upload directory has listing enabled",
@@ -26,17 +27,17 @@ class InterestingFinding(_Finding):
         "interconnectit.com/products/search-and-replace-for-wordpress-databases/",
     ]
 
-    def __init__(self, data, *args, **kwargs):
+    def __init__(self, data:Dict[str, Any], *args: Any, **kwargs: Any) -> None:
         """From https://github.com/wpscanteam/CMSScanner/blob/master/app/views/json/interesting_findings/findings.erb
         Warnings and Alerts strings are from https://github.com/wpscanteam/wpscan/blob/master/app/models/interesting_finding.rb
         """
 
         super().__init__(data, *args, **kwargs)
-        self.url = self.data.get("url", None)
-        self.to_s = self.data.get("to_s", None)
-        self.type = self.data.get("type", None)
+        self.url:str = self.data.get("url", None)
+        self.to_s:str = self.data.get("to_s", None)
+        self.type:str = self.data.get("type", None)
 
-    def _get_infos(self):
+    def _get_infos(self)-> Sequence[str]:
         """Return 1 info. First line of info string is the to_s string or the finding type. Complete references links too."""
         info = ""
         if self.to_s != self.url:
@@ -50,13 +51,14 @@ class InterestingFinding(_Finding):
         if self.url and self.url not in info:
             info += "\nURL: {}".format(self.url)
         # If finding infos are present, add them
-        if super().get_infos()[0]:
-            info += "\n{}".format(super().get_infos()[0])
+        super_infos = super().get_infos()
+        if super_infos and all(super_infos):
+            info += "\n{}".format(next(iter(super_infos)))
         if self.references:
             info += "\n{}".format(self.get_references_str())
         return [info]
 
-    def get_infos(self):
+    def get_infos(self)-> Sequence[str]:
         """Return 1 info or 0 if finding is a warning or an alert"""
         return [
             info
@@ -70,7 +72,7 @@ class InterestingFinding(_Finding):
             )
         ]
 
-    def get_warnings(self):
+    def get_warnings(self)-> Sequence[str]:
         """Return list of warnings if finding match warning string"""
         return [
             info
@@ -80,7 +82,7 @@ class InterestingFinding(_Finding):
             )
         ]
 
-    def get_alerts(self):
+    def get_alerts(self)-> Sequence[str]:
         """Return list of alerts if finding match ALERT string"""
         return [
             info

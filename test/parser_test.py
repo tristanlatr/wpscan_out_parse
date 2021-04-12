@@ -57,6 +57,14 @@ class T(unittest.TestCase):
 
               self.assertEqual(len(result2['warnings'])+2, len(result['warnings']))
 
+       def test_oudated_wordpress_version_warning(self):
+              result=parse_results_from_file("test/output_files/wordpress_outdated.json",
+                            false_positives_strings=["No WPVulnDB API Token given", "Plugin: wordpress-seo"])
+
+              self.assertEqual(len(result['warnings']), 1)
+
+              self.assertIn('Outdated Wordpress version', result['warnings'].pop())
+
        # def test_oudated_plugin_or_theme_version_warning(self):
        #        pass
 

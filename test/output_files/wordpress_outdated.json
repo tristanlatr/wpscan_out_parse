@@ -1,0 +1,199 @@
+{
+  "banner": {
+    "description": "WordPress Security Scanner by the WPScan Team",
+    "version": "3.8.6",
+    "authors": [
+      "@_WPScan_",
+      "@ethicalhack3r",
+      "@erwan_lr",
+      "@firefart"
+    ],
+    "sponsor": "Sponsored by Automattic - https://automattic.com/"
+  },
+  "start_time": 1618105359,
+  "start_memory": 33996800,
+  "target_url": "http://dailysportx.com/",
+  "target_ip": "13.35.83.69",
+  "effective_url": "https://example-outdated-wd.com",
+  "interesting_findings": [
+    {
+      "url": "https://example-outdated-wd.com",
+      "to_s": "Headers",
+      "type": "headers",
+      "found_by": "Headers (Passive Detection)",
+      "confidence": 100,
+      "confirmed_by": {
+
+      },
+      "references": {
+
+      },
+      "interesting_entries": [
+        "server: nginx/1.18.0",
+        "x-powered-by: PHP/7.4.13",
+        "via: 1.1 aca7cedbae634cf959491824fe54bc79.cloudfront.net (CloudFront)",
+        "x-amz-cf-pop: BOS50-C1",
+        "x-amz-cf-id: GwejhsaEA0_mYcHZkJn7DwTr5Bzlalz5lZsvGEDR3mZBfql_1_1QpA=="
+      ]
+    },
+    {
+      "url": "https://example-outdated-wd.comxmlrpc.php",
+      "to_s": "XML-RPC seems to be enabled: https://example-outdated-wd.comxmlrpc.php",
+      "type": "xmlrpc",
+      "found_by": "Link Tag (Passive Detection)",
+      "confidence": 30,
+      "confirmed_by": {
+
+      },
+      "references": {
+        "url": [
+          "http://codex.wordpress.org/XML-RPC_Pingback_API"
+        ],
+        "metasploit": [
+          "auxiliary/scanner/http/wordpress_ghost_scanner",
+          "auxiliary/dos/http/wordpress_xmlrpc_dos",
+          "auxiliary/scanner/http/wordpress_xmlrpc_login",
+          "auxiliary/scanner/http/wordpress_pingback_access"
+        ]
+      },
+      "interesting_entries": [
+
+      ]
+    }
+  ],
+  "version": {
+    "number": "5.6",
+    "release_date": "2020-12-08",
+    "status": "outdated",
+    "found_by": "Rss Generator (Passive Detection)",
+    "confidence": 100,
+    "interesting_entries": [
+      "https://example-outdated-wd.comfeed, <generator>https://wordpress.org/?v=5.6</generator>",
+      "https://example-outdated-wd.comcomments/feed, <generator>https://wordpress.org/?v=5.6</generator>"
+    ],
+    "confirmed_by": {
+
+    },
+    "vulnerabilities": [
+
+    ]
+  },
+  "main_theme": {
+    "slug": "wt_tera",
+    "location": "http://dailysportx.com/wp-content/themes/wt_tera/",
+    "latest_version": null,
+    "last_updated": null,
+    "outdated": false,
+    "readme_url": false,
+    "directory_listing": false,
+    "error_log_url": null,
+    "style_url": "http://dailysportx.com/wp-content/themes/wt_tera/style.css",
+    "style_name": null,
+    "style_uri": null,
+    "description": null,
+    "author": null,
+    "author_uri": null,
+    "template": null,
+    "license": null,
+    "license_uri": null,
+    "tags": null,
+    "text_domain": null,
+    "found_by": "Urls In Homepage (Passive Detection)",
+    "confidence": 24,
+    "interesting_entries": [
+
+    ],
+    "confirmed_by": {
+      "Urls In 404 Page (Passive Detection)": {
+        "confidence": 12,
+        "interesting_entries": [
+
+        ]
+      }
+    },
+    "vulnerabilities": [
+
+    ],
+    "version": null,
+    "parents": [
+
+    ]
+  },
+  "plugins": {
+    "wordpress-seo": {
+      "slug": "wordpress-seo",
+      "location": "http://dailysportx.com/wp-content/plugins/wordpress-seo/",
+      "latest_version": "16.1.1",
+      "last_updated": "2021-04-06T15:56:00.000Z",
+      "outdated": true,
+      "readme_url": null,
+      "directory_listing": null,
+      "error_log_url": null,
+      "found_by": "Comment (Passive Detection)",
+      "confidence": 30,
+      "interesting_entries": [
+
+      ],
+      "confirmed_by": {
+
+      },
+      "vulnerabilities": [
+
+      ],
+      "version": {
+        "number": "15.5",
+        "confidence": 60,
+        "found_by": "Comment (Passive Detection)",
+        "interesting_entries": [
+          "https://example-outdated-wd.com, Match: 'optimized with the Yoast SEO plugin v15.5 -'"
+        ],
+        "confirmed_by": {
+
+        }
+      }
+    },
+    "wp-pagenavi": {
+      "slug": "wp-pagenavi",
+      "location": "http://dailysportx.com/wp-content/plugins/wp-pagenavi/",
+      "latest_version": "2.93.4",
+      "last_updated": "2021-02-22T06:14:00.000Z",
+      "outdated": false,
+      "readme_url": null,
+      "directory_listing": null,
+      "error_log_url": null,
+      "found_by": "Urls In Homepage (Passive Detection)",
+      "confidence": 100,
+      "interesting_entries": [
+
+      ],
+      "confirmed_by": {
+        "Urls In 404 Page (Passive Detection)": {
+          "confidence": 80,
+          "interesting_entries": [
+
+          ]
+        }
+      },
+      "vulnerabilities": [
+
+      ],
+      "version": null
+    }
+  },
+  "config_backups": {
+
+  },
+  "vuln_api": {
+    "error": "No WPVulnDB API Token given, as a result vulnerability data has not been output.\nYou can get a free API token with 50 daily requests by registering at https://wpvulndb.com/users/sign_up"
+  },
+  "stop_time": 1618105368,
+  "elapsed": 8,
+  "requests_done": 63,
+  "cached_requests": 5,
+  "data_sent": 15945,
+  "data_sent_humanised": "15.571 KB",
+  "data_received": 316580,
+  "data_received_humanised": "309.16 KB",
+  "used_memory": 286105600,
+  "used_memory_humanised": "272.852 MB"
+}

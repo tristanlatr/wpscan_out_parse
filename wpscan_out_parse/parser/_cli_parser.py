@@ -1,13 +1,14 @@
 import re
+from typing import Any, Dict, Sequence, List, Optional, Tuple
 
-from .base import _Parser
+from .base import Parser
 from .components import InterestingFinding
-from .results import _WPScanResults
+from .results import WPScanResults
 
 ####################  CLI PARSER ######################
 
 
-class WPScanCliParser(_Parser):
+class WPScanCliParser(Parser):
     """Main interface to parse WPScan CLI output.
 
     - wpscan_output: WPScan output as string.
@@ -15,30 +16,31 @@ class WPScanCliParser(_Parser):
 
     """
 
-    def __init__(self, wpscan_output, false_positives_strings=None):
+    def __init__(self, wpscan_output:str, 
+                 false_positives_strings:Optional[Sequence[str]]=None) -> None:
 
         if not wpscan_output:
             wpscan_output = ""
-        # _Parser config: false positives string and verbosity (not available with cli parser)
+        # Parser config: false positives string and verbosity (not available with cli parser)
         parser_config = dict(
             false_positives_strings=false_positives_strings, show_all_details=False
         )
-        super().__init__(wpscan_output, **parser_config)
-        self.infos, self.warnings, self.alerts = self.parse_cli(wpscan_output)
+        super().__init__({'output':wpscan_output}, **parser_config)
+        self._infos, self._warnings, self._alerts = self.parse_cli(wpscan_output)
 
-    def get_infos(self):
+    def get_infos(self) -> Sequence[str]:
         """ Return all the parsed infos"""
-        return self.infos
+        return self._infos
 
-    def get_warnings(self):
+    def get_warnings(self) -> Sequence[str]:
         """ Return all the parsed warnings"""
-        return self.warnings
+        return self._warnings
 
-    def get_alerts(self):
+    def get_alerts(self)-> Sequence[str]:
         """ Return all the parsed alerts"""
-        return self.alerts
+        return self._alerts
 
-    def _parse_cli_toogle(self, line, warning_on, alert_on):
+    def _parse_cli_toogle(self, line:str, warning_on:bool, alert_on:bool) -> Tuple[bool, bool]:
         # Color parsing
         if "33m[!]" in line:
             warning_on = True
@@ -78,7 +80,7 @@ class WPScanCliParser(_Parser):
             warning_on = True
         return (warning_on, alert_on)
 
-    def _ignore_false_positives(self, infos, warnings, alerts):
+    def _ignore_false_positives(self, infos:List[str], warnings:List[str], alerts:List[str]) -> Tuple[List[str], List[str], List[str]]:
         """Process false positives"""
         for alert in warnings + alerts:
             if self.is_false_positive(alert):
@@ -90,7 +92,7 @@ class WPScanCliParser(_Parser):
 
         return infos, warnings, alerts
 
-    def parse_cli(self, wpscan_output):
+    def parse_cli(self, wpscan_output:str) -> Tuple[List[str], List[str], List[str]]:
         """Parse the ( messages, warnings, alerts ) from WPScan CLI output string.
         Return results as tuple( messages, warnings, alerts )."""
         # Init scan messages
@@ -132,7 +134,7 @@ class WPScanCliParser(_Parser):
                 for s in ["vulnerabilities identified", "vulnerability identified"]
             ):
                 messages_separated = []
-                msg = []
+                msg: List[str] = []
                 for l in message_lines + ["|"]:
                     if l.strip() == "|":
                         messages_separated.append(
@@ -182,17 +184,17 @@ class WPScanCliParser(_Parser):
 
         return self._ignore_false_positives(messages, warnings, alerts)
 
-    def get_error(self):
-        if "Scan Aborted" in self.data:
+    def get_error(self) -> Optional[str]:
+        if "Scan Aborted" in self.data.get('output', ''):
             return "WPScan failed: {}".format(
                 "\n".join(
-                    line for line in self.data.splitlines() if "Scan Aborted" in line
+                    line for line in self.data.get('output', '').splitlines() if "Scan Aborted" in line
                 )
             )
         else:
             return None
 
-    def get_results(self):
+    def get_results(self) -> WPScanResults:
         """
         Returns a dictionnary structure like
         
@@ -210,10 +212,10 @@ class WPScanCliParser(_Parser):
             }
         
         """
-        results = _WPScanResults()
+        results = WPScanResults()
         results["infos"] = self.get_infos()
         results["warnings"] = self.get_warnings()
         results["alerts"] = self.get_alerts()
         results["summary"]["line"] = self.get_summary_line()
         results["error"] = self.get_error()
-        return dict(results)
+        return results
