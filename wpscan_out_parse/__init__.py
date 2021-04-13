@@ -39,8 +39,6 @@ __all__ = [
     "format_results",
 ]
 
-VERSION = "1.8.1"
-
 ###################### IMPORTS  ######################
 
 from .parser._json_parser import WPScanJsonParser
