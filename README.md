@@ -53,7 +53,7 @@ Display results in HTML format
 % python3 -m wpscan_out_parse ./test/output_files/potential_vulns.json --format html > html_output.html
 ```
 
-![WPWatcher Report](https://github.com/tristanlatr/wpscan_out_parse/raw/master/html_output.png "HTML Output")
+![WPWatcher Report](https://github.com/tristanlatr/wpscan_out_parse/raw/master/sample/html_output.png "HTML Output")
 
 ### As a Python library
 
