@@ -1,6 +1,6 @@
 import argparse
 import traceback
-from . import VERSION
+from .__version__ import VERSION
 from .formatter import format_results
 from .parser import parse_results_from_file
 from .parser.results import WPScanResults
