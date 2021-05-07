@@ -19,7 +19,7 @@ setup(
     maintainer          =   'tristanlatr',
     version             =   ABOUT['VERSION'],
     packages            =   find_packages(exclude=('test')), 
-    entry_points        =   {'console_scripts': ['wpscan_out_parse = wpscan_out_parse.__main__:main'],},
+    entry_points        =   {'console_scripts': ['wpscan_out_parse = wpscan_out_parse.__main__:wpscan_out_parse_cli'],},
     classifiers         =   ["Programming Language :: Python :: 3"],
     license             =   'MIT',
     long_description    =   README,
