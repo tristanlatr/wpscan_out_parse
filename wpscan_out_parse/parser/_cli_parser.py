@@ -216,6 +216,6 @@ class WPScanCliParser(Parser):
         results["infos"] = self.get_infos()
         results["warnings"] = self.get_warnings()
         results["alerts"] = self.get_alerts()
-        results["summary"]["line"] = self.get_summary_line()
+        results["summary"]["line"] = self.get_summary_line() # type: ignore
         results["error"] = self.get_error()
         return results

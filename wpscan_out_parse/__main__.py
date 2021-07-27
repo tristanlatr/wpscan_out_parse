@@ -82,7 +82,7 @@ def wpscan_out_parse_cli () -> None:
             print(output)
     else:
         # Print only line
-        print(results["summary"]["line"])
+        print(results["summary"]["line"]) # type: ignore
 
     exit(exit_code)
 

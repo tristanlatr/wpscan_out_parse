@@ -242,8 +242,8 @@ class WPScanJsonParser(Parser):
         results["infos"] = self.get_infos()
         results["warnings"] = self.get_warnings()
         results["alerts"] = self.get_alerts()
-        results["summary"]["table"] = self.get_summary_list()
-        results["summary"]["line"] = self.get_summary_line()
+        results["summary"]["table"] = self.get_summary_list() # type: ignore
+        results["summary"]["line"] = self.get_summary_line() # type: ignore
         results["error"] = self.get_error()
         return results
 
