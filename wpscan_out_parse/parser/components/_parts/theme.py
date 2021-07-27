@@ -60,8 +60,9 @@ class Theme(WPItem):
         return ["".join(chain(super_infos, [info]))]
 
     def get_infos(self) -> Sequence[str]:
-        if super().get_infos():
-            return ["".join("Theme: ", *super().get_infos())]
+        infos = super().get_infos()
+        if infos:
+            return [f"Theme: {infos[0]}"]
         else:
             return []
 
