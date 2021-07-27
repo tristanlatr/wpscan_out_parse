@@ -44,7 +44,7 @@ jobs:
       run: tox -e mypy
     
     - name: Run static checks
-      run: tox -e ptype
+      run: tox -e pytype
     
     - name: Upload code coverage
       uses: codecov/codecov-action@v1
